@@ -4,6 +4,7 @@ import {
   getSupabaseRouteHandlerClient,
   hasSupabaseEnv,
 } from "@/lib/supabase/server";
+import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
 
 function formatUsername(input: string) {
   return input
@@ -31,6 +32,12 @@ export async function GET(request: NextRequest) {
 
   if (authError || !user) {
     return applyResponseCookies(response, NextResponse.json({ error: "Unauthorized" }, { status: 401 }));
+  }
+
+  const { error: ensureError } = await ensureUserProfile(supabase, user);
+
+  if (ensureError) {
+    return applyResponseCookies(response, NextResponse.json({ error: ensureError.message }, { status: 500 }));
   }
 
   const [{ data: profile, error: profileError }, { data: assets, error: assetsError }] = await Promise.all([
@@ -75,6 +82,7 @@ export async function POST(request: NextRequest) {
   const payload = (await request.json().catch(() => ({}))) as {
     fullName?: string;
     username?: string;
+    avatarUrl?: string | null;
   };
 
   const fullName =
@@ -92,6 +100,7 @@ export async function POST(request: NextRequest) {
     id: user.id,
     full_name: fullName,
     username,
+    avatar_url: payload.avatarUrl,
     updated_at: new Date().toISOString(),
   });
 
@@ -123,9 +132,16 @@ export async function PATCH(request: NextRequest) {
     return applyResponseCookies(response, NextResponse.json({ error: "Unauthorized" }, { status: 401 }));
   }
 
+  const { error: ensureError } = await ensureUserProfile(supabase, user);
+
+  if (ensureError) {
+    return applyResponseCookies(response, NextResponse.json({ error: ensureError.message }, { status: 500 }));
+  }
+
   const payload = (await request.json()) as {
     fullName?: string;
     username?: string;
+    avatarUrl?: string | null;
     role?: string;
     location?: string;
     bio?: string;
@@ -144,6 +160,7 @@ export async function PATCH(request: NextRequest) {
     .update({
       full_name: payload.fullName,
       username: formatUsername(payload.username),
+      avatar_url: payload.avatarUrl,
       role: payload.role,
       location: payload.location,
       bio: payload.bio,

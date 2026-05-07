@@ -10,6 +10,7 @@ type PublicProfilePageProps = {
 type ProfileDetails = {
   name: string;
   username: string;
+  avatarUrl: string;
   role: string;
   location: string;
   bio: string;
@@ -28,7 +29,7 @@ async function loadPublicProfile(username: string): Promise<ProfileDetails | nul
   if (supabase) {
     const { data: profile } = await supabase
       .from("profiles")
-      .select("id,username,full_name,role,location,bio")
+      .select("id,username,full_name,avatar_url,role,location,bio")
       .eq("username", username)
       .eq("visibility", "public")
       .maybeSingle();
@@ -54,6 +55,7 @@ async function loadPublicProfile(username: string): Promise<ProfileDetails | nul
       return {
         name: profile.full_name,
         username: profile.username,
+        avatarUrl: profile.avatar_url || "",
         role: profile.role || "Professional",
         location: profile.location || "",
         bio: profile.bio || "",
@@ -85,6 +87,15 @@ export async function generateMetadata({ params }: PublicProfilePageProps) {
   };
 }
 
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("") || "U";
+}
+
 export default async function PublicProfilePage({ params }: PublicProfilePageProps) {
   const { username } = await params;
   const profile = await loadPublicProfile(username);
@@ -97,10 +108,26 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
     <section className="container-wrap py-12">
       <article className="card p-7">
         <p className="chip">Public Profile</p>
-        <h1 className="heading-display mt-4 text-4xl font-black">{profile.name}</h1>
-        <p className="mt-1 text-sm font-semibold text-[var(--brand)]">@{profile.username}</p>
-        <p className="mt-3 text-[var(--muted)]">{profile.role} • {profile.location}</p>
-        <p className="mt-4 max-w-2xl leading-8 text-[var(--muted)]">{profile.bio}</p>
+        <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-start">
+          {profile.avatarUrl ? (
+            <img
+              src={profile.avatarUrl}
+              alt={profile.name}
+              className="h-28 w-28 rounded-3xl border border-[var(--line)] object-cover shadow-sm"
+            />
+          ) : (
+            <div className="flex h-28 w-28 items-center justify-center rounded-3xl border border-[var(--line)] bg-[var(--surface-strong)] text-3xl font-black text-[var(--brand)]">
+              {getInitials(profile.name)}
+            </div>
+          )}
+
+          <div>
+            <h1 className="heading-display text-4xl font-black">{profile.name}</h1>
+            <p className="mt-1 text-sm font-semibold text-[var(--brand)]">@{profile.username}</p>
+            <p className="mt-3 text-[var(--muted)]">{profile.role} • {profile.location}</p>
+            <p className="mt-4 max-w-2xl leading-8 text-[var(--muted)]">{profile.bio}</p>
+          </div>
+        </div>
 
         {profile.publicEmail && (
           <p className="mt-4 inline-flex items-center gap-2 text-sm text-[var(--muted)]">

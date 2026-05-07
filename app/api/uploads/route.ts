@@ -4,8 +4,10 @@ import {
   getSupabaseRouteHandlerClient,
   hasSupabaseEnv,
 } from "@/lib/supabase/server";
+import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
 
 const ALLOWED_TYPES = ["application/pdf", "image/png", "image/jpeg"];
+const IMAGE_TYPES = ["image/png", "image/jpeg"];
 
 export async function POST(request: NextRequest) {
   if (!hasSupabaseEnv()) {
@@ -28,10 +30,20 @@ export async function POST(request: NextRequest) {
     return applyResponseCookies(response, NextResponse.json({ error: "Unauthorized" }, { status: 401 }));
   }
 
+  const { error: profileError } = await ensureUserProfile(supabase, user);
+
+  if (profileError) {
+    return applyResponseCookies(
+      response,
+      NextResponse.json({ error: profileError.message }, { status: 500 }),
+    );
+  }
+
   const formData = await request.formData();
   const file = formData.get("file");
   const kind = formData.get("kind")?.toString() ?? "other";
   const isPublic = formData.get("isPublic")?.toString() === "true";
+  const isAvatarUpload = kind === "avatar";
 
   if (!(file instanceof File)) {
     return applyResponseCookies(
@@ -47,8 +59,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (isAvatarUpload && !IMAGE_TYPES.includes(file.type)) {
+    return applyResponseCookies(
+      response,
+      NextResponse.json({ error: "Profile photos must be PNG or JPEG." }, { status: 400 }),
+    );
+  }
+
   const extension = file.name.split(".").pop() ?? "dat";
-  const path = `${user.id}/${kind}-${Date.now()}.${extension}`;
+  const path = `${user.id}/${isAvatarUpload ? "avatar" : kind}-${Date.now()}.${extension}`;
 
   const { error } = await supabase.storage.from("profile-files").upload(path, file, {
     contentType: file.type,
@@ -60,6 +79,25 @@ export async function POST(request: NextRequest) {
   }
 
   const { data } = supabase.storage.from("profile-files").getPublicUrl(path);
+
+  if (isAvatarUpload) {
+    const { error: avatarError } = await supabase
+      .from("profiles")
+      .update({ avatar_url: data.publicUrl, updated_at: new Date().toISOString() })
+      .eq("id", user.id);
+
+    if (avatarError) {
+      return applyResponseCookies(
+        response,
+        NextResponse.json({ error: avatarError.message }, { status: 500 }),
+      );
+    }
+
+    return applyResponseCookies(
+      response,
+      NextResponse.json({ ok: true, kind: "avatar", path, publicUrl: data.publicUrl }),
+    );
+  }
 
   const { error: insertError } = await supabase.from("profile_assets").insert({
     profile_id: user.id,

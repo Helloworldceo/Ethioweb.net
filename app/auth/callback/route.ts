@@ -42,6 +42,10 @@ export async function GET(request: NextRequest) {
       (user.user_metadata?.full_name as string | undefined) ||
       user.email?.split("@")[0] ||
       "New User";
+    const avatarUrl =
+      (user.user_metadata?.avatar_url as string | undefined) ||
+      (user.user_metadata?.picture as string | undefined) ||
+      null;
     const requestedUsername =
       (user.user_metadata?.username as string | undefined) || fullName.replace(/\s+/g, "");
     const username = requestedUsername
@@ -53,6 +57,7 @@ export async function GET(request: NextRequest) {
       id: user.id,
       full_name: fullName,
       username,
+      avatar_url: avatarUrl,
       visibility: "public",
       updated_at: new Date().toISOString(),
     });

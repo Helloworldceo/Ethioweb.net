@@ -21,6 +21,7 @@ export type BlogPost = {
 export type DemoProfile = {
   name: string;
   username: string;
+  avatarUrl: string;
   role: string;
   location: string;
   bio: string;
@@ -122,6 +123,7 @@ export const demoProfiles: DemoProfile[] = [
   {
     name: "Dawit Bekele",
     username: "dawitb",
+    avatarUrl: "",
     role: "Full-Stack Developer & Consultant",
     location: "Addis Ababa, Ethiopia",
     bio: "I help founders and professionals build digital products and online identity systems.",
@@ -140,6 +142,7 @@ export const demoProfiles: DemoProfile[] = [
   {
     name: "Rahel Abebe",
     username: "rahelab",
+    avatarUrl: "",
     role: "Product Designer",
     location: "Nairobi, Kenya",
     bio: "Designing practical digital experiences for startups and mission-driven teams.",

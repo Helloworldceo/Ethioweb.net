@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { Eye, EyeOff, FileText, FolderKanban, Link2, UploadCloud } from "lucide-react";
+import { Camera, Eye, EyeOff, FileText, FolderKanban, Link2, MapPin, UploadCloud, UserRound } from "lucide-react";
 import { useLanguage } from "@/components/i18n/language-provider";
 
 type ProfileRow = {
   id: string;
   username: string;
   full_name: string;
+  avatar_url: string | null;
   role: string | null;
   location: string | null;
   bio: string | null;
@@ -46,17 +47,19 @@ export function DashboardClient({ initialProfile, initialAssets }: DashboardClie
   const [error, setError] = useState<string | null>(null);
 
   const [form, setForm] = useState({
-    fullName: "",
-    username: "",
-    role: "",
-    location: "",
-    bio: "",
-    visibility: "public" as "public" | "private",
+    fullName: initialProfile?.full_name || "",
+    username: initialProfile?.username || "",
+    avatarUrl: initialProfile?.avatar_url || null,
+    role: initialProfile?.role || "",
+    location: initialProfile?.location || "",
+    bio: initialProfile?.bio || "",
+    visibility: initialProfile?.visibility || ("public" as "public" | "private"),
   });
 
   const [uploadKind, setUploadKind] = useState("cv");
   const [uploadPublic, setUploadPublic] = useState(true);
   const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
   async function loadProfile() {
     setError(null);
@@ -83,6 +86,7 @@ export function DashboardClient({ initialProfile, initialAssets }: DashboardClie
       setForm({
         fullName: payload.profile.full_name || "",
         username: payload.profile.username || "",
+        avatarUrl: payload.profile.avatar_url || null,
         role: payload.profile.role || "",
         location: payload.profile.location || "",
         bio: payload.profile.bio || "",
@@ -156,6 +160,50 @@ export function DashboardClient({ initialProfile, initialAssets }: DashboardClie
     await loadProfile();
   }
 
+  async function uploadAvatar(event: FormEvent) {
+    event.preventDefault();
+    setError(null);
+    setStatus(null);
+
+    if (!avatarFile) {
+      setError("Please choose a profile photo first.");
+      return;
+    }
+
+    setUploading(true);
+
+    const data = new FormData();
+    data.append("file", avatarFile);
+    data.append("kind", "avatar");
+    data.append("isPublic", "true");
+
+    const response = await fetch("/api/uploads", {
+      method: "POST",
+      body: data,
+    });
+
+    setUploading(false);
+
+    if (!response.ok) {
+      const payload = (await response.json().catch(() => ({ error: "Upload failed" }))) as {
+        error?: string;
+      };
+      setError(payload.error || "Upload failed");
+      return;
+    }
+
+    setStatus("Profile photo updated.");
+    setAvatarFile(null);
+    await loadProfile();
+  }
+
+  const avatarFallback = (form.fullName || profile?.full_name || "U")
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("") || "U";
+
   const groupedAssets = {
     cv: assets.filter((item) => item.asset_kind === "cv"),
     portfolio: assets.filter((item) => item.asset_kind === "portfolio"),
@@ -181,6 +229,40 @@ export function DashboardClient({ initialProfile, initialAssets }: DashboardClie
       {status && <p className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">{status}</p>}
 
       <div className="grid gap-4 md:grid-cols-2">
+        <article className="card overflow-hidden p-0 md:col-span-2">
+          <div className="bg-[radial-gradient(circle_at_top_left,_rgba(15,118,110,0.24),_transparent_45%),linear-gradient(135deg,#0f172a,#1f2937)] px-6 py-8 text-white">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="flex items-center gap-4">
+                {form.avatarUrl ? (
+                  <img
+                    src={form.avatarUrl}
+                    alt={form.fullName || "Profile photo"}
+                    className="h-24 w-24 rounded-3xl border border-white/20 object-cover shadow-lg"
+                  />
+                ) : (
+                  <div className="flex h-24 w-24 items-center justify-center rounded-3xl border border-white/20 bg-white/10 text-2xl font-black">
+                    {avatarFallback}
+                  </div>
+                )}
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">{t("Your profile", "ፕሮፋይልዎ")}</p>
+                  <h2 className="mt-2 text-3xl font-black">{form.fullName || t("Your name", "ስምዎ")}</h2>
+                  <p className="mt-1 text-sm font-semibold text-teal-200">@{form.username || "username"}</p>
+                  <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-white/80">
+                    <span className="inline-flex items-center gap-2"><UserRound className="h-4 w-4" />{form.role || t("Professional", "ባለሙያ")}</span>
+                    {form.location && <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4" />{form.location}</span>}
+                  </div>
+                </div>
+              </div>
+
+              <div className="max-w-md text-sm leading-7 text-white/80">
+                {form.bio || t("Add your role, location, and short bio to shape the public card people see first.", "ስራዎን፣ ቦታዎን እና አጭር ማብራሪያዎን ያስገቡ ሰዎች የሚያዩትን የህዝብ ፕሮፋይል ለማዘጋጀት።")}
+              </div>
+            </div>
+          </div>
+        </article>
+
         <article className="card p-6 md:col-span-2">
           <h2 className="heading-display text-2xl font-bold">{t("Profile Basics", "የፕሮፋይል መረጃ")}</h2>
           <form className="mt-4 grid gap-3 md:grid-cols-2" onSubmit={saveProfile}>
@@ -237,6 +319,25 @@ export function DashboardClient({ initialProfile, initialAssets }: DashboardClie
             />
             <button className="btn-primary md:col-span-2 w-fit" type="submit" disabled={saving}>
               {saving ? t("Saving...", "በማስቀመጥ ላይ...") : t("Save Profile", "ፕሮፋይል አስቀምጥ")}
+            </button>
+          </form>
+        </article>
+
+        <article className="card p-6">
+          <div className="flex items-center gap-2">
+            <Camera className="h-4 w-4 text-[var(--brand)]" />
+            <h3 className="heading-display text-xl font-bold">{t("Profile Photo", "የፕሮፋይል ፎቶ")}</h3>
+          </div>
+
+          <form className="mt-4 space-y-3" onSubmit={uploadAvatar}>
+            <input
+              className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+              type="file"
+              accept=".png,.jpg,.jpeg"
+              onChange={(event) => setAvatarFile(event.target.files?.[0] || null)}
+            />
+            <button className="btn-primary w-full" type="submit" disabled={uploading}>
+              {uploading ? t("Uploading...", "በማስገባት ላይ...") : t("Upload Profile Photo", "የፕሮፋይል ፎቶ አስገባ")}
             </button>
           </form>
         </article>

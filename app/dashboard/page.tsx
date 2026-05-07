@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { DashboardClient } from "@/components/dashboard/dashboard-client";
+import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
 export const metadata = {
@@ -30,6 +31,8 @@ export default async function DashboardPage() {
   if (!user) {
     redirect("/auth/login");
   }
+
+  await ensureUserProfile(supabase, user);
 
   const [{ data: profile }, { data: assets }] = await Promise.all([
     supabase.from("profiles").select("*").eq("id", user.id).maybeSingle(),
