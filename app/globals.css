@@ -108,6 +108,24 @@ a {
   letter-spacing: -0.03em;
 }
 
+@media (max-width: 768px) {
+  .container-wrap {
+    width: min(1120px, 94vw);
+  }
+}
+
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.65rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .card {
+    border-radius: 14px;
+  }
+}
+
 .animate-rise {
   animation: rise 650ms ease both;
 }
