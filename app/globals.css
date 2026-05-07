@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f8f5ef;
+  --paper: #fffaf1;
+  --panel: #ffffff;
+  --ink: #111313;
+  --muted: #516061;
+  --brand: #005f5f;
+  --brand-2: #df6c22;
+  --line: #d8d5cf;
+  --radius: 18px;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-space-grotesk);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 0% 0%, #fff5d9 0%, rgba(255, 245, 217, 0) 35%),
+    radial-gradient(circle at 100% 10%, #f3fff7 0%, rgba(243, 255, 247, 0) 32%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 95%);
+}
+
+.container-wrap {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+}
+
+.card {
+  background: color-mix(in srgb, var(--panel) 92%, #f2efe8 8%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.chip {
+  border: 1px solid color-mix(in srgb, var(--brand) 25%, #cbd5d5 75%);
+  background: color-mix(in srgb, var(--brand) 7%, white 93%);
+  color: var(--brand);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.8rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand) 0%, #004444 100%);
+  color: #eafaf9;
+  font-weight: 700;
+  padding: 0.75rem 1.3rem;
+  border: 1px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(0, 95, 95, 0.22);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 700;
+  padding: 0.75rem 1.3rem;
+  border: 1px solid var(--line);
+}
+
+.heading-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.animate-rise {
+  animation: rise 650ms ease both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
