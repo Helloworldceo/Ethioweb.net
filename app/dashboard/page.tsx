@@ -3,6 +3,8 @@ import { DashboardClient } from "@/components/dashboard/dashboard-client";
 import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+
 export const metadata = {
   title: "Dashboard",
   description: "Manage profile, uploads, and visibility controls.",
@@ -39,5 +41,17 @@ export default async function DashboardPage() {
     supabase.from("profile_assets").select("*").eq("profile_id", user.id).order("created_at", { ascending: false }),
   ]);
 
-  return <DashboardClient initialProfile={profile} initialAssets={assets ?? []} />;
+  const isAdmin = Boolean(ADMIN_USERNAME && profile?.username === ADMIN_USERNAME);
+
+  const blogPosts = isAdmin
+    ? (
+        await supabase
+          .from("blog_posts")
+          .select("*")
+          .eq("author_id", user.id)
+          .order("created_at", { ascending: false })
+      ).data ?? []
+    : [];
+
+  return <DashboardClient initialProfile={profile} initialAssets={assets ?? []} isAdmin={isAdmin} initialBlogPosts={blogPosts} />;
 }

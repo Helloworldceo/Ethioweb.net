@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { Camera, Eye, EyeOff, FileText, FolderKanban, Link2, MapPin, UploadCloud, UserRound } from "lucide-react";
+import { Camera, Eye, EyeOff, FileText, FolderKanban, Link2, MapPin, PenLine, Trash2, UploadCloud, UserRound } from "lucide-react";
 import { useLanguage } from "@/components/i18n/language-provider";
 
 type ProfileRow = {
@@ -14,6 +14,17 @@ type ProfileRow = {
   location: string | null;
   bio: string | null;
   visibility: "public" | "private";
+};
+
+type BlogPostRow = {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string | null;
+  is_published: boolean;
+  published_at: string | null;
+  created_at: string;
 };
 
 type AssetRow = {
@@ -34,9 +45,11 @@ const kinds = [
 type DashboardClientProps = {
   initialProfile: ProfileRow | null;
   initialAssets: AssetRow[];
+  isAdmin: boolean;
+  initialBlogPosts: BlogPostRow[];
 };
 
-export function DashboardClient({ initialProfile, initialAssets }: DashboardClientProps) {
+export function DashboardClient({ initialProfile, initialAssets, isAdmin, initialBlogPosts }: DashboardClientProps) {
   const { t } = useLanguage();
   const [profile, setProfile] = useState<ProfileRow | null>(initialProfile);
   const [assets, setAssets] = useState<AssetRow[]>(initialAssets);
@@ -60,6 +73,93 @@ export function DashboardClient({ initialProfile, initialAssets }: DashboardClie
   const [uploadPublic, setUploadPublic] = useState(true);
   const [uploadFile, setUploadFile] = useState<File | null>(null);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
+
+  // Blog management (admin only)
+  const [blogPosts, setBlogPosts] = useState<BlogPostRow[]>(initialBlogPosts);
+  const [blogEditing, setBlogEditing] = useState(false);
+  const [blogSaving, setBlogSaving] = useState(false);
+  const [blogForm, setBlogForm] = useState({
+    id: "",
+    title: "",
+    slug: "",
+    excerpt: "",
+    content: "",
+    is_published: false,
+  });
+
+  function generateSlug(title: string) {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  function startNewPost() {
+    setBlogForm({ id: "", title: "", slug: "", excerpt: "", content: "", is_published: false });
+    setBlogEditing(true);
+  }
+
+  function startEditPost(post: BlogPostRow) {
+    setBlogForm({
+      id: post.id,
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt,
+      content: post.content ?? "",
+      is_published: post.is_published,
+    });
+    setBlogEditing(true);
+  }
+
+  async function loadBlogPosts() {
+    const response = await fetch("/api/admin/blog");
+    if (!response.ok) return;
+    const payload = (await response.json()) as { posts: BlogPostRow[] };
+    setBlogPosts(payload.posts ?? []);
+  }
+
+  async function saveBlogPost(event: FormEvent) {
+    event.preventDefault();
+    setBlogSaving(true);
+    setError(null);
+
+    const method = blogForm.id ? "PATCH" : "POST";
+    const response = await fetch("/api/admin/blog", {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blogForm),
+    });
+
+    setBlogSaving(false);
+
+    if (!response.ok) {
+      const payload = (await response.json().catch(() => ({ error: "Save failed" }))) as { error?: string };
+      setError(payload.error ?? "Save failed");
+      return;
+    }
+
+    setStatus(blogForm.id ? "Post updated." : "Post created.");
+    setBlogEditing(false);
+    await loadBlogPosts();
+  }
+
+  async function deleteBlogPost(id: string) {
+    setError(null);
+    const response = await fetch("/api/admin/blog", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+
+    if (!response.ok) {
+      const payload = (await response.json().catch(() => ({ error: "Delete failed" }))) as { error?: string };
+      setError(payload.error ?? "Delete failed");
+      return;
+    }
+
+    setStatus("Post deleted.");
+    await loadBlogPosts();
+  }
 
   async function loadProfile() {
     setError(null);
@@ -414,6 +514,136 @@ export function DashboardClient({ initialProfile, initialAssets }: DashboardClie
             </p>
           </div>
         </article>
+
+        {isAdmin && (
+          <article className="card p-6 md:col-span-2">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <PenLine className="h-4 w-4 text-[var(--brand)]" />
+                <h2 className="heading-display text-2xl font-bold">Blog Posts</h2>
+                <span className="chip text-xs">Admin</span>
+              </div>
+              {!blogEditing && (
+                <button type="button" className="btn-primary text-sm" onClick={startNewPost}>
+                  + New Post
+                </button>
+              )}
+            </div>
+
+            {blogEditing && (
+              <form className="mb-6 grid gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4" onSubmit={saveBlogPost}>
+                <h3 className="font-bold">{blogForm.id ? "Edit Post" : "New Post"}</h3>
+                <div className="grid gap-3 md:grid-cols-2">
+                  <input
+                    className="rounded-xl border border-[var(--line)] bg-white p-3"
+                    value={blogForm.title}
+                    onChange={(e) => {
+                      const title = e.target.value;
+                      setBlogForm((prev) => ({
+                        ...prev,
+                        title,
+                        slug: prev.id ? prev.slug : generateSlug(title),
+                      }));
+                    }}
+                    placeholder="Post title"
+                    required
+                  />
+                  <input
+                    className="rounded-xl border border-[var(--line)] bg-white p-3"
+                    value={blogForm.slug}
+                    onChange={(e) =>
+                      setBlogForm((prev) => ({
+                        ...prev,
+                        slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""),
+                      }))
+                    }
+                    placeholder="url-slug"
+                    required
+                  />
+                </div>
+                <textarea
+                  className="h-20 rounded-xl border border-[var(--line)] bg-white p-3"
+                  value={blogForm.excerpt}
+                  onChange={(e) => setBlogForm((prev) => ({ ...prev, excerpt: e.target.value }))}
+                  placeholder="Short excerpt / summary shown on the blog list"
+                  required
+                />
+                <textarea
+                  className="h-56 rounded-xl border border-[var(--line)] bg-white p-3 font-mono text-sm"
+                  value={blogForm.content}
+                  onChange={(e) => setBlogForm((prev) => ({ ...prev, content: e.target.value }))}
+                  placeholder="Full article content..."
+                />
+                <label className="flex cursor-pointer items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={blogForm.is_published}
+                    onChange={(e) => setBlogForm((prev) => ({ ...prev, is_published: e.target.checked }))}
+                  />
+                  Publish immediately (visible to all visitors)
+                </label>
+                <div className="flex gap-2">
+                  <button className="btn-primary text-sm" type="submit" disabled={blogSaving}>
+                    {blogSaving ? "Saving..." : blogForm.id ? "Update Post" : "Create Post"}
+                  </button>
+                  <button
+                    className="btn-secondary text-sm"
+                    type="button"
+                    onClick={() => setBlogEditing(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            )}
+
+            <ul className="space-y-2">
+              {blogPosts.length === 0 && !blogEditing && (
+                <li className="rounded-xl border border-dashed border-[var(--line)] p-6 text-center text-sm text-[var(--muted)]">
+                  No blog posts yet. Click &ldquo;+ New Post&rdquo; to write your first article.
+                </li>
+              )}
+              {blogPosts.map((post) => (
+                <li key={post.id} className="rounded-xl border border-[var(--line)] p-4">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <p className="font-bold text-[var(--ink)]">{post.title}</p>
+                      <p className="mt-0.5 text-xs text-[var(--muted)]">
+                        /{post.slug} &nbsp;·&nbsp;{" "}
+                        {post.published_at?.slice(0, 10) ?? post.created_at.slice(0, 10)}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
+                          post.is_published
+                            ? "bg-emerald-100 text-emerald-700"
+                            : "bg-amber-100 text-amber-700"
+                        }`}
+                      >
+                        {post.is_published ? "Published" : "Draft"}
+                      </span>
+                      <button
+                        type="button"
+                        className="text-xs font-semibold text-[var(--brand)]"
+                        onClick={() => startEditPost(post)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-red-500"
+                        onClick={() => deleteBlogPost(post.id)}
+                      >
+                        <Trash2 className="h-3 w-3" /> Delete
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </article>
+        )}
       </div>
     </section>
   );

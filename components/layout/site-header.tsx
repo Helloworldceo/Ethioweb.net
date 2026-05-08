@@ -70,7 +70,6 @@ export function SiteHeader() {
             />
             <span className="heading-display truncate text-lg font-extrabold tracking-tight sm:text-xl">
               Ethioweb
-              <span className="ml-1.5 text-xs align-middle text-[var(--brand)]">.net</span>
             </span>
           </Link>
 
