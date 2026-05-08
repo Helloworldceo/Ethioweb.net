@@ -62,7 +62,7 @@ export function SiteHeader() {
         <div className="flex min-h-14 items-center justify-between gap-3 md:min-h-20">
           <Link href="/" className="flex min-w-0 items-center gap-2">
             <Image
-              src="/Logo.png"
+              src="/Logo1.png"
               alt="Ethioweb logo"
               width={36}
               height={36}
