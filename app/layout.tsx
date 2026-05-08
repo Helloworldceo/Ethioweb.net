@@ -59,7 +59,15 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <head>
+      <body className="min-h-full bg-[var(--bg)] text-[var(--ink)]">
+        <div className="mesh-bg" aria-hidden />
+        <LanguageProvider>
+          <div className="relative min-h-screen flex flex-col">
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </div>
+        </LanguageProvider>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-E3DQ87ER88"
           strategy="afterInteractive"
@@ -72,16 +80,6 @@ export default function RootLayout({
             gtag('config', 'G-E3DQ87ER88');
           `}
         </Script>
-      </head>
-      <body className="min-h-full bg-[var(--bg)] text-[var(--ink)]">
-        <div className="mesh-bg" aria-hidden />
-        <LanguageProvider>
-          <div className="relative min-h-screen flex flex-col">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
-        </LanguageProvider>
       </body>
     </html>
   );

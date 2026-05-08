@@ -9,6 +9,7 @@ import { navItems } from "@/lib/site";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { LanguageSwitcher } from "@/components/i18n/language-switcher";
 import { useLanguage } from "@/components/i18n/language-provider";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -74,6 +75,7 @@ export function SiteHeader() {
           </Link>
 
           <div className="hidden items-center gap-3 md:flex">
+            <ThemeToggle />
             <LanguageSwitcher />
             {isAuthenticated ? (
               <>
@@ -97,10 +99,11 @@ export function SiteHeader() {
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
             <LanguageSwitcher />
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] bg-white text-[var(--ink)]"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--panel)] text-[var(--ink)]"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen((prev) => !prev)}
             >

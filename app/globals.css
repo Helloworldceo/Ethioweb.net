@@ -10,6 +10,25 @@
   --brand-2: #df6c22;
   --line: #d8d5cf;
   --radius: 18px;
+  --bg-spot-1: #fff5d9;
+  --bg-spot-2: #f3fff7;
+  --mesh-line: rgba(0, 0, 0, 0.02);
+  --btn-primary-shadow: rgba(0, 95, 95, 0.22);
+}
+
+:root[data-theme="blue-dark"] {
+  --bg: #09152b;
+  --paper: #102343;
+  --panel: #162f57;
+  --ink: #edf4ff;
+  --muted: #abc0e4;
+  --brand: #66c3ff;
+  --brand-2: #f3b25f;
+  --line: #2a436c;
+  --bg-spot-1: #143364;
+  --bg-spot-2: #0f4a5e;
+  --mesh-line: rgba(255, 255, 255, 0.08);
+  --btn-primary-shadow: rgba(40, 123, 255, 0.35);
 }
 
 @theme inline {
@@ -25,8 +44,8 @@
 
 body {
   margin: 0;
-  background: radial-gradient(circle at 0% 0%, #fff5d9 0%, rgba(255, 245, 217, 0) 35%),
-    radial-gradient(circle at 100% 10%, #f3fff7 0%, rgba(243, 255, 247, 0) 32%),
+  background: radial-gradient(circle at 0% 0%, var(--bg-spot-1) 0%, transparent 35%),
+    radial-gradient(circle at 100% 10%, var(--bg-spot-2) 0%, transparent 32%),
     var(--bg);
   color: var(--ink);
   font-family: var(--font-manrope), sans-serif;
@@ -43,10 +62,10 @@ a {
   z-index: -1;
   background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.02) 1px,
+      var(--mesh-line) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    linear-gradient(to bottom, var(--mesh-line) 1px, transparent 1px);
   background-size: 36px 36px;
   mask-image: radial-gradient(circle at center, black 35%, transparent 95%);
 }
@@ -88,7 +107,7 @@ a {
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 30px rgba(0, 95, 95, 0.22);
+  box-shadow: 0 10px 30px var(--btn-primary-shadow);
 }
 
 .btn-secondary {
