@@ -1,4 +1,5 @@
 import { PageHero } from "@/components/sections/page-hero";
+import { ContactForm } from "@/components/sections/contact-form";
 
 export const metadata = {
   title: "Contact",
@@ -18,16 +19,17 @@ export default function ContactPage() {
         <div className="card grid gap-6 p-7 md:grid-cols-2">
           <div>
             <h2 className="heading-display text-2xl font-black">Get in touch</h2>
-            <p className="mt-3 text-[var(--muted)]">Email: hello@ethioweb.net</p>
+            <p className="mt-3 text-[var(--muted)]">Email: helloworldceo@1gmail.com</p>
+            <p className="mt-1 text-[var(--muted)]">
+              Portfolio:{" "}
+              <a href="https://helloworldceo.github.io/" className="font-semibold text-[var(--brand)]" target="_blank" rel="noreferrer">
+                https://helloworldceo.github.io/
+              </a>
+            </p>
             <p className="mt-1 text-[var(--muted)]">Location: Addis Ababa, Ethiopia</p>
           </div>
 
-          <form className="space-y-3">
-            <input className="w-full rounded-xl border border-[var(--line)] bg-white p-3" placeholder="Your name" />
-            <input className="w-full rounded-xl border border-[var(--line)] bg-white p-3" placeholder="Email address" type="email" />
-            <textarea className="h-32 w-full rounded-xl border border-[var(--line)] bg-white p-3" placeholder="Tell us about your project" />
-            <button type="button" className="btn-primary">Send message</button>
-          </form>
+          <ContactForm />
         </div>
       </section>
     </div>

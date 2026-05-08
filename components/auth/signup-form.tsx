@@ -110,21 +110,21 @@ export function SignupForm() {
 
         <form className="mt-6 space-y-3" onSubmit={handleSignup}>
           <input
-            className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+            className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             placeholder="Full name"
             value={fullName}
             onChange={(event) => setFullName(event.target.value)}
             required
           />
           <input
-            className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+            className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             placeholder="Username"
             value={username}
             onChange={(event) => setUsername(event.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ""))}
             required
           />
           <input
-            className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+            className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             type="email"
             placeholder="Email"
             value={email}
@@ -132,7 +132,7 @@ export function SignupForm() {
             required
           />
           <input
-            className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+            className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             type="password"
             placeholder="Password"
             value={password}

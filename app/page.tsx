@@ -85,7 +85,7 @@ export default function Home() {
       <section className="container-wrap py-14">
         <div className="card grid gap-5 p-7 md:grid-cols-3">
           {projects.map((project) => (
-            <article key={project.slug} className="rounded-xl border border-[var(--line)] bg-white p-4">
+            <article key={project.slug} className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-[var(--brand)]">
                 {project.category}
               </p>

@@ -44,6 +44,16 @@ export function SiteFooter() {
               <Link href="/terms">{t("Terms of Service", "የአገልግሎት ውል")}</Link>
             </li>
           </ul>
+
+          <p className="mt-4 font-semibold text-[var(--ink)]">{t("Contact", "አድራሻ")}</p>
+          <ul className="mt-2 space-y-2">
+            <li>
+              <a href="mailto:helloworldceo@1gmail.com">helloworldceo@1gmail.com</a>
+            </li>
+            <li>
+              <a href="https://helloworldceo.github.io/" target="_blank" rel="noreferrer">Portfolio</a>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

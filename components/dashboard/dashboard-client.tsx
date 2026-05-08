@@ -363,18 +363,18 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
           </div>
         </article>
 
-        <article className="card p-6 md:col-span-2">
+        <article id="profile-basics" className="card p-6 md:col-span-2">
           <h2 className="heading-display text-2xl font-bold">{t("Profile Basics", "የፕሮፋይል መረጃ")}</h2>
           <form className="mt-4 grid gap-3 md:grid-cols-2" onSubmit={saveProfile}>
             <input
-              className="rounded-xl border border-[var(--line)] bg-white p-3"
+              className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               value={form.fullName}
               onChange={(event) => setForm((prev) => ({ ...prev, fullName: event.target.value }))}
               placeholder="Full name"
               required
             />
             <input
-              className="rounded-xl border border-[var(--line)] bg-white p-3"
+              className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               value={form.username}
               onChange={(event) =>
                 setForm((prev) => ({
@@ -386,19 +386,19 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
               required
             />
             <input
-              className="rounded-xl border border-[var(--line)] bg-white p-3"
+              className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               value={form.role}
               onChange={(event) => setForm((prev) => ({ ...prev, role: event.target.value }))}
               placeholder="Role"
             />
             <input
-              className="rounded-xl border border-[var(--line)] bg-white p-3"
+              className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               value={form.location}
               onChange={(event) => setForm((prev) => ({ ...prev, location: event.target.value }))}
               placeholder="Location"
             />
             <select
-              className="rounded-xl border border-[var(--line)] bg-white p-3"
+              className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               value={form.visibility}
               onChange={(event) =>
                 setForm((prev) => ({
@@ -412,7 +412,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
             </select>
             <div className="hidden md:block" />
             <textarea
-              className="md:col-span-2 h-24 rounded-xl border border-[var(--line)] bg-white p-3"
+              className="md:col-span-2 h-24 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               value={form.bio}
               onChange={(event) => setForm((prev) => ({ ...prev, bio: event.target.value }))}
               placeholder="Short bio"
@@ -431,7 +431,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
 
           <form className="mt-4 space-y-3" onSubmit={uploadAvatar}>
             <input
-              className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+              className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               type="file"
               accept=".png,.jpg,.jpeg"
               onChange={(event) => setAvatarFile(event.target.files?.[0] || null)}
@@ -450,7 +450,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
 
           <form className="mt-4 space-y-3" onSubmit={uploadAsset}>
             <select
-              className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+              className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               value={uploadKind}
               onChange={(event) => setUploadKind(event.target.value)}
             >
@@ -461,7 +461,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
               ))}
             </select>
             <input
-              className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+              className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               type="file"
               accept=".pdf,.png,.jpg,.jpeg"
               onChange={(event) => setUploadFile(event.target.files?.[0] || null)}
@@ -516,7 +516,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
         </article>
 
         {isAdmin && (
-          <article className="card p-6 md:col-span-2">
+          <article id="blog-manager" className="card p-6 md:col-span-2">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <PenLine className="h-4 w-4 text-[var(--brand)]" />
@@ -535,7 +535,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
                 <h3 className="font-bold">{blogForm.id ? "Edit Post" : "New Post"}</h3>
                 <div className="grid gap-3 md:grid-cols-2">
                   <input
-                    className="rounded-xl border border-[var(--line)] bg-white p-3"
+                    className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
                     value={blogForm.title}
                     onChange={(e) => {
                       const title = e.target.value;
@@ -549,7 +549,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
                     required
                   />
                   <input
-                    className="rounded-xl border border-[var(--line)] bg-white p-3"
+                    className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
                     value={blogForm.slug}
                     onChange={(e) =>
                       setBlogForm((prev) => ({
@@ -562,14 +562,14 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
                   />
                 </div>
                 <textarea
-                  className="h-20 rounded-xl border border-[var(--line)] bg-white p-3"
+                  className="h-20 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
                   value={blogForm.excerpt}
                   onChange={(e) => setBlogForm((prev) => ({ ...prev, excerpt: e.target.value }))}
                   placeholder="Short excerpt / summary shown on the blog list"
                   required
                 />
                 <textarea
-                  className="h-56 rounded-xl border border-[var(--line)] bg-white p-3 font-mono text-sm"
+                  className="h-56 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 font-mono text-sm"
                   value={blogForm.content}
                   onChange={(e) => setBlogForm((prev) => ({ ...prev, content: e.target.value }))}
                   placeholder="Full article content..."
@@ -644,6 +644,20 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
             </ul>
           </article>
         )}
+
+        <article id="settings" className="card p-6 md:col-span-2">
+          <h2 className="heading-display text-2xl font-bold">{t("Settings & Privacy", "ቅንብሮች እና ግላዊነት")}</h2>
+          <p className="mt-2 text-sm text-[var(--muted)]">
+            {t(
+              "Manage your account visibility from Profile Basics and review global privacy details from the dedicated policy page.",
+              "የመለያ ታይነትዎን ከፕሮፋይል መረጃ ይቆጣጠሩ እና የግላዊነት ዝርዝሮችን ከፖሊሲ ገጽ ይመልከቱ።",
+            )}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link href="/privacy" className="btn-secondary text-sm">Privacy Policy</Link>
+            <Link href="/terms" className="btn-secondary text-sm">Terms</Link>
+          </div>
+        </article>
       </div>
     </section>
   );

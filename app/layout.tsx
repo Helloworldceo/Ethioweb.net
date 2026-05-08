@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { ProfileDock } from "@/components/layout/profile-dock";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LanguageProvider } from "@/components/i18n/language-provider";
@@ -40,12 +41,21 @@ export const metadata: Metadata = {
     siteName: "Ethioweb",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://ethioweb.net/newlogo.png",
+        width: 512,
+        height: 512,
+        alt: "Ethioweb logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ethioweb",
     description:
       "A modern platform for digital identity, business services, and professional portfolios.",
+    images: ["https://ethioweb.net/newlogo.png"],
   },
 };
 
@@ -57,6 +67,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="blue-dark"
       className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--bg)] text-[var(--ink)]">
@@ -66,6 +77,7 @@ export default function RootLayout({
             <SiteHeader />
             <main className="flex-1">{children}</main>
             <SiteFooter />
+            <ProfileDock />
           </div>
         </LanguageProvider>
         <Script

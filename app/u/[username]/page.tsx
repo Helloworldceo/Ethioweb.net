@@ -137,7 +137,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         )}
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
+          <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4">
             <p className="text-sm font-semibold">Public Downloads</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {profile.publicAssets.cv && (
@@ -152,7 +152,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
+          <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4">
             <p className="text-sm font-semibold">Links</p>
             <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
               {profile.links.map((item) => (

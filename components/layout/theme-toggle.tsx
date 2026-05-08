@@ -8,11 +8,12 @@ type Theme = "original" | "blue-dark";
 const THEME_STORAGE_KEY = "ethioweb-theme";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("original");
+  const [theme, setTheme] = useState<Theme>("blue-dark");
 
   useEffect(() => {
     const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
-    const initialTheme: Theme = stored === "blue-dark" ? "blue-dark" : "original";
+    // Default is blue-dark; only switch to original if explicitly stored
+    const initialTheme: Theme = stored === "original" ? "original" : "blue-dark";
     applyTheme(initialTheme);
     setTheme(initialTheme);
   }, []);
@@ -41,10 +42,9 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={isDarkBlue ? "Switch to original theme" : "Switch to dark blue theme"}
       title={isDarkBlue ? "Original mode" : "Dark blue mode"}
-      className="inline-flex h-10 items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--panel)] px-3 text-sm font-semibold text-[var(--ink)]"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--panel)] text-[var(--ink)]"
     >
       {isDarkBlue ? <Sun className="h-4 w-4" /> : <MoonStar className="h-4 w-4" />}
-      <span className="hidden sm:inline">{isDarkBlue ? "Original" : "Dark Blue"}</span>
     </button>
   );
 }

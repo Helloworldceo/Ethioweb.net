@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME ?? "helloworldceo";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "helloworldceo@1gmail.com";
 
 async function requireAdmin(supabase: Awaited<ReturnType<typeof getSupabaseServerClient>>) {
   if (!supabase) return null;
@@ -10,16 +12,24 @@ async function requireAdmin(supabase: Awaited<ReturnType<typeof getSupabaseServe
   } = await supabase.auth.getUser();
   if (!user) return null;
 
-  if (!ADMIN_USERNAME) return null;
-
   const { data: profile } = await supabase
     .from("profiles")
     .select("username")
     .eq("id", user.id)
     .maybeSingle();
 
-  if (profile?.username !== ADMIN_USERNAME) return null;
+  const isUsernameAdmin = Boolean(ADMIN_USERNAME && profile?.username === ADMIN_USERNAME);
+  const isEmailAdmin = Boolean(ADMIN_EMAIL && user.email === ADMIN_EMAIL);
+
+  if (!isUsernameAdmin && !isEmailAdmin) return null;
   return user;
+}
+
+function permissionErrorMessage(raw: string) {
+  if (raw.toLowerCase().includes("row-level security")) {
+    return "Permission denied by Supabase RLS. Run the SQL policy in supabase/migrations/002_blog_write_policy.sql and retry.";
+  }
+  return raw;
 }
 
 export async function GET() {
@@ -73,7 +83,10 @@ export async function POST(request: NextRequest) {
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: permissionErrorMessage(error.message) }, { status: 500 });
+
+  revalidatePath("/blog");
+  revalidatePath(`/blog/${slug}`);
   return NextResponse.json({ post: data });
 }
 
@@ -112,7 +125,12 @@ export async function PATCH(request: NextRequest) {
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: permissionErrorMessage(error.message) }, { status: 500 });
+
+  if (data?.slug) {
+    revalidatePath(`/blog/${data.slug}`);
+  }
+  revalidatePath("/blog");
   return NextResponse.json({ post: data });
 }
 
@@ -132,6 +150,8 @@ export async function DELETE(request: NextRequest) {
     .eq("id", body.id)
     .eq("author_id", user.id);
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: permissionErrorMessage(error.message) }, { status: 500 });
+
+  revalidatePath("/blog");
   return NextResponse.json({ success: true });
 }

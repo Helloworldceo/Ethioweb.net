@@ -43,7 +43,7 @@ export default function DiscoverPage() {
 
       <form className="mt-5 flex flex-wrap gap-2" onSubmit={onSearch}>
         <input
-          className="w-full min-w-0 flex-1 rounded-full border border-[var(--line)] bg-white px-4 py-3 sm:min-w-[260px]"
+          className="w-full min-w-0 flex-1 rounded-full border border-[var(--line)] bg-[var(--panel)] px-4 py-3 sm:min-w-[260px]"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t("Search name or username", "ስም ወይም ተጠቃሚ ስም")}

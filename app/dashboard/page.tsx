@@ -3,7 +3,8 @@ import { DashboardClient } from "@/components/dashboard/dashboard-client";
 import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME ?? "helloworldceo";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "helloworldceo@1gmail.com";
 
 export const metadata = {
   title: "Dashboard",
@@ -41,7 +42,10 @@ export default async function DashboardPage() {
     supabase.from("profile_assets").select("*").eq("profile_id", user.id).order("created_at", { ascending: false }),
   ]);
 
-  const isAdmin = Boolean(ADMIN_USERNAME && profile?.username === ADMIN_USERNAME);
+  const isAdmin = Boolean(
+    (ADMIN_USERNAME && profile?.username === ADMIN_USERNAME)
+    || (ADMIN_EMAIL && user.email === ADMIN_EMAIL),
+  );
 
   const blogPosts = isAdmin
     ? (

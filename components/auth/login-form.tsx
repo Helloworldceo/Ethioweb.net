@@ -84,7 +84,7 @@ export function LoginForm({ initialError }: LoginFormProps) {
 
         <form className="mt-6 space-y-3" onSubmit={handlePasswordLogin}>
           <input
-            className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+            className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             type="email"
             placeholder="Email"
             value={email}
@@ -92,7 +92,7 @@ export function LoginForm({ initialError }: LoginFormProps) {
             required
           />
           <input
-            className="w-full rounded-xl border border-[var(--line)] bg-white p-3"
+            className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             type="password"
             placeholder="Password"
             value={password}
