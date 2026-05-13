@@ -1,0 +1,109 @@
+Build a modern, fast, and professional website for my domain: ethioweb.net.
+
+Project overview:
+Ethioweb is a digital platform that helps individuals and businesses build and manage their online presence in one place. It should include both a public-facing website and a user profile system where people can create profiles, upload CVs, portfolios, certificates, links, and other professional information, while choosing what is public or private.
+
+Main goals:
+1. Showcase my personal work, projects, and business services
+2. Allow users to create and manage their own profiles
+3. Let users upload CVs, portfolios, certificates, and links and other can view and download there cv and business card
+4. Give users privacy controls for public and private information
+5. Provide a clean public profile page for each user
+6. Make the platform scalable for future growth
+7. users can search a name or a username to find each other
+
+Core business services:
+- Website development
+- Portfolio creation
+- Business app development
+- IT consulting
+- Digital profile and identity management
+- Blogging and content publishing
+- AI 
+
+Essential website pages:
+- Home
+- About
+- Services
+- Projects / Portfolio
+- Blog
+- Contact
+- User Profile System
+- Dashboard
+- Privacy Policy
+- Terms of Service
+
+User profile system requirements:
+- Sign up / login or can use google or facebook
+- Personal profile creation
+- CV upload
+- Portfolio upload
+- Certificate upload
+- Link sharing
+- Public/private visibility settings
+- Unique public profile link
+- Profile dashboard
+- Edit profile information anytime
+- Simple and professional UI
+
+Design requirements:
+- Modern, clean, minimal, and professional
+- Fully responsive on mobile, tablet, and desktop
+- Fast loading and SEO-friendly
+- Easy to navigate
+- Strong homepage hero section
+- Clear call-to-action buttons
+- Elegant dashboard design
+- Good user experience for both visitors and registered users
+
+Content tone:
+- Friendly
+- Smart
+- Professional
+- Trustworthy
+- Easy to understand
+
+Technical requirements:
+- Build with scalable architecture
+- Use best practices for performance, SEO, and security
+- Include reusable components
+- Support blog posts and project updates
+- Support file uploads
+- Support user authentication
+- Support privacy settings
+- Make it easy to expand later into a larger platform
+
+	Cababilities
+AI-generated CV builder
+Portfolio templates
+Social links
+Job matching
+Blogging
+Verification badges
+Team/company profiles
+Messaging
+Cloud storage
+Custom domains
+
+Suggested tech stack:
+- Frontend: Next.js + React + Tailwind CSS
+- Backend: Node.js / Next.js API routes
+- Database: PostgreSQL or Supabase
+- Authentication: Clerk, Auth.js, or Supabase Auth
+- File storage: Supabase Storage, Cloudinary, or similar
+- CMS for blog: MDX, Sanity, or another simple CMS
+
+Deliverables:
+- Full website structure
+- Homepage copy
+- User dashboard design
+- Profile system design
+- Responsive frontend code
+- Backend/database structure
+- Authentication flow
+- File upload flow
+- SEO setup
+- Deployment instructions
+
+Important:
+This should be more than a simple portfolio website. Ethioweb is a full digital platform for personal branding, business services, blogging, and user profile management with privacy control.

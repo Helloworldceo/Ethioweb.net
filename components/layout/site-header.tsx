@@ -42,11 +42,6 @@ export function SiteHeader() {
       subscription.unsubscribe();
     };
   }, [supabase]);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
   async function logout() {
     if (!supabase) {
       return;
@@ -65,9 +60,9 @@ export function SiteHeader() {
             <Image
               src="/newlogo.png"
               alt="Ethioweb logo"
-              width={36}
-              height={36}
-              className="h-9 w-9 rounded-lg object-cover"
+              width={64}
+              height={64}
+              className="h-16 w-16 rounded-lg object-cover"
             />
             <span className="heading-display truncate text-lg font-extrabold tracking-tight sm:text-xl">
               Ethioweb
@@ -134,6 +129,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={() => setMenuOpen(false)}
                 className={active ? "rounded-xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold text-[var(--brand)]" : "rounded-xl px-3 py-2 text-sm font-semibold text-[var(--muted)]"}
               >
                 {t(item.labelEn, item.labelAm)}
@@ -153,10 +149,10 @@ export function SiteHeader() {
               </>
             ) : (
               <>
-                <Link href="/auth/login" className="btn-secondary text-sm">
+                <Link href="/auth/login" className="btn-secondary text-sm" onClick={() => setMenuOpen(false)}>
                   {t("Login", "ይግቡ")}
                 </Link>
-                <Link href="/auth/signup" className="btn-primary text-sm">
+                <Link href="/auth/signup" className="btn-primary text-sm" onClick={() => setMenuOpen(false)}>
                   {t("Get Started", "ጀምር")}
                 </Link>
               </>

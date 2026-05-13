@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 7: Forms & Input - Ethioweb.net HTML Course">
+    <title>Module 7: Forms & Input — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 7: Forms & Input</h1>
+        <p class="subtitle">Creating Interactive Forms for User Input</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html" class="active">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 58%">Module 7 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 The &lt;form&gt; Element</h2>
+            <p>Forms collect user input and send it to a server for processing. Every form needs a <code class="inline-code">&lt;form&gt;</code> container.</p>
+
+            <h3>Basic Form Structure</h3>
+            <div class="code-block">
+<span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="value">"/submit-form"</span> <span class="attr">method</span>=<span class="value">"POST"</span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- Form fields go here --&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="value">"submit"</span><span class="tag">&gt;</span><span class="text">Send</span><span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+            </div>
+
+            <h3>Form Attributes</h3>
+            <table>
+                <thead>
+                    <tr><th>Attribute</th><th>Purpose</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code class="inline-code">action</code></td><td>URL where form data is sent</td></tr>
+                    <tr><td><code class="inline-code">method</code></td><td>HTTP method: GET (data in URL) or POST (data in body)</td></tr>
+                    <tr><td><code class="inline-code">enctype</code></td><td>How data is encoded (important for file uploads)</td></tr>
+                    <tr><td><code class="inline-code">target</code></td><td>Where to display the response</td></tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <strong>💡 GET vs. POST:</strong> Use <code class="inline-code">GET</code> for searches and filters (data visible in URL). Use <code class="inline-code">POST</code> for passwords, personal data, and file uploads (data hidden from URL).
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>⌨️ Input Types</h2>
+            <p>The <code class="inline-code">&lt;input&gt;</code> tag is the most versatile form element. Its behavior changes based on the <code class="inline-code">type</code> attribute.</p>
+
+            <h3>Text Input Types</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- Single line text --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"text"</span> <span class="attr">name</span>=<span class="value">"username"</span> <span class="attr">placeholder</span>=<span class="value">"Enter username"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Email with built-in validation --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"email"</span> <span class="attr">name</span>=<span class="value">"email"</span> <span class="attr">placeholder</span>=<span class="value">"you@example.com"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Password (hides characters) --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"password"</span> <span class="attr">name</span>=<span class="value">"password"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Search field --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"search"</span> <span class="attr">name</span>=<span class="value">"query"</span> <span class="attr">placeholder</span>=<span class="value">"Search..."</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- URL validation --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"url"</span> <span class="attr">name</span>=<span class="value">"website"</span> <span class="attr">placeholder</span>=<span class="value">"https://example.com"</span><span class="tag">&gt;</span>
+            </div>
+
+            <h3>Numeric and Date Inputs</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- Number with constraints --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"number"</span> <span class="attr">name</span>=<span class="value">"age"</span> <span class="attr">min</span>=<span class="value">"18"</span> <span class="attr">max</span>=<span class="value">"120"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Date picker --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"date"</span> <span class="attr">name</span>=<span class="value">"birthday"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Time picker --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"time"</span> <span class="attr">name</span>=<span class="value">"appointment"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Range slider --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"range"</span> <span class="attr">name</span>=<span class="value">"rating"</span> <span class="attr">min</span>=<span class="value">"1"</span> <span class="attr">max</span>=<span class="value">"10"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Color picker --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"color"</span> <span class="attr">name</span>=<span class="value">"favcolor"</span><span class="tag">&gt;</span>
+            </div>
+
+            <h3>Selection Inputs</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- Single checkbox --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"checkbox"</span> <span class="attr">name</span>=<span class="value">"newsletter"</span> <span class="attr">id</span>=<span class="value">"news"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="value">"news"</span><span class="tag">&gt;</span><span class="text">Subscribe to newsletter</span><span class="tag">&lt;/label&gt;</span>
+
+<span class="comment">&lt;!-- Radio buttons (grouped by name) --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"radio"</span> <span class="attr">name</span>=<span class="value">"plan"</span> <span class="attr">value</span>=<span class="value">"basic"</span> <span class="attr">id</span>=<span class="value">"basic"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="value">"basic"</span><span class="tag">&gt;</span><span class="text">Basic Plan</span><span class="tag">&lt;/label&gt;</span>
+
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"radio"</span> <span class="attr">name</span>=<span class="value">"plan"</span> <span class="attr">value</span>=<span class="value">"premium"</span> <span class="attr">id</span>=<span class="value">"premium"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="value">"premium"</span><span class="tag">&gt;</span><span class="text">Premium Plan</span><span class="tag">&lt;/label&gt;</span>
+
+<span class="comment">&lt;!-- Dropdown select --&gt;</span>
+<span class="tag">&lt;select</span> <span class="attr">name</span>=<span class="value">"country"</span> <span class="attr">id</span>=<span class="value">"country"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="value">""</span><span class="tag">&gt;</span><span class="text">Select a country</span><span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="value">"et"</span><span class="tag">&gt;</span><span class="text">Ethiopia</span><span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="value">"us"</span><span class="tag">&gt;</span><span class="text">United States</span><span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="value">"uk"</span><span class="tag">&gt;</span><span class="text">United Kingdom</span><span class="tag">&lt;/option&gt;</span>
+<span class="tag">&lt;/select&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Labels, Textareas, and Buttons</h2>
+
+            <h3>The &lt;label&gt; Element (Critical for Accessibility)</h3>
+            <p>Every form input needs a <code class="inline-code">&lt;label&gt;</code>. Clicking the label focuses the input, and screen readers announce the label to blind users.</p>
+            <div class="code-block">
+<span class="comment">&lt;!-- Method 1: Using for attribute (matches input's id) --&gt;</span>
+<span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="value">"email"</span><span class="tag">&gt;</span><span class="text">Email Address:</span><span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"email"</span> <span class="attr">id</span>=<span class="value">"email"</span> <span class="attr">name</span>=<span class="value">"email"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Method 2: Wrapping input inside label --&gt;</span>
+<span class="tag">&lt;label&gt;</span>
+    <span class="text">Email Address:</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"email"</span> <span class="attr">name</span>=<span class="value">"email"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/label&gt;</span>
+            </div>
+
+            <h3>Textarea for Multi-line Text</h3>
+            <div class="code-block">
+<span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="value">"message"</span><span class="tag">&gt;</span><span class="text">Your Message:</span><span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;textarea</span> <span class="attr">id</span>=<span class="value">"message"</span> <span class="attr">name</span>=<span class="value">"message"</span> 
+          <span class="attr">rows</span>=<span class="value">"5"</span> <span class="attr">cols</span>=<span class="value">"40"</span>
+          <span class="attr">placeholder</span>=<span class="value">"Write your message here..."</span><span class="tag">&gt;&lt;/textarea&gt;</span>
+            </div>
+
+            <h3>Button Types</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- Submit button (submits the form) --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="value">"submit"</span><span class="tag">&gt;</span><span class="text">Submit Form</span><span class="tag">&lt;/button&gt;</span>
+
+<span class="comment">&lt;!-- Reset button (clears all fields) --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="value">"reset"</span><span class="tag">&gt;</span><span class="text">Clear Form</span><span class="tag">&lt;/button&gt;</span>
+
+<span class="comment">&lt;!-- Generic button (for JavaScript) --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="value">"button"</span><span class="tag">&gt;</span><span class="text">Click Me (JS)</span><span class="tag">&lt;/button&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✅ Form Validation Attributes</h2>
+            <p>HTML5 provides built-in validation without JavaScript!</p>
+
+            <div class="code-block">
+<span class="comment">&lt;!-- Required field --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"text"</span> <span class="attr">name</span>=<span class="value">"name"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Minimum and maximum length --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"text"</span> <span class="attr">name</span>=<span class="value">"username"</span> <span class="attr">minlength</span>=<span class="value">"3"</span> <span class="attr">maxlength</span>=<span class="value">"20"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Pattern matching (regex) --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"text"</span> <span class="attr">name</span>=<span class="value">"phone"</span> 
+       <span class="attr">pattern</span>=<span class="value">"[0-9]{3}-[0-9]{3}-[0-9]{4}"</span>
+       <span class="attr">placeholder</span>=<span class="value">"123-456-7890"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Number range --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"number"</span> <span class="attr">name</span>=<span class="value">"quantity"</span> <span class="attr">min</span>=<span class="value">"1"</span> <span class="attr">max</span>=<span class="value">"10"</span><span class="tag">&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Validation Tip:</strong> HTML5 validation improves user experience but is <strong>not</strong> secure. Always validate data on the server side too, because users can bypass browser validation.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 7.1: Build a Contact Form</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create <code class="inline-code">contact-form.html</code> with a complete contact form:</p>
+                <ol>
+                    <li>Full Name (text input, required, minlength 2)</li>
+                    <li>Email Address (email input, required)</li>
+                    <li>Phone Number (tel input, optional)</li>
+                    <li>Subject (select dropdown with 4 options)</li>
+                    <li>Message (textarea, required, minlength 10)</li>
+                    <li>Preferred contact method (radio: Email, Phone, Either)</li>
+                    <li>Newsletter subscription (checkbox)</li>
+                    <li>Submit button and Reset button</li>
+                </ol>
+                <p>Requirements:</p>
+                <ul>
+                    <li>Every input must have a properly associated <code class="inline-code">&lt;label&gt;</code></li>
+                    <li>Use proper <code class="inline-code">name</code> attributes for all fields</li>
+                    <li>Add <code class="inline-code">placeholder</code> text where appropriate</li>
+                    <li>Group related fields using <code class="inline-code">&lt;fieldset&gt;</code> and <code class="inline-code">&lt;legend&gt;</code></li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 7 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Forms mastered! Well done!');">
+                    <div class="quiz-question">1. Which input type shows a date picker?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> text</label>
+                        <label><input type="radio" name="q1"> date</label>
+                        <label><input type="radio" name="q1"> calendar</label>
+                    </div>
+
+                    <div class="quiz-question">2. Why is the &lt;label&gt; element important?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> It makes text bold</label>
+                        <label><input type="radio" name="q2"> It connects text to inputs for accessibility</label>
+                        <label><input type="radio" name="q2"> It creates a border around inputs</label>
+                    </div>
+
+                    <div class="quiz-question">3. Which method hides form data from the URL?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> GET</label>
+                        <label><input type="radio" name="q3"> POST</label>
+                        <label><input type="radio" name="q3"> SEND</label>
+                    </div>
+
+                    <div class="quiz-question">4. How do you make a field required?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> required="true"</label>
+                        <label><input type="radio" name="q4"> required</label>
+                        <label><input type="radio" name="q4"> mandatory</label>
+                    </div>
+
+                    <div class="quiz-question">5. What groups radio buttons so only one can be selected?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> The group attribute</label>
+                        <label><input type="radio" name="q5"> The same name attribute</label>
+                        <label><input type="radio" name="q5"> The same id attribute</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ <code class="inline-code">&lt;form&gt;</code> wraps all inputs with <code class="inline-code">action</code> and <code class="inline-code">method</code></li>
+                <li>✅ Use specific input types (<code class="inline-code">email</code>, <code class="inline-code">tel</code>, <code class="inline-code">date</code>) for better UX and validation</li>
+                <li>✅ Always pair inputs with <code class="inline-code">&lt;label&gt;</code> using <code class="inline-code">for</code> + <code class="inline-code">id</code></li>
+                <li>✅ Use <code class="inline-code">required</code>, <code class="inline-code">minlength</code>, <code class="inline-code">pattern</code> for client-side validation</li>
+                <li>✅ <code class="inline-code">&lt;fieldset&gt;</code> and <code class="inline-code">&lt;legend&gt;</code> group related controls</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module06.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module08.html" class="btn btn-success">Next: Module 8 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 2: Document Anatomy - Ethioweb.net HTML Course">
+    <title>Module 2: Document Anatomy — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 2: Document Anatomy</h1>
+        <p class="subtitle">Understanding the HTML Document Structure</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html" class="active">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 17%">Module 2 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 The HTML Document Skeleton</h2>
+            <p>Every valid HTML document follows a specific structure. Think of it like a formal letter — it has required parts that must appear in a specific order.</p>
+
+            <h3>The Complete Document Template</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- This is the complete HTML5 document structure --&gt;</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="value">"en"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;head&gt;</span>
+        <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"viewport"</span> <span class="attr">content</span>=<span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;title&gt;</span><span class="text">Page Title Here</span><span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;/head&gt;</span>
+    <span class="tag">&lt;body&gt;</span>
+        <span class="comment">&lt;!-- All visible content goes here --&gt;</span>
+    <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+            </div>
+
+            <h3>Breaking Down Each Part</h3>
+            <table>
+                <thead>
+                    <tr><th>Element</th><th>Purpose</th><th>Required?</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code class="inline-code">&lt;!DOCTYPE html&gt;</code></td>
+                        <td>Tells the browser this is an HTML5 document</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;html&gt;</code></td>
+                        <td>The root element that wraps everything</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">lang="en"</code></td>
+                        <td>Declares the page language (helps screen readers & SEO)</td>
+                        <td>Recommended</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;head&gt;</code></td>
+                        <td>Contains metadata (information about the document)</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;meta charset="UTF-8"&gt;</code></td>
+                        <td>Sets character encoding to support all languages</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;meta viewport&gt;</code></td>
+                        <td>Makes the page responsive on mobile devices</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;title&gt;</code></td>
+                        <td>Sets the browser tab title</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;body&gt;</code></td>
+                        <td>Contains all visible content</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning">
+                <strong>⚠️ Common Mistake:</strong> Never put visible content inside the <code class="inline-code">&lt;head&gt;</code>. Only metadata goes there. All text, images, and elements users see must be inside <code class="inline-code">&lt;body&gt;</code>.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📋 Understanding DOCTYPE</h2>
+            <p>The <code class="inline-code">&lt;!DOCTYPE html&gt;</code> declaration is the very first line of every HTML5 document. It is not an HTML tag — it's an instruction to the browser.</p>
+
+            <h3>Why DOCTYPE Matters</h3>
+            <p>Browsers have two modes:</p>
+            <ul>
+                <li><strong>Standards Mode:</strong> Renders the page using modern web standards (correct behavior)</li>
+                <li><strong>Quirks Mode:</strong> Emulates old browser bugs for backward compatibility (unpredictable)</li>
+            </ul>
+            <p>Without a DOCTYPE, browsers switch to Quirks Mode, and your page may look broken or behave unexpectedly.</p>
+
+            <h3>HTML5 vs. Older Versions</h3>
+            <p>In older HTML versions, DOCTYPE was long and complicated:</p>
+            <div class="code-block">
+<span class="comment">&lt;!-- HTML 4.01 DOCTYPE (old and complex) --&gt;</span>
+<span class="tag">&lt;!DOCTYPE</span> <span class="text">HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- HTML5 DOCTYPE (simple and clean) --&gt;</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Remember:</strong> HTML5 simplified everything. Just write <code class="inline-code">&lt;!DOCTYPE html&gt;</code> and you're good to go!
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🔍 The &lt;head&gt; Section Deep Dive</h2>
+            <p>The <code class="inline-code">&lt;head&gt;</code> contains invisible but essential information. Let's explore the most important elements.</p>
+
+            <h3>Character Encoding (Critical!)</h3>
+            <div class="code-block">
+<span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+            </div>
+            <p>UTF-8 supports every character in every human language — including Amharic, Arabic, Chinese, emojis, and special symbols. Always include this as the <strong>first</strong> meta tag.</p>
+
+            <h3>Viewport Meta Tag (Mobile Essential)</h3>
+            <div class="code-block">
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"viewport"</span> <span class="attr">content</span>=<span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+            </div>
+            <p>This tag ensures your website looks good on phones and tablets. Without it, mobile browsers might zoom out and show a tiny, unreadable version of your desktop layout.</p>
+
+            <h3>Description Meta Tag (SEO)</h3>
+            <div class="code-block">
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"description"</span> <span class="attr">content</span>=<span class="value">"Learn HTML from scratch with Ethioweb.net's free beginner course."</span><span class="tag">&gt;</span>
+            </div>
+            <p>This appears in Google search results under your page title. Keep it under 160 characters and make it compelling!</p>
+
+            <h3>Author Meta Tag</h3>
+            <div class="code-block">
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"author"</span> <span class="attr">content</span>=<span class="value">"Your Name"</span><span class="tag">&gt;</span>
+            </div>
+
+            <h3>Favicon (Browser Tab Icon)</h3>
+            <div class="code-block">
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"icon"</span> <span class="attr">type</span>=<span class="value">"image/x-icon"</span> <span class="attr">href</span>=<span class="value">"favicon.ico"</span><span class="tag">&gt;</span>
+            </div>
+            <p>The tiny icon that appears in browser tabs and bookmarks. You can also use PNG or SVG formats.</p>
+
+            <h3>Complete Head Example</h3>
+            <div class="code-block">
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"viewport"</span> <span class="attr">content</span>=<span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"description"</span> <span class="attr">content</span>=<span class="value">"Learn HTML with Ethioweb.net"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"author"</span> <span class="attr">content</span>=<span class="value">"Ethioweb.net"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span><span class="text">HTML Course - Ethioweb.net</span><span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"stylesheet"</span> <span class="attr">href</span>=<span class="value">"style.css"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"icon"</span> <span class="attr">href</span>=<span class="value">"favicon.ico"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 2.1: Build a Perfect Document Skeleton</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create a new file called <code class="inline-code">skeleton.html</code> with the following requirements:</p>
+                <ol>
+                    <li>Correct HTML5 DOCTYPE declaration</li>
+                    <li><code class="inline-code">&lt;html&gt;</code> tag with <code class="inline-code">lang="en"</code></li>
+                    <li>A <code class="inline-code">&lt;head&gt;</code> containing:
+                        <ul>
+                            <li>UTF-8 charset meta tag</li>
+                            <li>Viewport meta tag</li>
+                            <li>Description meta tag about yourself</li>
+                            <li>Author meta tag with your name</li>
+                            <li>A meaningful <code class="inline-code">&lt;title&gt;</code></li>
+                        </ul>
+                    </li>
+                    <li>A <code class="inline-code">&lt;body&gt;</code> containing:
+                        <ul>
+                            <li>An <code class="inline-code">&lt;h1&gt;</code> with your name</li>
+                            <li>A <code class="inline-code">&lt;p&gt;</code> introducing yourself</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h3>Validation Check</h3>
+            <p>After creating your file, validate it using the <a href="https://validator.w3.org/" target="_blank">W3C Markup Validation Service</a>. A valid document should show <strong>"Document checking completed. No errors or warnings to show."</strong></p>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 2 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Answers recorded! Keep going!');">
+                    <div class="quiz-question">1. What is the purpose of &lt;!DOCTYPE html&gt;?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> It creates a new HTML tag</label>
+                        <label><input type="radio" name="q1"> It tells the browser to use Standards Mode</label>
+                        <label><input type="radio" name="q1"> It displays a header on the page</label>
+                    </div>
+
+                    <div class="quiz-question">2. Which meta tag is essential for mobile responsiveness?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> &lt;meta charset="UTF-8"&gt;</label>
+                        <label><input type="radio" name="q2"> &lt;meta name="viewport"&gt;</label>
+                        <label><input type="radio" name="q2"> &lt;meta name="author"&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">3. Where does all visible page content belong?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> Inside &lt;head&gt;</label>
+                        <label><input type="radio" name="q3"> Inside &lt;body&gt;</label>
+                        <label><input type="radio" name="q3"> Before &lt;!DOCTYPE&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">4. What does UTF-8 support?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> Only English characters</label>
+                        <label><input type="radio" name="q4"> Characters from all human languages</label>
+                        <label><input type="radio" name="q4"> Only numbers and symbols</label>
+                    </div>
+
+                    <div class="quiz-question">5. What does the &lt;title&gt; tag set?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> The main heading on the page</label>
+                        <label><input type="radio" name="q5"> The text shown in the browser tab</label>
+                        <label><input type="radio" name="q5"> The page filename</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ Every HTML document needs <code class="inline-code">&lt;!DOCTYPE html&gt;</code></li>
+                <li>✅ The <code class="inline-code">&lt;html&gt;</code> element is the root container</li>
+                <li>✅ <code class="inline-code">&lt;head&gt;</code> holds metadata; <code class="inline-code">&lt;body&gt;</code> holds visible content</li>
+                <li>✅ Always set <code class="inline-code">charset="UTF-8"</code> and viewport meta tags</li>
+                <li>✅ Validate your HTML with the W3C Validator</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module01.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module03.html" class="btn btn-success">Next: Module 3 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

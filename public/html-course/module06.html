@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 6: Lists & Tables - Ethioweb.net HTML Course">
+    <title>Module 6: Lists & Tables — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 6: Lists & Tables</h1>
+        <p class="subtitle">Organizing Data with Lists and Tables</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html" class="active">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 50%">Module 6 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 HTML Lists</h2>
+            <p>Lists are fundamental for organizing content. HTML offers three types of lists.</p>
+
+            <h3>1. Unordered Lists (&lt;ul&gt;)</h3>
+            <p>For items where order doesn't matter. Browsers display bullets by default.</p>
+            <div class="code-block">
+<span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">HTML</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">CSS</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">JavaScript</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+            </div>
+            <p>Result:</p>
+            <ul style="background: white; padding: 1rem 2rem; border-radius: 0.5rem; border: 1px solid var(--border);">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+
+            <h3>2. Ordered Lists (&lt;ol&gt;)</h3>
+            <p>For sequential items. Browsers display numbers by default.</p>
+            <div class="code-block">
+<span class="tag">&lt;ol&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Preheat oven to 180°C</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Mix flour and sugar</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Add eggs and milk</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Bake for 25 minutes</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+            </div>
+
+            <h3>Ordered List Attributes</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- Start from a specific number --&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attr">start</span>=<span class="value">"5"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Item 5</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Item 6</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+
+<span class="comment">&lt;!-- Reverse the order --&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attr">reversed</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Step 3</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Step 2</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Step 1</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+
+<span class="comment">&lt;!-- Change list type: 1, A, a, I, i --&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attr">type</span>=<span class="value">"A"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Option A</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Option B</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+            </div>
+
+            <h3>3. Definition Lists (&lt;dl&gt;)</h3>
+            <p>For term-definition pairs, like a glossary or FAQ.</p>
+            <div class="code-block">
+<span class="tag">&lt;dl&gt;</span>
+    <span class="tag">&lt;dt&gt;</span><span class="text">HTML</span><span class="tag">&lt;/dt&gt;</span>
+    <span class="tag">&lt;dd&gt;</span><span class="text">HyperText Markup Language - the standard language for web pages.</span><span class="tag">&lt;/dd&gt;</span>
+
+    <span class="tag">&lt;dt&gt;</span><span class="text">CSS</span><span class="tag">&lt;/dt&gt;</span>
+    <span class="tag">&lt;dd&gt;</span><span class="text">Cascading Style Sheets - controls the visual presentation of HTML.</span><span class="tag">&lt;/dd&gt;</span>
+<span class="tag">&lt;/dl&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🪆 Nested Lists</h2>
+            <p>Lists can contain other lists for hierarchical organization.</p>
+
+            <div class="code-block">
+<span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Frontend Development</span>
+        <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">HTML</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">CSS</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">JavaScript</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Backend Development</span>
+        <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">Python</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">Node.js</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">PHP</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Indentation:</strong> Always indent nested lists properly. It makes your code readable and helps you spot missing closing tags.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📊 HTML Tables</h2>
+            <p>Tables display tabular data. Never use tables for page layout — that's what CSS is for!</p>
+
+            <h3>Basic Table Structure</h3>
+            <div class="code-block">
+<span class="tag">&lt;table&gt;</span>
+    <span class="tag">&lt;thead&gt;</span>
+        <span class="tag">&lt;tr&gt;</span>
+            <span class="tag">&lt;th&gt;</span><span class="text">Course</span><span class="tag">&lt;/th&gt;</span>
+            <span class="tag">&lt;th&gt;</span><span class="text">Duration</span><span class="tag">&lt;/th&gt;</span>
+            <span class="tag">&lt;th&gt;</span><span class="text">Level</span><span class="tag">&lt;/th&gt;</span>
+        <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;/thead&gt;</span>
+    <span class="tag">&lt;tbody&gt;</span>
+        <span class="tag">&lt;tr&gt;</span>
+            <span class="tag">&lt;td&gt;</span><span class="text">HTML Basics</span><span class="tag">&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;</span><span class="text">2 weeks</span><span class="tag">&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;</span><span class="text">Beginner</span><span class="tag">&lt;/td&gt;</span>
+        <span class="tag">&lt;/tr&gt;</span>
+        <span class="tag">&lt;tr&gt;</span>
+            <span class="tag">&lt;td&gt;</span><span class="text">CSS Styling</span><span class="tag">&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;</span><span class="text">3 weeks</span><span class="tag">&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;</span><span class="text">Intermediate</span><span class="tag">&lt;/td&gt;</span>
+        <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+            </div>
+
+            <h3>Table Elements Explained</h3>
+            <table>
+                <thead>
+                    <tr><th>Tag</th><th>Purpose</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code class="inline-code">&lt;table&gt;</code></td><td>Container for the entire table</td></tr>
+                    <tr><td><code class="inline-code">&lt;thead&gt;</code></td><td>Groups header rows (semantic, helps screen readers)</td></tr>
+                    <tr><td><code class="inline-code">&lt;tbody&gt;</code></td><td>Groups body rows</td></tr>
+                    <tr><td><code class="inline-code">&lt;tfoot&gt;</code></td><td>Groups footer rows (e.g., totals)</td></tr>
+                    <tr><td><code class="inline-code">&lt;tr&gt;</code></td><td>Table row</td></tr>
+                    <tr><td><code class="inline-code">&lt;th&gt;</code></td><td>Header cell (bold and centered by default)</td></tr>
+                    <tr><td><code class="inline-code">&lt;td&gt;</code></td><td>Standard data cell</td></tr>
+                    <tr><td><code class="inline-code">&lt;caption&gt;</code></td><td>Table title/description</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Accessible Table with Caption and Scope</h3>
+            <div class="code-block">
+<span class="tag">&lt;table&gt;</span>
+    <span class="tag">&lt;caption&gt;</span><span class="text">Monthly Course Enrollment</span><span class="tag">&lt;/caption&gt;</span>
+    <span class="tag">&lt;thead&gt;</span>
+        <span class="tag">&lt;tr&gt;</span>
+            <span class="tag">&lt;th</span> <span class="attr">scope</span>=<span class="value">"col"</span><span class="tag">&gt;</span><span class="text">Month</span><span class="tag">&lt;/th&gt;</span>
+            <span class="tag">&lt;th</span> <span class="attr">scope</span>=<span class="value">"col"</span><span class="tag">&gt;</span><span class="text">Students</span><span class="tag">&lt;/th&gt;</span>
+            <span class="tag">&lt;th</span> <span class="attr">scope</span>=<span class="value">"col"</span><span class="tag">&gt;</span><span class="text">Completion Rate</span><span class="tag">&lt;/th&gt;</span>
+        <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;/thead&gt;</span>
+    <span class="tag">&lt;tbody&gt;</span>
+        <span class="tag">&lt;tr&gt;</span>
+            <span class="tag">&lt;th</span> <span class="attr">scope</span>=<span class="value">"row"</span><span class="tag">&gt;</span><span class="text">January</span><span class="tag">&lt;/th&gt;</span>
+            <span class="tag">&lt;td&gt;</span><span class="text">150</span><span class="tag">&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;</span><span class="text">85%</span><span class="tag">&lt;/td&gt;</span>
+        <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Accessibility:</strong> The <code class="inline-code">scope</code> attribute tells screen readers whether a <code class="inline-code">&lt;th&gt;</code> is a column header or row header. This is essential for blind users navigating tables.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 6.1: Recipe & Pricing Table</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create <code class="inline-code">recipe.html</code> containing:</p>
+                <ol>
+                    <li>An <code class="inline-code">&lt;h1&gt;</code> with your favorite recipe name</li>
+                    <li>An unordered list of ingredients (at least 5 items)</li>
+                    <li>An ordered list of cooking steps (at least 4 steps)</li>
+                    <li>A nested list showing recipe variations (e.g., vegetarian option with sub-items)</li>
+                </ol>
+                <p>Then create <code class="inline-code">pricing.html</code> containing:</p>
+                <ol>
+                    <li>An accessible table with <code class="inline-code">&lt;caption&gt;</code>, <code class="inline-code">&lt;thead&gt;</code>, <code class="inline-code">&lt;tbody&gt;</code></li>
+                    <li>Columns: Service, Basic Price, Premium Price</li>
+                    <li>At least 3 rows of services</li>
+                    <li>Proper <code class="inline-code">scope</code> attributes on all header cells</li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 6 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Lists and tables conquered!');">
+                    <div class="quiz-question">1. Which list is best for a set of instructions?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> &lt;ul&gt;</label>
+                        <label><input type="radio" name="q1"> &lt;ol&gt;</label>
+                        <label><input type="radio" name="q1"> &lt;dl&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">2. What does &lt;dl&gt; stand for?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> Data List</label>
+                        <label><input type="radio" name="q2"> Definition List</label>
+                        <label><input type="radio" name="q2"> Document List</label>
+                    </div>
+
+                    <div class="quiz-question">3. Which tag groups table header rows semantically?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> &lt;header&gt;</label>
+                        <label><input type="radio" name="q3"> &lt;thead&gt;</label>
+                        <label><input type="radio" name="q3"> &lt;th&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">4. What attribute helps screen readers understand table headers?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> header</label>
+                        <label><input type="radio" name="q4"> scope</label>
+                        <label><input type="radio" name="q4"> role</label>
+                    </div>
+
+                    <div class="quiz-question">5. Should you use tables for page layout?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> Yes, it's easier</label>
+                        <label><input type="radio" name="q5"> No, use CSS for layout</label>
+                        <label><input type="radio" name="q5"> Only for simple layouts</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ <code class="inline-code">&lt;ul&gt;</code> for unordered items, <code class="inline-code">&lt;ol&gt;</code> for ordered sequences, <code class="inline-code">&lt;dl&gt;</code> for definitions</li>
+                <li>✅ Lists can be nested for hierarchical data</li>
+                <li>✅ Tables need <code class="inline-code">&lt;thead&gt;</code>, <code class="inline-code">&lt;tbody&gt;</code>, and <code class="inline-code">scope</code> for accessibility</li>
+                <li>✅ Never use tables for page layout — only for tabular data</li>
+                <li>✅ <code class="inline-code">&lt;caption&gt;</code> describes the table's purpose</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module05.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module07.html" class="btn btn-success">Next: Module 7 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

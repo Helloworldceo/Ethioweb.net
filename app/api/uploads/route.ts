@@ -5,6 +5,7 @@ import {
   hasSupabaseEnv,
 } from "@/lib/supabase/server";
 import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
+import { writeAuditEvent } from "@/lib/audit";
 
 const ALLOWED_TYPES = ["application/pdf", "image/png", "image/jpeg"];
 const IMAGE_TYPES = ["image/png", "image/jpeg"];
@@ -93,6 +94,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    await writeAuditEvent({
+      action: "profile.avatar.upload",
+      actorId: user.id,
+      resource: "profile-files",
+      metadata: { path },
+    });
+
     return applyResponseCookies(
       response,
       NextResponse.json({ ok: true, kind: "avatar", path, publicUrl: data.publicUrl }),
@@ -114,6 +122,13 @@ export async function POST(request: NextRequest) {
       NextResponse.json({ error: insertError.message }, { status: 500 }),
     );
   }
+
+  await writeAuditEvent({
+    action: "profile.asset.upload",
+    actorId: user.id,
+    resource: "profile-files",
+    metadata: { path, kind, isPublic },
+  });
 
   return applyResponseCookies(response, NextResponse.json({ ok: true, path, publicUrl: data.publicUrl }));
 }

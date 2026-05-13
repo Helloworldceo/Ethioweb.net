@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { Camera, Eye, EyeOff, FileText, FolderKanban, Link2, MapPin, PenLine, Trash2, UploadCloud, UserRound } from "lucide-react";
+import { Camera, CheckCircle2, Circle, Copy, Eye, EyeOff, FileText, FolderKanban, Gift, Link2, MapPin, PenLine, Trash2, UploadCloud, UserRound } from "lucide-react";
 import { useLanguage } from "@/components/i18n/language-provider";
 
 type ProfileRow = {
@@ -58,6 +58,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
   const [uploading, setUploading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [copiedReferral, setCopiedReferral] = useState(false);
 
   const [form, setForm] = useState({
     fullName: initialProfile?.full_name || "",
@@ -311,6 +312,69 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
     business_card: assets.filter((item) => item.asset_kind === "business_card"),
   };
 
+  const checklist = [
+    {
+      label: "Add full name",
+      done: Boolean(form.fullName.trim()),
+    },
+    {
+      label: "Set username",
+      done: Boolean(form.username.trim()),
+    },
+    {
+      label: "Upload profile photo",
+      done: Boolean(form.avatarUrl),
+    },
+    {
+      label: "Write your bio",
+      done: Boolean(form.bio.trim()),
+    },
+    {
+      label: "Add role and location",
+      done: Boolean(form.role.trim() && form.location.trim()),
+    },
+    {
+      label: "Upload at least one public file",
+      done: assets.some((item) => item.is_public),
+    },
+  ];
+
+  const completeCount = checklist.filter((item) => item.done).length;
+  const completionPct = Math.round((completeCount / checklist.length) * 100);
+  const referralLink = form.username ? `https://ethioweb.net/auth/signup?ref=${form.username}` : "";
+
+  async function copyReferralLink() {
+    if (!referralLink) return;
+    await navigator.clipboard.writeText(referralLink);
+    setCopiedReferral(true);
+    window.setTimeout(() => setCopiedReferral(false), 1500);
+  }
+
+  async function requestVerification() {
+    if (!profile?.id) return;
+    setError(null);
+    const response = await fetch("/api/verification/request", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        profileId: profile.id,
+        justification: "Requesting badge review for public profile.",
+      }),
+    });
+
+    const payload = (await response.json().catch(() => ({ message: "Unable to submit request" }))) as {
+      error?: string;
+      message?: string;
+    };
+
+    if (!response.ok) {
+      setError(payload.error ?? "Unable to submit request");
+      return;
+    }
+
+    setStatus(payload.message ?? "Verification request submitted.");
+  }
+
   if (loading) {
     return <section className="container-wrap py-12">Loading dashboard...</section>;
   }
@@ -329,6 +393,56 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
       {status && <p className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">{status}</p>}
 
       <div className="grid gap-4 md:grid-cols-2">
+        <article className="card p-5 md:col-span-2">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)]">
+                <Gift className="h-4 w-4" /> Referral loop
+              </p>
+              <p className="mt-1 text-sm text-[var(--muted)]">
+                Invite peers with your link. As referrals launch, early users get priority verification queue access.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={copyReferralLink}
+              disabled={!referralLink}
+              className="btn-secondary inline-flex items-center gap-2 text-sm"
+            >
+              <Copy className="h-4 w-4" /> {copiedReferral ? "Copied" : "Copy invite link"}
+            </button>
+          </div>
+          {referralLink && <p className="mt-3 text-xs text-[var(--muted)]">{referralLink}</p>}
+        </article>
+
+        <article className="card p-5 md:col-span-2">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-sm font-semibold text-[var(--muted)]">Profile completion</p>
+              <h2 className="heading-display mt-1 text-2xl font-black">{completionPct}% complete</h2>
+            </div>
+            <p className="chip">{completeCount}/{checklist.length} tasks</p>
+          </div>
+          <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-[var(--line)]">
+            <div
+              className="h-full rounded-full bg-[var(--brand)] transition-all duration-300"
+              style={{ width: `${completionPct}%` }}
+            />
+          </div>
+          <ul className="mt-4 grid gap-2 md:grid-cols-2">
+            {checklist.map((item) => (
+              <li key={item.label} className="flex items-center gap-2 rounded-xl border border-[var(--line)] p-3 text-sm">
+                {item.done ? (
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                ) : (
+                  <Circle className="h-4 w-4 text-[var(--muted)]" />
+                )}
+                <span className={item.done ? "text-[var(--ink)]" : "text-[var(--muted)]"}>{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+
         <article className="card overflow-hidden p-0 md:col-span-2">
           <div className="bg-[radial-gradient(circle_at_top_left,_rgba(15,118,110,0.24),_transparent_45%),linear-gradient(135deg,#0f172a,#1f2937)] px-6 py-8 text-white">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -656,6 +770,11 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
           <div className="mt-4 flex flex-wrap gap-2">
             <Link href="/privacy" className="btn-secondary text-sm">Privacy Policy</Link>
             <Link href="/terms" className="btn-secondary text-sm">Terms</Link>
+            <Link href="/dashboard/cv-builder" className="btn-secondary text-sm">AI CV Builder</Link>
+            <Link href="/portfolio-templates" className="btn-secondary text-sm">Portfolio Templates</Link>
+            <Link href="/dashboard/domains" className="btn-secondary text-sm">Custom Domains</Link>
+            <Link href="/messages" className="btn-secondary text-sm">Messaging</Link>
+            <button type="button" className="btn-primary text-sm" onClick={requestVerification}>Request Verification Badge</button>
           </div>
         </article>
       </div>

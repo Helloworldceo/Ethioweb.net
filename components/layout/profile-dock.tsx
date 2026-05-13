@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ChevronUp, Globe, LogOut, Mail, Settings, Shield, UserRound } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
@@ -16,7 +15,6 @@ const BUSINESS_EMAIL = "helloworldceo@1gmail.com";
 const BUSINESS_PORTFOLIO = "https://helloworldceo.github.io/";
 
 export function ProfileDock() {
-  const pathname = usePathname();
   const supabase = useMemo(() => getSupabaseBrowserClient(), []);
   const [open, setOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -76,11 +74,6 @@ export function ProfileDock() {
 
     return () => subscription.unsubscribe();
   }, [supabase]);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   async function logout() {
     if (!supabase) return;
     await supabase.auth.signOut();
@@ -122,16 +115,16 @@ export function ProfileDock() {
           </div>
 
           <nav className="grid gap-1 text-sm">
-            <Link className="rounded-lg px-3 py-2 hover:bg-[var(--paper)]" href="/dashboard#profile-basics">
+            <Link className="rounded-lg px-3 py-2 hover:bg-[var(--paper)]" href="/dashboard#profile-basics" onClick={() => setOpen(false)}>
               <span className="inline-flex items-center gap-2"><UserRound className="h-4 w-4" />Edit Profile</span>
             </Link>
-            <Link className="rounded-lg px-3 py-2 hover:bg-[var(--paper)]" href="/dashboard#settings">
+            <Link className="rounded-lg px-3 py-2 hover:bg-[var(--paper)]" href="/dashboard#settings" onClick={() => setOpen(false)}>
               <span className="inline-flex items-center gap-2"><Settings className="h-4 w-4" />Settings</span>
             </Link>
-            <Link className="rounded-lg px-3 py-2 hover:bg-[var(--paper)]" href="/privacy">
+            <Link className="rounded-lg px-3 py-2 hover:bg-[var(--paper)]" href="/privacy" onClick={() => setOpen(false)}>
               <span className="inline-flex items-center gap-2"><Shield className="h-4 w-4" />Privacy</span>
             </Link>
-            <Link className="rounded-lg px-3 py-2 hover:bg-[var(--paper)]" href={`/u/${profile.username}`}>
+            <Link className="rounded-lg px-3 py-2 hover:bg-[var(--paper)]" href={`/u/${profile.username}`} onClick={() => setOpen(false)}>
               <span className="inline-flex items-center gap-2"><Globe className="h-4 w-4" />Public Profile</span>
             </Link>
           </nav>

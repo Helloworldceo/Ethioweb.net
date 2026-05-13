@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 11: Best Practices - Ethioweb.net HTML Course">
+    <title>Module 11: Best Practices — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 11: Best Practices</h1>
+        <p class="subtitle">Validation, Formatting, Comments, and File Organization</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html" class="active">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 92%">Module 11 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 HTML Validation</h2>
+            <p>Validation ensures your HTML follows the official rules. Valid HTML is more predictable across browsers, more accessible, and better for SEO.</p>
+
+            <h3>The W3C Markup Validation Service</h3>
+            <p>The <a href="https://validator.w3.org/" target="_blank">W3C Validator</a> is the official tool maintained by the same organization that writes HTML standards.</p>
+
+            <h3>Three Ways to Validate</h3>
+            <ol>
+                <li><strong>Validate by URI:</strong> Enter a live website URL</li>
+                <li><strong>Validate by File Upload:</strong> Upload your HTML file directly</li>
+                <li><strong>Validate by Direct Input:</strong> Copy and paste your HTML code</li>
+            </ol>
+
+            <h3>Common Validation Errors</h3>
+            <table>
+                <thead>
+                    <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Missing DOCTYPE</td>
+                        <td>No <code class="inline-code">&lt;!DOCTYPE html&gt;</code></td>
+                        <td>Add it as the very first line</td>
+                    </tr>
+                    <tr>
+                        <td>Unclosed tag</td>
+                        <td>Missing closing tag</td>
+                        <td>Add <code class="inline-code">&lt;/tag&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td>Missing alt attribute</td>
+                        <td>Image without <code class="inline-code">alt</code></td>
+                        <td>Add descriptive alt text or <code class="inline-code">alt=""</code> for decorative images</td>
+                    </tr>
+                    <tr>
+                        <td>Duplicate ID</td>
+                        <td>Same <code class="inline-code">id</code> used twice</td>
+                        <td>IDs must be unique; use <code class="inline-code">class</code> for repeated styling</td>
+                    </tr>
+                    <tr>
+                        <td>Invalid nesting</td>
+                        <td>Block element inside inline element</td>
+                        <td>Restructure (e.g., don't put <code class="inline-code">&lt;div&gt;</code> inside <code class="inline-code">&lt;span&gt;</code>)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="exercise">
+                <div class="exercise-header">✏️ Exercise 11.1: Fix Broken HTML</div>
+                <p>Download this <a href="#">broken.html</a> file (or create it with intentional errors) and:</p>
+                <ol>
+                    <li>Validate it at <a href="https://validator.w3.org/" target="_blank">validator.w3.org</a></li>
+                    <li>Fix every error and warning</li>
+                    <li>Re-validate until you see: <strong>"Document checking completed. No errors or warnings to show."</strong></li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 HTML Comments</h2>
+            <p>Comments are notes in your code that browsers ignore. They help you and other developers understand your code.</p>
+
+            <h3>Comment Syntax</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- This is a single-line comment --&gt;</span>
+
+<span class="comment">&lt;!-- 
+    This is a multi-line comment.
+    Use comments to explain complex sections
+    or mark TODO items.
+--&gt;</span>
+
+<span class="tag">&lt;!-- TODO: Add navigation menu here --&gt;</span>
+<span class="tag">&lt;nav&gt;</span><span class="text">...</span><span class="tag">&lt;/nav&gt;</span>
+            </div>
+
+            <h3>When to Use Comments</h3>
+            <ul>
+                <li>Explaining complex or unusual code choices</li>
+                <li>Marking sections in large files</li>
+                <li>TODO items and reminders</li>
+                <li>Temporarily disabling code during testing</li>
+            </ul>
+
+            <h3>When NOT to Use Comments</h3>
+            <ul>
+                <li>Don't state the obvious: <code class="inline-code">&lt;!-- This is a paragraph --&gt;</code></li>
+                <li>Don't use comments instead of proper semantic HTML</li>
+                <li>Don't leave sensitive information in comments (users can see them in View Source)</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Security:</strong> Never put passwords, API keys, or private notes in HTML comments. Anyone can view them by right-clicking → "View Page Source".
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📁 File and Folder Organization</h2>
+            <p>A well-organized project is easier to maintain and scale.</p>
+
+            <h3>Recommended Project Structure</h3>
+            <div class="code-block">
+my-website/
+├── index.html          <span class="comment">&lt;!-- Homepage (always at root) --&gt;</span>
+├── about.html          <span class="comment">&lt;!-- About page --&gt;</span>
+├── contact.html        <span class="comment">&lt;!-- Contact page --&gt;</span>
+├── css/
+│   └── style.css       <span class="comment">&lt;-- Stylesheets --&gt;</span>
+├── js/
+│   └── script.js       <span class="comment">&lt;-- JavaScript files --&gt;</span>
+├── images/
+│   ├── logo.png
+│   ├── banner.jpg
+│   └── team/
+│       ├── john.jpg
+│       └── jane.jpg
+├── videos/
+│   └── intro.mp4
+└── favicon.ico         <span class="comment">&lt;!-- Site icon --&gt;</span>
+            </div>
+
+            <h3>Naming Conventions</h3>
+            <table>
+                <thead>
+                    <tr><th>Good</th><th>Bad</th><th>Why</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code class="inline-code">about-us.html</code></td><td><code class="inline-code">About Us.html</code></td><td>No spaces, no caps (URL-friendly)</td></tr>
+                    <tr><td><code class="inline-code">contact.html</code></td><td><code class="inline-code">page3.html</code></td><td>Descriptive names</td></tr>
+                    <tr><td><code class="inline-code">logo.png</code></td><td><code class="inline-code">IMG_20230513_143022.jpg</code></td><td>Simple, meaningful names</td></tr>
+                    <tr><td><code class="inline-code">team/john.jpg</code></td><td><code class="inline-code">johnprofilepicturefinal2.jpg</code></td><td>Organize with folders</td></tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <strong>💡 Best Practice:</strong> Use lowercase for all filenames and folders. Separate words with hyphens (not underscores or spaces). This prevents cross-platform issues (Linux servers are case-sensitive).
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎨 Code Formatting Standards</h2>
+            <p>Clean, consistent code is professional and easier to debug.</p>
+
+            <h3>Indentation Rules</h3>
+            <ul>
+                <li>Use 2 or 4 spaces per indentation level (never mix both!)</li>
+                <li>Indent child elements one level deeper than their parent</li>
+                <li>Align sibling elements at the same level</li>
+            </ul>
+
+            <div class="code-block">
+<span class="comment">&lt;!-- Good indentation --&gt;</span>
+<span class="tag">&lt;nav&gt;</span>
+    <span class="tag">&lt;ul&gt;</span>
+        <span class="tag">&lt;li&gt;</span>
+            <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"/"</span><span class="tag">&gt;</span><span class="text">Home</span><span class="tag">&lt;/a&gt;</span>
+        <span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;li&gt;</span>
+            <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"/about"</span><span class="tag">&gt;</span><span class="text">About</span><span class="tag">&lt;/a&gt;</span>
+        <span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;/nav&gt;</span>
+
+<span class="comment">&lt;!-- Bad indentation (hard to read) --&gt;</span>
+<span class="tag">&lt;nav&gt;</span><span class="tag">&lt;ul&gt;</span><span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"/"</span><span class="tag">&gt;</span><span class="text">Home</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"/about"</span><span class="tag">&gt;</span><span class="text">About</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><span class="tag">&lt;/ul&gt;</span><span class="tag">&lt;/nav&gt;</span>
+            </div>
+
+            <h3>Attribute Formatting</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- Good: one attribute per line for long tags --&gt;</span>
+<span class="tag">&lt;img</span>
+    <span class="attr">src</span>=<span class="value">"images/photo.jpg"</span>
+    <span class="attr">alt</span>=<span class="value">"Sunset over Lalibela churches in Ethiopia"</span>
+    <span class="attr">width</span>=<span class="value">"800"</span>
+    <span class="attr">height</span>=<span class="value">"600"</span>
+    <span class="attr">loading</span>=<span class="value">"lazy"</span><span class="tag">&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 11.2: Audit and Fix a Page</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Take any HTML file you've created in this course and perform a complete audit:</p>
+                <ol>
+                    <li>Validate it at <a href="https://validator.w3.org/" target="_blank">validator.w3.org</a></li>
+                    <li>Check all images have <code class="inline-code">alt</code> attributes</li>
+                    <li>Ensure all <code class="inline-code">id</code> values are unique</li>
+                    <li>Verify every <code class="inline-code">&lt;a&gt;</code> has an <code class="inline-code">href</code></li>
+                    <li>Check all form inputs have associated <code class="inline-code">&lt;label&gt;</code> elements</li>
+                    <li>Ensure proper heading hierarchy (no skipped levels)</li>
+                    <li>Fix indentation to be consistent (2 or 4 spaces)</li>
+                    <li>Add helpful comments for complex sections</li>
+                    <li>Re-validate until zero errors</li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 11 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Best practices boss!');">
+                    <div class="quiz-question">1. Which organization maintains the HTML validator?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> Google</label>
+                        <label><input type="radio" name="q1"> W3C</label>
+                        <label><input type="radio" name="q1"> Mozilla</label>
+                    </div>
+
+                    <div class="quiz-question">2. What is the correct comment syntax?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> // This is a comment</label>
+                        <label><input type="radio" name="q2"> &lt;!-- This is a comment --&gt;</label>
+                        <label><input type="radio" name="q2"> /* This is a comment */</label>
+                    </div>
+
+                    <div class="quiz-question">3. Why shouldn't you use spaces in filenames?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> They make files larger</label>
+                        <label><input type="radio" name="q3"> URLs replace spaces with %20, causing issues</label>
+                        <label><input type="radio" name="q3"> Browsers can't find them</label>
+                    </div>
+
+                    <div class="quiz-question">4. What does a "duplicate ID" error mean?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> Two files have the same name</label>
+                        <label><input type="radio" name="q4"> The same id attribute is used on multiple elements</label>
+                        <label><input type="radio" name="q4"> Two pages have the same title</label>
+                    </div>
+
+                    <div class="quiz-question">5. Should you put passwords in HTML comments?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> Yes, comments are private</label>
+                        <label><input type="radio" name="q5"> No, anyone can view them in page source</label>
+                        <label><input type="radio" name="q5"> Only if encrypted</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ Validate all HTML with the W3C Validator</li>
+                <li>✅ Use comments wisely — explain why, not what</li>
+                <li>✅ Organize files in logical folders (css/, js/, images/)</li>
+                <li>✅ Use lowercase filenames with hyphens</li>
+                <li>✅ Maintain consistent indentation (2 or 4 spaces)</li>
+                <li>✅ Never put sensitive data in HTML comments</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module10.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module12.html" class="btn btn-success">Next: Module 12 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

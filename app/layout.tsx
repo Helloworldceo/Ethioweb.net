@@ -6,6 +6,7 @@ import { ProfileDock } from "@/components/layout/profile-dock";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LanguageProvider } from "@/components/i18n/language-provider";
+import { ClientErrorTracker } from "@/components/monitoring/client-error-tracker";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -19,6 +20,15 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ethioweb.net"),
+  applicationName: "Ethioweb",
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "/",
+      am: "/",
+      "x-default": "/",
+    },
+  },
   title: {
     default: "Ethioweb | Digital Presence Platform",
     template: "%s | Ethioweb",
@@ -43,10 +53,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://ethioweb.net/newlogo.png",
-        width: 512,
-        height: 512,
-        alt: "Ethioweb logo",
+        url: "https://ethioweb.net/api/og?kind=blog&title=Ethioweb&subtitle=Digital%20Presence%20Platform",
+        width: 1200,
+        height: 630,
+        alt: "Ethioweb digital presence platform",
       },
     ],
   },
@@ -55,7 +65,7 @@ export const metadata: Metadata = {
     title: "Ethioweb",
     description:
       "A modern platform for digital identity, business services, and professional portfolios.",
-    images: ["https://ethioweb.net/newlogo.png"],
+    images: ["https://ethioweb.net/api/og?kind=blog&title=Ethioweb&subtitle=Digital%20Presence%20Platform"],
   },
 };
 
@@ -64,6 +74,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Ethioweb",
+    url: "https://ethioweb.net",
+    logo: "https://ethioweb.net/newlogo.png",
+    sameAs: ["https://helloworldceo.github.io/"],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "helloworldceo@1gmail.com",
+      },
+    ],
+  };
+
   return (
     <html
       lang="en"
@@ -71,15 +97,25 @@ export default function RootLayout({
       className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--bg)] text-[var(--ink)]">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[var(--paper)] focus:px-4 focus:py-2 focus:text-sm"
+        >
+          Skip to main content
+        </a>
         <div className="mesh-bg" aria-hidden />
         <LanguageProvider>
           <div className="relative min-h-screen flex flex-col">
             <SiteHeader />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1">{children}</main>
             <SiteFooter />
             <ProfileDock />
+            <ClientErrorTracker />
           </div>
         </LanguageProvider>
+        <Script id="organization-ld" type="application/ld+json">
+          {JSON.stringify(organizationLd)}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-E3DQ87ER88"
           strategy="afterInteractive"

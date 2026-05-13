@@ -1,0 +1,73 @@
+ETHIOWEB PROMPT COMPLIANCE CHECKLIST (STRICT)
+
+Scope: original prompt in prompt.txt
+Legend:
+- [x] Completed in code
+- [~] Partially implemented (MVP or placeholder)
+- [ ] Not implemented
+
+A) CORE GOALS
+[x] Showcase personal work, projects, services
+[x] User profile creation and management
+[x] CV/portfolio/certificate/link upload support
+[x] Public/private controls
+[x] Clean public profile page per user
+[x] Search by name/username
+[x] Scalable architecture baseline (Next.js + Supabase pattern)
+
+B) ESSENTIAL PAGES
+[x] Home
+[x] About
+[x] Services
+[x] Projects/Portfolio
+[x] Blog
+[x] Contact
+[x] User public profile route
+[x] Dashboard
+[x] Privacy Policy
+[x] Terms of Service
+
+C) PROFILE SYSTEM REQUIREMENTS
+[x] Sign up/login
+[~] Google/Facebook OAuth wiring depends on provider setup in Supabase
+[x] Personal profile creation
+[x] CV upload
+[x] Portfolio upload
+[x] Certificate upload
+[x] Link sharing
+[x] Public/private visibility settings
+[x] Unique public profile URL
+[x] Profile dashboard
+[x] Edit profile anytime
+[x] Professional UI
+
+D) TECHNICAL REQUIREMENTS
+[x] Reusable components
+[x] Blog support
+[x] Project support baseline
+[x] File upload flow
+[x] Authentication flow
+[x] Privacy settings
+[x] SEO setup baseline (metadata/sitemap/robots/OG/schema)
+[x] Deployment-ready structure
+
+E) ADVANCED CAPABILITIES (from prompt)
+[x] AI-generated CV builder
+[x] Portfolio templates
+[x] Job matching
+[x] Social links (profile links + share actions)
+[x] Blogging
+[x] Verification badges (status + request workflow)
+[x] Team/company profiles
+[x] Messaging
+[x] Cloud storage (Supabase storage + upload flows)
+[x] Custom domains
+
+PRIORITY ORDER TO FINISH REMAINING ITEMS
+P1: AI-generated CV builder [DONE]
+P2: Portfolio templates [DONE]
+P3: Job matching [DONE]
+P4: Verification request + badge UX flow [DONE]
+P5: Team/company profiles [DONE]
+P6: Messaging [DONE]
+P7: Custom domains [DONE]

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 10: Metadata & SEO - Ethioweb.net HTML Course">
+    <title>Module 10: Metadata & SEO — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 10: Metadata & SEO</h1>
+        <p class="subtitle">Optimizing Your Pages for Search Engines and Social Media</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html" class="active">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 83%">Module 10 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 What is Metadata?</h2>
+            <p><strong>Metadata</strong> is data about data. In HTML, metadata lives in the <code class="inline-code">&lt;head&gt;</code> and describes your page to browsers, search engines, and social media platforms. Users don't see it directly, but it profoundly affects how your page appears and performs.</p>
+
+            <h3>Why Metadata Matters</h3>
+            <ul>
+                <li><strong>Search Engines:</strong> Google uses metadata to understand and rank your page</li>
+                <li><strong>Social Media:</strong> Facebook, Twitter, LinkedIn use metadata to create link previews</li>
+                <li><strong>Browsers:</strong> Use metadata for bookmarks, history, and mobile rendering</li>
+                <li><strong>Accessibility:</strong> Screen readers and assistive technologies rely on metadata</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h2>🔍 Essential SEO Meta Tags</h2>
+
+            <h3>Title Tag (Most Important!)</h3>
+            <p>The <code class="inline-code">&lt;title&gt;</code> is the single most important on-page SEO element. It appears in:</p>
+            <ul>
+                <li>Browser tabs</li>
+                <li>Search engine results (as the clickable headline)</li>
+                <li>Social media link previews</li>
+                <li>Browser bookmarks</li>
+            </ul>
+            <div class="code-block">
+<span class="tag">&lt;title&gt;</span><span class="text">HTML Beginner Course - Learn HTML Free | Ethioweb.net</span><span class="tag">&lt;/title&gt;</span>
+            </div>
+            <div class="tip">
+                <strong>💡 Title Best Practices:</strong> Keep it under 60 characters, put important keywords first, include your brand name at the end, and make every page title unique.
+            </div>
+
+            <h3>Meta Description</h3>
+            <p>This appears under your title in Google search results. While it doesn't directly affect rankings, it dramatically affects click-through rates.</p>
+            <div class="code-block">
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"description"</span> 
+      <span class="attr">content</span>=<span class="value">"Master HTML from scratch with Ethioweb.net's free comprehensive course. Build real websites and earn your certificate. Start learning today!"</span><span class="tag">&gt;</span>
+            </div>
+            <div class="tip">
+                <strong>💡 Description Best Practices:</strong> 150-160 characters, include a call-to-action ("Learn more", "Start today"), make it compelling and accurate.
+            </div>
+
+            <h3>Other Important Meta Tags</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- Author --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"author"</span> <span class="attr">content</span>=<span class="value">"Ethioweb.net"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Keywords (less important now, but still used by some search engines) --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"keywords"</span> <span class="attr">content</span>=<span class="value">"HTML, course, beginner, web development, learn HTML"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Robots (tells search engines what to do) --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"robots"</span> <span class="attr">content</span>=<span class="value">"index, follow"</span><span class="tag">&gt;</span>
+<span class="comment">&lt;!-- index = add to search results, follow = follow links on this page --&gt;</span>
+
+<span class="comment">&lt;!-- Canonical URL (prevents duplicate content issues) --&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"canonical"</span> <span class="attr">href</span>=<span class="value">"https://ethioweb.net/html-course/"</span><span class="tag">&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📱 Open Graph Tags (Facebook, LinkedIn, WhatsApp)</h2>
+            <p>Open Graph (OG) tags control how your page appears when shared on social platforms. Without them, platforms guess what to show — often poorly.</p>
+
+            <div class="code-block">
+<span class="comment">&lt;!-- Open Graph Protocol --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:title"</span> <span class="attr">content</span>=<span class="value">"HTML Fundamentals Course - Ethioweb.net"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:description"</span> <span class="attr">content</span>=<span class="value">"Master HTML from scratch. Free course with certificate."</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:type"</span> <span class="attr">content</span>=<span class="value">"website"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:url"</span> <span class="attr">content</span>=<span class="value">"https://ethioweb.net/html-course/"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:image"</span> <span class="attr">content</span>=<span class="value">"https://ethioweb.net/images/course-banner.jpg"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:image:width"</span> <span class="attr">content</span>=<span class="value">"1200"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:image:height"</span> <span class="attr">content</span>=<span class="value">"630"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:site_name"</span> <span class="attr">content</span>=<span class="value">"Ethioweb.net"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:locale"</span> <span class="attr">content</span>=<span class="value">"en_US"</span><span class="tag">&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 OG Image Size:</strong> Use 1200×630 pixels for optimal display on Facebook and LinkedIn. The image should be eye-catching and include minimal text.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🐦 Twitter Cards</h2>
+            <p>Twitter uses its own meta tags for link previews. There are several card types:</p>
+            <ul>
+                <li><strong>summary:</strong> Small image + title + description</li>
+                <li><strong>summary_large_image:</strong> Large featured image</li>
+                <li><strong>app:</strong> For mobile app promotion</li>
+            </ul>
+
+            <div class="code-block">
+<span class="comment">&lt;!-- Twitter Card --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"twitter:card"</span> <span class="attr">content</span>=<span class="value">"summary_large_image"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"twitter:site"</span> <span class="attr">content</span>=<span class="value">"@ethioweb"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"twitter:creator"</span> <span class="attr">content</span>=<span class="value">"@ethioweb"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"twitter:title"</span> <span class="attr">content</span>=<span class="value">"HTML Fundamentals Course"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"twitter:description"</span> <span class="attr">content</span>=<span class="value">"Learn HTML from scratch with our free course."</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"twitter:image"</span> <span class="attr">content</span>=<span class="value">"https://ethioweb.net/images/course-banner.jpg"</span><span class="tag">&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 10.1: Optimize a Page for SEO</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create <code class="inline-code">seo-optimized.html</code> for a fictional coffee shop in Addis Ababa:</p>
+                <ol>
+                    <li>Write an optimized <code class="inline-code">&lt;title&gt;</code> (under 60 chars, keywords first)</li>
+                    <li>Write a compelling <code class="inline-code">&lt;meta name="description"&gt;</code> (150-160 chars)</li>
+                    <li>Add author, keywords, and robots meta tags</li>
+                    <li>Add complete Open Graph tags (title, description, type, url, image, site_name)</li>
+                    <li>Add Twitter Card tags (card, title, description, image)</li>
+                    <li>Include a canonical link</li>
+                    <li>Write visible content: <code class="inline-code">&lt;h1&gt;</code>, 2 paragraphs, and a contact section</li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 10 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('SEO savvy!');">
+                    <div class="quiz-question">1. Where does metadata live in an HTML document?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> In the &lt;body&gt;</label>
+                        <label><input type="radio" name="q1"> In the &lt;head&gt;</label>
+                        <label><input type="radio" name="q1"> In the &lt;footer&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">2. What is the recommended title tag length?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> Under 60 characters</label>
+                        <label><input type="radio" name="q2"> Exactly 100 characters</label>
+                        <label><input type="radio" name="q2"> At least 200 characters</label>
+                    </div>
+
+                    <div class="quiz-question">3. Which protocol controls Facebook link previews?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> Twitter Cards</label>
+                        <label><input type="radio" name="q3"> Open Graph</label>
+                        <label><input type="radio" name="q3"> Schema.org</label>
+                    </div>
+
+                    <div class="quiz-question">4. What does robots="index, follow" mean?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> Block search engines</label>
+                        <label><input type="radio" name="q4"> Allow indexing and follow links</label>
+                        <label><input type="radio" name="q4"> Only index images</label>
+                    </div>
+
+                    <div class="quiz-question">5. What is the purpose of a canonical link?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> To link to social media</label>
+                        <label><input type="radio" name="q5"> To prevent duplicate content issues</label>
+                        <label><input type="radio" name="q5"> To add a favicon</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ Metadata in <code class="inline-code">&lt;head&gt;</code> describes your page to search engines and social platforms</li>
+                <li>✅ <code class="inline-code">&lt;title&gt;</code> is the most important SEO element (keep under 60 chars)</li>
+                <li>✅ Meta description affects click-through rates (150-160 chars)</li>
+                <li>✅ Open Graph tags control Facebook/LinkedIn/WhatsApp previews</li>
+                <li>✅ Twitter Cards control Twitter link previews</li>
+                <li>✅ Canonical links prevent duplicate content penalties</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module09.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module11.html" class="btn btn-success">Next: Module 11 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

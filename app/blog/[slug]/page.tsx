@@ -50,7 +50,35 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   const dbPost = await getDbPost(slug);
   const post = dbPost ?? getStaticPost(slug);
   if (!post) return { title: "Post not found" };
-  return { title: post.title, description: post.excerpt };
+
+  const ogTitle = encodeURIComponent(post.title);
+  const ogSubtitle = encodeURIComponent(post.excerpt || "Insights for digital growth");
+  const ogImage = `https://ethioweb.net/api/og?kind=blog&title=${ogTitle}&subtitle=${ogSubtitle}`;
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+      languages: {
+        en: `/blog/${slug}`,
+        am: `/blog/${slug}`,
+      },
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `https://ethioweb.net/blog/${slug}`,
+      type: "article",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [ogImage],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -65,6 +93,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ? (post.published_at as string | null)?.slice(0, 10) ?? ""
     : (post as { date: string }).date;
 
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: date,
+    dateModified: date,
+    mainEntityOfPage: `https://ethioweb.net/blog/${slug}`,
+    author: {
+      "@type": "Organization",
+      name: "Ethioweb",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Ethioweb",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://ethioweb.net/newlogo.png",
+      },
+    },
+  };
+
   return (
     <section className="container-wrap py-14">
       <article className="card max-w-3xl p-8">
@@ -72,6 +122,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <h1 className="heading-display mt-3 text-4xl font-black">{post.title}</h1>
         <p className="mt-6 whitespace-pre-wrap leading-8 text-[var(--muted)]">{post.content}</p>
       </article>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
     </section>
   );
 }

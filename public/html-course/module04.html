@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 4: Links & Navigation - Ethioweb.net HTML Course">
+    <title>Module 4: Links & Navigation — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 4: Links & Navigation</h1>
+        <p class="subtitle">Connecting Pages and Creating Navigation Menus</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html" class="active">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 33%">Module 4 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 The Anchor Tag &lt;a&gt;</h2>
+            <p>The <code class="inline-code">&lt;a&gt;</code> tag creates hyperlinks — the foundation of the World Wide Web. The <code class="inline-code">href</code> attribute specifies the destination.</p>
+
+            <h3>Basic Link Syntax</h3>
+            <div class="code-block">
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://ethioweb.net"</span><span class="tag">&gt;</span><span class="text">Visit Ethioweb.net</span><span class="tag">&lt;/a&gt;</span>
+            </div>
+
+            <h3>Essential Attributes</h3>
+            <table>
+                <thead>
+                    <tr><th>Attribute</th><th>Purpose</th><th>Example</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code class="inline-code">href</code></td>
+                        <td>The URL or destination (required)</td>
+                        <td><code class="inline-code">href="about.html"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">target</code></td>
+                        <td>Where to open the link</td>
+                        <td><code class="inline-code">target="_blank"</code> (new tab)</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">title</code></td>
+                        <td>Tooltip text on hover</td>
+                        <td><code class="inline-code">title="Learn more"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">download</code></td>
+                        <td>Prompts file download</td>
+                        <td><code class="inline-code">download="file.pdf"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Opening Links in a New Tab</h3>
+            <div class="code-block">
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://example.com"</span> <span class="attr">target</span>=<span class="value">"_blank"</span> <span class="attr">rel</span>=<span class="value">"noopener noreferrer"</span><span class="tag">&gt;</span>
+    <span class="text">Open in New Tab (Safe)</span>
+<span class="tag">&lt;/a&gt;</span>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Security Best Practice:</strong> Always add <code class="inline-code">rel="noopener noreferrer"</code> when using <code class="inline-code">target="_blank"</code>. This prevents the new page from accessing your page via JavaScript (tabnabbing protection).
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🔗 Absolute vs. Relative URLs</h2>
+            <p>Understanding URLs is crucial for building multi-page websites.</p>
+
+            <h3>Absolute URLs</h3>
+            <p>Complete addresses that work from anywhere. Use these for external websites.</p>
+            <div class="code-block">
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://ethioweb.net/courses/html"</span><span class="tag">&gt;</span><span class="text">Full URL</span><span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://ethioweb.net"</span><span class="tag">&gt;</span><span class="text">Protocol + Domain</span><span class="tag">&lt;/a&gt;</span>
+            </div>
+
+            <h3>Relative URLs</h3>
+            <p>Paths relative to the current file's location. Use these for internal pages.</p>
+            <div class="code-block">
+<span class="comment">&lt;!-- Same folder --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"about.html"</span><span class="tag">&gt;</span><span class="text">About Page</span><span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Subfolder --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"pages/contact.html"</span><span class="tag">&gt;</span><span class="text">Contact Page</span><span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Parent folder --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"../index.html"</span><span class="tag">&gt;</span><span class="text">Go Up One Level</span><span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Root-relative (starts from website root) --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"/images/logo.png"</span><span class="tag">&gt;</span><span class="text">From Root</span><span class="tag">&lt;/a&gt;</span>
+            </div>
+
+            <h3>URL Path Cheat Sheet</h3>
+            <table>
+                <thead>
+                    <tr><th>Path</th><th>Meaning</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code class="inline-code">page.html</code></td><td>File in the same folder</td></tr>
+                    <tr><td><code class="inline-code">folder/page.html</code></td><td>File inside a subfolder</td></tr>
+                    <tr><td><code class="inline-code">../page.html</code></td><td>File in the parent folder</td></tr>
+                    <tr><td><code class="inline-code">../../page.html</code></td><td>File two levels up</td></tr>
+                    <tr><td><code class="inline-code">/page.html</code></td><td>File at the website root</td></tr>
+                </tbody>
+            </table>
+        </article>
+
+        <article class="card">
+            <h2>📍 Internal Page Navigation (Anchor Links)</h2>
+            <p>You can link to specific sections within the same page using <strong>fragment identifiers</strong> (IDs).</p>
+
+            <h3>How It Works</h3>
+            <ol>
+                <li>Add an <code class="inline-code">id</code> attribute to the target element</li>
+                <li>Link to it using <code class="inline-code">#id-name</code></li>
+            </ol>
+
+            <div class="code-block">
+<span class="comment">&lt;!-- The navigation links --&gt;</span>
+<span class="tag">&lt;nav&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"#about"</span><span class="tag">&gt;</span><span class="text">About</span><span class="tag">&lt;/a&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"#services"</span><span class="tag">&gt;</span><span class="text">Services</span><span class="tag">&lt;/a&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"#contact"</span><span class="tag">&gt;</span><span class="text">Contact</span><span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/nav&gt;</span>
+
+<span class="comment">&lt;!-- The target sections --&gt;</span>
+<span class="tag">&lt;h2</span> <span class="attr">id</span>=<span class="value">"about"</span><span class="tag">&gt;</span><span class="text">About Us</span><span class="tag">&lt;/h2&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">Content about the company...</span><span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;h2</span> <span class="attr">id</span>=<span class="value">"services"</span><span class="tag">&gt;</span><span class="text">Our Services</span><span class="tag">&lt;/h2&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">Content about services...</span><span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;h2</span> <span class="attr">id</span>=<span class="value">"contact"</span><span class="tag">&gt;</span><span class="text">Contact Us</span><span class="tag">&lt;/h2&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">Contact information...</span><span class="tag">&lt;/p&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Smooth Scrolling:</strong> You can add smooth scrolling with CSS: <code class="inline-code">html { scroll-behavior: smooth; }</code>
+            </div>
+
+            <h3>Linking to Page Sections from Other Pages</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- Link to the #services section of about.html --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"about.html#services"</span><span class="tag">&gt;</span><span class="text">See Our Services</span><span class="tag">&lt;/a&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 4.1: Build a Multi-Page Website</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create a simple 3-page personal website with navigation:</p>
+                <ol>
+                    <li>Create a folder called <code class="inline-code">my-website</code></li>
+                    <li>Create <code class="inline-code">index.html</code> (Homepage) with:
+                        <ul>
+                            <li>Your name as <code class="inline-code">&lt;h1&gt;</code></li>
+                            <li>A welcome paragraph</li>
+                            <li>Navigation links to all three pages</li>
+                        </ul>
+                    </li>
+                    <li>Create <code class="inline-code">about.html</code> with:
+                        <ul>
+                            <li>"About Me" as <code class="inline-code">&lt;h1&gt;</code></li>
+                            <li>2-3 paragraphs about yourself</li>
+                            <li>Navigation links to all three pages</li>
+                        </ul>
+                    </li>
+                    <li>Create <code class="inline-code">contact.html</code> with:
+                        <ul>
+                            <li>"Contact" as <code class="inline-code">&lt;h1&gt;</code></li>
+                            <li>Your email as a clickable <code class="inline-code">mailto:</code> link</li>
+                            <li>A link to Ethioweb.net that opens in a new tab (with security attributes)</li>
+                            <li>Navigation links to all three pages</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h3>Email Links</h3>
+            <div class="code-block">
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"mailto:yourname@example.com"</span><span class="tag">&gt;</span><span class="text">Send me an email</span><span class="tag">&lt;/a&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 4 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Excellent! Navigation mastered!');">
+                    <div class="quiz-question">1. Which attribute specifies the link destination?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> src</label>
+                        <label><input type="radio" name="q1"> href</label>
+                        <label><input type="radio" name="q1"> link</label>
+                    </div>
+
+                    <div class="quiz-question">2. How do you open a link in a new tab?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> target="new"</label>
+                        <label><input type="radio" name="q2"> target="_blank"</label>
+                        <label><input type="radio" name="q2"> new="true"</label>
+                    </div>
+
+                    <div class="quiz-question">3. What does ../ mean in a relative path?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> Go to a subfolder</label>
+                        <label><input type="radio" name="q3"> Go up one folder level</label>
+                        <label><input type="radio" name="q3"> Go to the root</label>
+                    </div>
+
+                    <div class="quiz-question">4. How do you link to a section with id="contact" on the same page?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> href="contact"</label>
+                        <label><input type="radio" name="q4"> href="#contact"</label>
+                        <label><input type="radio" name="q4"> id="contact"</label>
+                    </div>
+
+                    <div class="quiz-question">5. Which rel attribute should you use with target="_blank"?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> rel="external"</label>
+                        <label><input type="radio" name="q5"> rel="noopener noreferrer"</label>
+                        <label><input type="radio" name="q5"> rel="nofollow"</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ Use <code class="inline-code">&lt;a href="..."&gt;</code> to create links</li>
+                <li>✅ Use absolute URLs for external sites, relative URLs for internal pages</li>
+                <li>✅ <code class="inline-code">target="_blank"</code> opens in new tab (always add <code class="inline-code">rel="noopener noreferrer"</code>)</li>
+                <li>✅ Use <code class="inline-code">#id</code> for internal page navigation</li>
+                <li>✅ <code class="inline-code">mailto:</code> creates email links</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module03.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module05.html" class="btn btn-success">Next: Module 5 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

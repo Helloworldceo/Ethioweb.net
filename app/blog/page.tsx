@@ -57,6 +57,26 @@ export default async function BlogPage() {
           </article>
         ))}
       </section>
+
+      <section className="container-wrap pb-16">
+        <div className="card p-6">
+          <h2 className="heading-display text-2xl font-bold">What we publish</h2>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <article className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-4">
+              <p className="text-sm font-semibold">Profile Conversion</p>
+              <p className="mt-1 text-xs text-[var(--muted)]">How to turn profile views into project inquiries.</p>
+            </article>
+            <article className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-4">
+              <p className="text-sm font-semibold">Authority Building</p>
+              <p className="mt-1 text-xs text-[var(--muted)]">Trust signals, proof assets, and credibility frameworks.</p>
+            </article>
+            <article className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-4">
+              <p className="text-sm font-semibold">Digital Growth Playbooks</p>
+              <p className="mt-1 text-xs text-[var(--muted)]">Practical publishing and outreach systems for professionals.</p>
+            </article>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

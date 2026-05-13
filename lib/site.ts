@@ -40,6 +40,9 @@ export const navItems = [
   { labelEn: "Services", labelAm: "አገልግሎቶች", href: "/services" },
   { labelEn: "Projects", labelAm: "ፕሮጀክቶች", href: "/projects" },
   { labelEn: "Blog", labelAm: "ብሎግ", href: "/blog" },
+  { labelEn: "Education", labelAm: "ትምህርት", href: "/education" },
+  { labelEn: "Jobs", labelAm: "ስራዎች", href: "/jobs" },
+  { labelEn: "Teams", labelAm: "ቡድኖች", href: "/teams" },
   { labelEn: "Discover", labelAm: "ፈልግ", href: "/discover" },
   { labelEn: "Contact", labelAm: "ያግኙን", href: "/contact" },
 ];

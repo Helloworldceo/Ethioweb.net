@@ -7,6 +7,20 @@ type AuthLikeUser = {
   };
 };
 
+type ProfileUpsertPayload = {
+  id: string;
+  full_name: string;
+  username: string;
+  visibility: "public";
+  updated_at: string;
+};
+
+type SupabaseProfileWriter = {
+  from: (table: "profiles") => {
+    upsert: (payload: ProfileUpsertPayload) => unknown;
+  };
+};
+
 function formatUsername(input: string) {
   return input
     .toLowerCase()
@@ -15,7 +29,7 @@ function formatUsername(input: string) {
 }
 
 export async function ensureUserProfile(
-  supabase: any,
+  supabase: SupabaseProfileWriter,
   user: AuthLikeUser,
 ) {
   const fullName =
@@ -25,11 +39,15 @@ export async function ensureUserProfile(
   const usernameBase = user.user_metadata?.username || fullName.replace(/\s+/g, "");
   const username = formatUsername(usernameBase) || `user${user.id.slice(0, 6)}`;
 
-  return supabase.from("profiles").upsert({
+  const result = await supabase.from("profiles").upsert({
     id: user.id,
     full_name: fullName,
     username,
     visibility: "public",
     updated_at: new Date().toISOString(),
   });
+
+  return {
+    error: (result as { error?: { message: string } | null }).error ?? null,
+  };
 }

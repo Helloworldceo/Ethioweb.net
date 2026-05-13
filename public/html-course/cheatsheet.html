@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete HTML Reference Cheat Sheet - Ethioweb.net">
+    <title>HTML Cheat Sheet — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cheatsheet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .cheatsheet-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        .cheatsheet-card h3 {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1rem;
+            margin: 0;
+            font-size: 1rem;
+        }
+        .cheatsheet-card table {
+            margin: 0;
+            box-shadow: none;
+            font-size: 0.85rem;
+        }
+        .cheatsheet-card th {
+            background: #f1f5f9;
+            color: var(--text);
+            font-weight: 600;
+        }
+        .cheatsheet-card td {
+            padding: 0.5rem 0.75rem;
+        }
+        .tag-name {
+            color: #be123c;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .attr-name {
+            color: #0369a1;
+            font-family: monospace;
+        }
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .highlight {
+            background: #fef08a;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>📋 HTML Cheat Sheet</h1>
+        <p class="subtitle">Quick Reference for Every Tag, Attribute, and Entity</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="card">
+            <h2>🔍 Search the Cheat Sheet</h2>
+            <input type="search" class="search-box" id="searchInput" placeholder="Type to search tags, attributes, or entities...">
+            <p style="color: var(--text-light); font-size: 0.9rem;">Tip: Use Ctrl+F (Cmd+F on Mac) to search this entire page</p>
+        </div>
+
+        <div class="cheatsheet-grid">
+            <!-- Document Structure -->
+            <div class="cheatsheet-card">
+                <h3>📄 Document Structure</h3>
+                <table>
+                    <thead><tr><th>Tag</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;!DOCTYPE html&gt;</td><td>Declares HTML5 document</td></tr>
+                        <tr><td class="tag-name">&lt;html&gt;</td><td>Root element of the page</td></tr>
+                        <tr><td class="tag-name">&lt;head&gt;</td><td>Metadata container (not visible)</td></tr>
+                        <tr><td class="tag-name">&lt;body&gt;</td><td>Visible content container</td></tr>
+                        <tr><td class="tag-name">&lt;title&gt;</td><td>Browser tab title</td></tr>
+                        <tr><td class="tag-name">&lt;meta&gt;</td><td>Metadata (charset, viewport, etc.)</td></tr>
+                        <tr><td class="tag-name">&lt;link&gt;</td><td>Links external resources (CSS, favicon)</td></tr>
+                        <tr><td class="tag-name">&lt;script&gt;</td><td>Embeds JavaScript</td></tr>
+                        <tr><td class="tag-name">&lt;style&gt;</td><td>Internal CSS</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Text Formatting -->
+            <div class="cheatsheet-card">
+                <h3>📝 Text Formatting</h3>
+                <table>
+                    <thead><tr><th>Tag</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;h1&gt; to &lt;h6&gt;</td><td>Headings (h1 = most important)</td></tr>
+                        <tr><td class="tag-name">&lt;p&gt;</td><td>Paragraph</td></tr>
+                        <tr><td class="tag-name">&lt;br&gt;</td><td>Line break (within same paragraph)</td></tr>
+                        <tr><td class="tag-name">&lt;hr&gt;</td><td>Thematic break / horizontal line</td></tr>
+                        <tr><td class="tag-name">&lt;strong&gt;</td><td>Strong importance (bold)</td></tr>
+                        <tr><td class="tag-name">&lt;em&gt;</td><td>Emphasis (italic)</td></tr>
+                        <tr><td class="tag-name">&lt;mark&gt;</td><td>Highlighted/marked text</td></tr>
+                        <tr><td class="tag-name">&lt;small&gt;</td><td>Fine print / legal text</td></tr>
+                        <tr><td class="tag-name">&lt;del&gt;</td><td>Deleted text (strikethrough)</td></tr>
+                        <tr><td class="tag-name">&lt;ins&gt;</td><td>Inserted text (underline)</td></tr>
+                        <tr><td class="tag-name">&lt;sub&gt;</td><td>Subscript</td></tr>
+                        <tr><td class="tag-name">&lt;sup&gt;</td><td>Superscript</td></tr>
+                        <tr><td class="tag-name">&lt;blockquote&gt;</td><td>Long quotation</td></tr>
+                        <tr><td class="tag-name">&lt;q&gt;</td><td>Short inline quotation</td></tr>
+                        <tr><td class="tag-name">&lt;cite&gt;</td><td>Citation / title of work</td></tr>
+                        <tr><td class="tag-name">&lt;abbr&gt;</td><td>Abbreviation (use title attr)</td></tr>
+                        <tr><td class="tag-name">&lt;code&gt;</td><td>Inline code</td></tr>
+                        <tr><td class="tag-name">&lt;pre&gt;</td><td>Preformatted text (preserves spaces)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Links -->
+            <div class="cheatsheet-card">
+                <h3>🔗 Links & Navigation</h3>
+                <table>
+                    <thead><tr><th>Tag / Attribute</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;a&gt;</td><td>Anchor / hyperlink</td></tr>
+                        <tr><td class="attr-name">href</td><td>Link destination URL</td></tr>
+                        <tr><td class="attr-name">target="_blank"</td><td>Open in new tab</td></tr>
+                        <tr><td class="attr-name">rel="noopener noreferrer"</td><td>Security for external links</td></tr>
+                        <tr><td class="attr-name">download</td><td>Prompt file download</td></tr>
+                        <tr><td class="attr-name">title</td><td>Tooltip text</td></tr>
+                        <tr><td class="tag-name">&lt;nav&gt;</td><td>Navigation block</td></tr>
+                    </tbody>
+                </table>
+                <div style="padding: 0.75rem; background: #f8fafc; font-size: 0.8rem;">
+                    <strong>URL Types:</strong><br>
+                    Absolute: <code>https://site.com/page</code><br>
+                    Relative: <code>page.html</code> or <code>folder/page.html</code><br>
+                    Parent: <code>../page.html</code><br>
+                    Root: <code>/page.html</code><br>
+                    Anchor: <code>#section-id</code><br>
+                    Email: <code>mailto:email@site.com</code>
+                </div>
+            </div>
+
+            <!-- Images & Media -->
+            <div class="cheatsheet-card">
+                <h3>🖼️ Images & Media</h3>
+                <table>
+                    <thead><tr><th>Tag / Attribute</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;img&gt;</td><td>Image (self-closing)</td></tr>
+                        <tr><td class="attr-name">src</td><td>Image source path/URL</td></tr>
+                        <tr><td class="attr-name">alt</td><td>Alternative text (required for accessibility)</td></tr>
+                        <tr><td class="attr-name">width / height</td><td>Dimensions in pixels</td></tr>
+                        <tr><td class="attr-name">loading="lazy"</td><td>Defer loading until visible</td></tr>
+                        <tr><td class="tag-name">&lt;figure&gt;</td><td>Self-contained content</td></tr>
+                        <tr><td class="tag-name">&lt;figcaption&gt;</td><td>Caption for figure</td></tr>
+                        <tr><td class="tag-name">&lt;video&gt;</td><td>Video player</td></tr>
+                        <tr><td class="attr-name">controls</td><td>Show play/pause buttons</td></tr>
+                        <tr><td class="attr-name">autoplay</td><td>Auto-play (often blocked)</td></tr>
+                        <tr><td class="attr-name">loop</td><td>Repeat video</td></tr>
+                        <tr><td class="attr-name">muted</td><td>Start muted</td></tr>
+                        <tr><td class="attr-name">poster</td><td>Thumbnail image</td></tr>
+                        <tr><td class="tag-name">&lt;audio&gt;</td><td>Audio player</td></tr>
+                        <tr><td class="tag-name">&lt;source&gt;</td><td>Media source (inside video/audio)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Lists -->
+            <div class="cheatsheet-card">
+                <h3>📋 Lists</h3>
+                <table>
+                    <thead><tr><th>Tag / Attribute</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;ul&gt;</td><td>Unordered list (bullets)</td></tr>
+                        <tr><td class="tag-name">&lt;ol&gt;</td><td>Ordered list (numbers)</td></tr>
+                        <tr><td class="attr-name">start="n"</td><td>Start numbering from n</td></tr>
+                        <tr><td class="attr-name">reversed</td><td>Reverse numbering</td></tr>
+                        <tr><td class="attr-name">type="A/a/I/i/1"</td><td>Numbering style</td></tr>
+                        <tr><td class="tag-name">&lt;li&gt;</td><td>List item</td></tr>
+                        <tr><td class="tag-name">&lt;dl&gt;</td><td>Definition list</td></tr>
+                        <tr><td class="tag-name">&lt;dt&gt;</td><td>Definition term</td></tr>
+                        <tr><td class="tag-name">&lt;dd&gt;</td><td>Definition description</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tables -->
+            <div class="cheatsheet-card">
+                <h3>📊 Tables</h3>
+                <table>
+                    <thead><tr><th>Tag / Attribute</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;table&gt;</td><td>Table container</td></tr>
+                        <tr><td class="tag-name">&lt;caption&gt;</td><td>Table title</td></tr>
+                        <tr><td class="tag-name">&lt;thead&gt;</td><td>Header rows group</td></tr>
+                        <tr><td class="tag-name">&lt;tbody&gt;</td><td>Body rows group</td></tr>
+                        <tr><td class="tag-name">&lt;tfoot&gt;</td><td>Footer rows group</td></tr>
+                        <tr><td class="tag-name">&lt;tr&gt;</td><td>Table row</td></tr>
+                        <tr><td class="tag-name">&lt;th&gt;</td><td>Header cell</td></tr>
+                        <tr><td class="attr-name">scope="col/row"</td><td>Header direction (accessibility)</td></tr>
+                        <tr><td class="tag-name">&lt;td&gt;</td><td>Data cell</td></tr>
+                        <tr><td class="attr-name">colspan="n"</td><td>Span across n columns</td></tr>
+                        <tr><td class="attr-name">rowspan="n"</td><td>Span across n rows</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Forms -->
+            <div class="cheatsheet-card">
+                <h3>📝 Forms & Input</h3>
+                <table>
+                    <thead><tr><th>Tag / Attribute</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;form&gt;</td><td>Form container</td></tr>
+                        <tr><td class="attr-name">action</td><td>URL to send data</td></tr>
+                        <tr><td class="attr-name">method="GET/POST"</td><td>HTTP method</td></tr>
+                        <tr><td class="tag-name">&lt;input&gt;</td><td>Input field (self-closing)</td></tr>
+                        <tr><td class="attr-name">type="text"</td><td>Single-line text</td></tr>
+                        <tr><td class="attr-name">type="email"</td><td>Email with validation</td></tr>
+                        <tr><td class="attr-name">type="password"</td><td>Hidden characters</td></tr>
+                        <tr><td class="attr-name">type="tel"</td><td>Telephone number</td></tr>
+                        <tr><td class="attr-name">type="number"</td><td>Numeric input</td></tr>
+                        <tr><td class="attr-name">type="date"</td><td>Date picker</td></tr>
+                        <tr><td class="attr-name">type="time"</td><td>Time picker</td></tr>
+                        <tr><td class="attr-name">type="checkbox"</td><td>Multiple selections</td></tr>
+                        <tr><td class="attr-name">type="radio"</td><td>Single selection (grouped by name)</td></tr>
+                        <tr><td class="attr-name">type="file"</td><td>File upload</td></tr>
+                        <tr><td class="attr-name">type="hidden"</td><td>Invisible data field</td></tr>
+                        <tr><td class="attr-name">type="submit"</td><td>Submit button</td></tr>
+                        <tr><td class="attr-name">type="reset"</td><td>Reset button</td></tr>
+                        <tr><td class="tag-name">&lt;label&gt;</td><td>Label for input (use for + id)</td></tr>
+                        <tr><td class="tag-name">&lt;textarea&gt;</td><td>Multi-line text input</td></tr>
+                        <tr><td class="tag-name">&lt;select&gt;</td><td>Dropdown menu</td></tr>
+                        <tr><td class="tag-name">&lt;option&gt;</td><td>Option in select</td></tr>
+                        <tr><td class="tag-name">&lt;fieldset&gt;</td><td>Group related fields</td></tr>
+                        <tr><td class="tag-name">&lt;legend&gt;</td><td>Caption for fieldset</td></tr>
+                        <tr><td class="tag-name">&lt;button&gt;</td><td>Clickable button</td></tr>
+                    </tbody>
+                </table>
+                <div style="padding: 0.75rem; background: #f8fafc; font-size: 0.8rem;">
+                    <strong>Validation Attributes:</strong><br>
+                    <code>required</code> — Must be filled<br>
+                    <code>minlength="n"</code> — Minimum characters<br>
+                    <code>maxlength="n"</code> — Maximum characters<br>
+                    <code>min="n"</code> / <code>max="n"</code> — Number range<br>
+                    <code>pattern="regex"</code> — Regex pattern<br>
+                    <code>placeholder="text"</code> — Hint text<br>
+                    <code>disabled</code> — Non-editable<br>
+                    <code>readonly</code> — Read-only
+                </div>
+            </div>
+
+            <!-- Semantic HTML5 -->
+            <div class="cheatsheet-card">
+                <h3>🏗️ Semantic HTML5</h3>
+                <table>
+                    <thead><tr><th>Tag</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;header&gt;</td><td>Introductory content / site header</td></tr>
+                        <tr><td class="tag-name">&lt;nav&gt;</td><td>Major navigation links</td></tr>
+                        <tr><td class="tag-name">&lt;main&gt;</td><td>Main content (one per page)</td></tr>
+                        <tr><td class="tag-name">&lt;article&gt;</td><td>Self-contained content (blog post, card)</td></tr>
+                        <tr><td class="tag-name">&lt;section&gt;</td><td>Thematic grouping (with heading)</td></tr>
+                        <tr><td class="tag-name">&lt;aside&gt;</td><td>Tangential content (sidebar)</td></tr>
+                        <tr><td class="tag-name">&lt;footer&gt;</td><td>Footer for section or page</td></tr>
+                        <tr><td class="tag-name">&lt;address&gt;</td><td>Contact information</td></tr>
+                        <tr><td class="tag-name">&lt;time&gt;</td><td>Date/time (use datetime attr)</td></tr>
+                        <tr><td class="tag-name">&lt;details&gt;</td><td>Disclosure widget (expandable)</td></tr>
+                        <tr><td class="tag-name">&lt;summary&gt;</td><td>Summary for details</td></tr>
+                        <tr><td class="tag-name">&lt;mark&gt;</td><td>Highlighted text</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Meta Tags -->
+            <div class="cheatsheet-card">
+                <h3>🔍 Meta Tags & SEO</h3>
+                <table>
+                    <thead><tr><th>Tag / Attribute</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tag-name">&lt;meta charset="UTF-8"&gt;</td><td>Character encoding</td></tr>
+                        <tr><td class="tag-name">&lt;meta name="viewport"&gt;</td><td>Mobile responsiveness</td></tr>
+                        <tr><td class="tag-name">&lt;meta name="description"&gt;</td><td>Search result description</td></tr>
+                        <tr><td class="tag-name">&lt;meta name="keywords"&gt;</td><td>Keywords (less important now)</td></tr>
+                        <tr><td class="tag-name">&lt;meta name="author"&gt;</td><td>Page author</td></tr>
+                        <tr><td class="tag-name">&lt;meta name="robots"&gt;</td><td>Search engine instructions</td></tr>
+                        <tr><td class="tag-name">&lt;link rel="canonical"&gt;</td><td>Preferred URL (prevents duplicates)</td></tr>
+                        <tr><td class="tag-name">&lt;link rel="icon"&gt;</td><td>Favicon</td></tr>
+                    </tbody>
+                </table>
+                <div style="padding: 0.75rem; background: #f8fafc; font-size: 0.8rem;">
+                    <strong>Open Graph (Facebook/LinkedIn):</strong><br>
+                    <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:url</code>, <code>og:type</code><br><br>
+                    <strong>Twitter Cards:</strong><br>
+                    <code>twitter:card</code>, <code>twitter:title</code>, <code>twitter:description</code>, <code>twitter:image</code>
+                </div>
+            </div>
+
+            <!-- HTML Entities -->
+            <div class="cheatsheet-card">
+                <h3>© HTML Entities</h3>
+                <table>
+                    <thead><tr><th>Character</th><th>Entity</th><th>Description</th></tr></thead>
+                    <tbody>
+                        <tr><td>&lt;</td><td class="tag-name">&amp;lt;</td><td>Less than</td></tr>
+                        <tr><td>&gt;</td><td class="tag-name">&amp;gt;</td><td>Greater than</td></tr>
+                        <tr><td>&amp;</td><td class="tag-name">&amp;amp;</td><td>Ampersand</td></tr>
+                        <tr><td>"</td><td class="tag-name">&amp;quot;</td><td>Double quote</td></tr>
+                        <tr><td>'</td><td class="tag-name">&amp;apos;</td><td>Single quote</td></tr>
+                        <tr><td> </td><td class="tag-name">&amp;nbsp;</td><td>Non-breaking space</td></tr>
+                        <tr><td>©</td><td class="tag-name">&amp;copy;</td><td>Copyright</td></tr>
+                        <tr><td>®</td><td class="tag-name">&amp;reg;</td><td>Registered</td></tr>
+                        <tr><td>™</td><td class="tag-name">&amp;trade;</td><td>Trademark</td></tr>
+                        <tr><td>€</td><td class="tag-name">&amp;euro;</td><td>Euro</td></tr>
+                        <tr><td>£</td><td class="tag-name">&amp;pound;</td><td>Pound</td></tr>
+                        <tr><td>×</td><td class="tag-name">&amp;times;</td><td>Multiply</td></tr>
+                        <tr><td>÷</td><td class="tag-name">&amp;divide;</td><td>Divide</td></tr>
+                        <tr><td>—</td><td class="tag-name">&amp;mdash;</td><td>Em dash</td></tr>
+                        <tr><td>–</td><td class="tag-name">&amp;ndash;</td><td>En dash</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Global Attributes -->
+            <div class="cheatsheet-card">
+                <h3>🌍 Global Attributes</h3>
+                <table>
+                    <thead><tr><th>Attribute</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td class="attr-name">class</td><td>CSS class name(s)</td></tr>
+                        <tr><td class="attr-name">id</td><td>Unique identifier (one per page)</td></tr>
+                        <tr><td class="attr-name">style</td><td>Inline CSS (avoid when possible)</td></tr>
+                        <tr><td class="attr-name">title</td><td>Tooltip text</td></tr>
+                        <tr><td class="attr-name">lang</td><td>Language code (e.g., "en", "am")</td></tr>
+                        <tr><td class="attr-name">dir</td><td>Text direction (ltr/rtl/auto)</td></tr>
+                        <tr><td class="attr-name">hidden</td><td>Hide element from display</td></tr>
+                        <tr><td class="attr-name">data-*</td><td>Custom data attributes</td></tr>
+                        <tr><td class="attr-name">tabindex</td><td>Tab navigation order</td></tr>
+                        <tr><td class="attr-name">contenteditable</td><td>Make element editable</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Quick Template -->
+            <div class="cheatsheet-card" style="grid-column: 1 / -1;">
+                <h3>⚡ Quick Start Template</h3>
+                <div class="code-block" style="margin: 0;">
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="value">"en"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"viewport"</span> <span class="attr">content</span>=<span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"description"</span> <span class="attr">content</span>=<span class="value">"Page description for SEO"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span><span class="text">Page Title | Site Name</span><span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"stylesheet"</span> <span class="attr">href</span>=<span class="value">"style.css"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"icon"</span> <span class="attr">href</span>=<span class="value">"favicon.ico"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;header&gt;</span>
+        <span class="tag">&lt;nav&gt;</span><span class="text">...</span><span class="tag">&lt;/nav&gt;</span>
+    <span class="tag">&lt;/header&gt;</span>
+    <span class="tag">&lt;main&gt;</span>
+        <span class="tag">&lt;h1&gt;</span><span class="text">Main Title</span><span class="tag">&lt;/h1&gt;</span>
+        <span class="tag">&lt;section&gt;</span><span class="text">...</span><span class="tag">&lt;/section&gt;</span>
+    <span class="tag">&lt;/main&gt;</span>
+    <span class="tag">&lt;footer&gt;</span><span class="text">...</span><span class="tag">&lt;/footer&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📖 Keyboard Shortcuts</h2>
+            <table>
+                <thead>
+                    <tr><th>Action</th><th>Windows/Linux</th><th>Mac</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Save file</td><td>Ctrl + S</td><td>Cmd + S</td></tr>
+                    <tr><td>Find in page</td><td>Ctrl + F</td><td>Cmd + F</td></tr>
+                    <tr><td>Undo</td><td>Ctrl + Z</td><td>Cmd + Z</td></tr>
+                    <tr><td>Redo</td><td>Ctrl + Y / Ctrl + Shift + Z</td><td>Cmd + Shift + Z</td></tr>
+                    <tr><td>Comment/uncomment line</td><td>Ctrl + /</td><td>Cmd + /</td></tr>
+                    <tr><td>Duplicate line</td><td>Shift + Alt + ↓</td><td>Shift + Option + ↓</td></tr>
+                    <tr><td>Move line up/down</td><td>Alt + ↑/↓</td><td>Option + ↑/↓</td></tr>
+                    <tr><td>Format document</td><td>Shift + Alt + F</td><td>Shift + Option + F</td></tr>
+                    <tr><td>Open DevTools</td><td>F12 / Ctrl + Shift + I</td><td>Cmd + Option + I</td></tr>
+                    <tr><td>Inspect element</td><td>Ctrl + Shift + C</td><td>Cmd + Shift + C</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Useful Resources</h2>
+            <ul>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Web Docs — HTML</a> — The most comprehensive HTML reference</li>
+                <li><a href="https://validator.w3.org/" target="_blank">W3C Markup Validation Service</a> — Validate your HTML</li>
+                <li><a href="https://caniuse.com/" target="_blank">Can I Use</a> — Check browser support for HTML features</li>
+                <li><a href="https://html.spec.whatwg.org/" target="_blank">HTML Living Standard</a> — The official HTML specification</li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank">WCAG 2.1 Quick Reference</a> — Web accessibility guidelines</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+
+    <script>
+        // Simple search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('.cheatsheet-card tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (term === '' || text.includes(term)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

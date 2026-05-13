@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 3: Text & Headings - Ethioweb.net HTML Course">
+    <title>Module 3: Text & Headings — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 3: Text & Headings</h1>
+        <p class="subtitle">Structuring Content with Headings, Paragraphs, and Formatting</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html" class="active">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 25%">Module 3 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 Understanding Headings</h2>
+            <p>HTML provides six levels of headings, from <code class="inline-code">&lt;h1&gt;</code> (most important) to <code class="inline-code">&lt;h6&gt;</code> (least important). Headings create a document outline, similar to how a book has chapters, sections, and subsections.</p>
+
+            <h3>Heading Hierarchy Example</h3>
+            <div class="code-block">
+<span class="tag">&lt;h1&gt;</span><span class="text">Main Page Title (Only one per page!)</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;h2&gt;</span><span class="text">Major Section</span><span class="tag">&lt;/h2&gt;</span>
+        <span class="tag">&lt;h3&gt;</span><span class="text">Subsection</span><span class="tag">&lt;/h3&gt;</span>
+            <span class="tag">&lt;h4&gt;</span><span class="text">Sub-subsection</span><span class="tag">&lt;/h4&gt;</span>
+                <span class="tag">&lt;h5&gt;</span><span class="text">Minor point</span><span class="tag">&lt;/h5&gt;</span>
+                    <span class="tag">&lt;h6&gt;</span><span class="text">Fine detail</span><span class="tag">&lt;/h6&gt;</span>
+            </div>
+
+            <h3>Visual Result</h3>
+            <div style="background: white; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--border);">
+                <h1 style="margin: 0.5rem 0; font-size: 2rem;">Heading 1</h1>
+                <h2 style="margin: 0.5rem 0; font-size: 1.75rem;">Heading 2</h2>
+                <h3 style="margin: 0.5rem 0; font-size: 1.5rem;">Heading 3</h3>
+                <h4 style="margin: 0.5rem 0; font-size: 1.25rem;">Heading 4</h4>
+                <h5 style="margin: 0.5rem 0; font-size: 1.1rem;">Heading 5</h5>
+                <h6 style="margin: 0.5rem 0; font-size: 1rem;">Heading 6</h6>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ SEO & Accessibility Rule:</strong> Never skip heading levels (e.g., jumping from <code class="inline-code">&lt;h2&gt;</code> to <code class="inline-code">&lt;h4&gt;</code>). Screen readers and search engines rely on proper heading hierarchy to understand your content structure.
+            </div>
+
+            <div class="tip">
+                <strong>💡 Best Practice:</strong> Use only <strong>one</strong> <code class="inline-code">&lt;h1&gt;</code> per page. It should describe the main topic of the entire page, like a book title.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Paragraphs and Line Breaks</h2>
+            <p>The <code class="inline-code">&lt;p&gt;</code> tag defines a paragraph. Browsers automatically add space before and after paragraphs.</p>
+
+            <h3>Basic Paragraphs</h3>
+            <div class="code-block">
+<span class="tag">&lt;p&gt;</span><span class="text">This is the first paragraph. It can contain multiple sentences and will wrap automatically when the line is too long for the browser window.</span><span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p&gt;</span><span class="text">This is the second paragraph. Notice how browsers add space between paragraphs automatically.</span><span class="tag">&lt;/p&gt;</span>
+            </div>
+
+            <h3>Line Breaks vs. Paragraphs</h3>
+            <p>Use <code class="inline-code">&lt;br&gt;</code> for line breaks <strong>within</strong> the same paragraph (like in an address or poem). Do not use <code class="inline-code">&lt;br&gt;</code> to create space between paragraphs — that's what <code class="inline-code">&lt;p&gt;</code> is for.</p>
+
+            <div class="code-block">
+<span class="tag">&lt;p&gt;</span>
+    <span class="text">Ethioweb.net</span><span class="tag">&lt;br&gt;</span>
+    <span class="text">Addis Ababa, Ethiopia</span><span class="tag">&lt;br&gt;</span>
+    <span class="text">P.O. Box 1234</span>
+<span class="tag">&lt;/p&gt;</span>
+            </div>
+
+            <h3>Horizontal Rules</h3>
+            <p>The <code class="inline-code">&lt;hr&gt;</code> tag creates a horizontal line to separate thematic breaks in content:</p>
+            <div class="code-block">
+<span class="tag">&lt;p&gt;</span><span class="text">Chapter 1: The Beginning</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;hr&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">Chapter 2: The Journey</span><span class="tag">&lt;/p&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Semantic Note:</strong> In HTML5, <code class="inline-code">&lt;hr&gt;</code> represents a <strong>thematic break</strong> (a change of topic), not just a visual line. Screen readers announce it as a separator.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>💪 Text Emphasis and Formatting</h2>
+            <p>HTML provides semantic tags for text emphasis. These tell browsers and screen readers <strong>why</strong> text is special, not just <strong>how</strong> it should look.</p>
+
+            <h3>Strong vs. Bold</h3>
+            <table>
+                <thead>
+                    <tr><th>Tag</th><th>Meaning</th><th>Use When</th><th>Default Look</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code class="inline-code">&lt;strong&gt;</code></td>
+                        <td>Strong importance</td>
+                        <td>Text is critically important (e.g., warnings, key points)</td>
+                        <td>Bold</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;b&gt;</code></td>
+                        <td>Bring attention</td>
+                        <td>Text should stand out visually (no special meaning)</td>
+                        <td>Bold</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Emphasis vs. Italic</h3>
+            <table>
+                <thead>
+                    <tr><th>Tag</th><th>Meaning</th><th>Use When</th><th>Default Look</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code class="inline-code">&lt;em&gt;</code></td>
+                        <td>Emphasis</td>
+                        <td>Text should be stressed when read aloud</td>
+                        <td>Italic</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;i&gt;</code></td>
+                        <td>Alternative voice</td>
+                        <td>Technical terms, foreign words, thoughts, ship names</td>
+                        <td>Italic</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Other Useful Text Tags</h3>
+            <div class="code-block">
+<span class="tag">&lt;p&gt;</span>
+    <span class="tag">&lt;mark&gt;</span><span class="text">Highlighted text</span><span class="tag">&lt;/mark&gt;</span><span class="text"> for search results or key terms.</span><span class="tag">&lt;br&gt;</span>
+    <span class="tag">&lt;small&gt;</span><span class="text">Fine print, copyright, legal text</span><span class="tag">&lt;/small&gt;</span><span class="tag">&lt;br&gt;</span>
+    <span class="tag">&lt;del&gt;</span><span class="text">Deleted text</span><span class="tag">&lt;/del&gt;</span><span class="text"> and </span><span class="tag">&lt;ins&gt;</span><span class="text">inserted text</span><span class="tag">&lt;/ins&gt;</span><span class="tag">&lt;br&gt;</span>
+    <span class="tag">&lt;sub&gt;</span><span class="text">Subscript</span><span class="tag">&lt;/sub&gt;</span><span class="text"> like H</span><span class="tag">&lt;sub&gt;</span><span class="text">2</span><span class="tag">&lt;/sub&gt;</span><span class="text">O</span><span class="tag">&lt;br&gt;</span>
+    <span class="tag">&lt;sup&gt;</span><span class="text">Superscript</span><span class="tag">&lt;/sup&gt;</span><span class="text"> like E=mc</span><span class="tag">&lt;sup&gt;</span><span class="text">2</span><span class="tag">&lt;/sup&gt;</span>
+<span class="tag">&lt;/p&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Golden Rule:</strong> Prefer semantic tags (<code class="inline-code">&lt;strong&gt;</code>, <code class="inline-code">&lt;em&gt;</code>) over presentational tags (<code class="inline-code">&lt;b&gt;</code>, <code class="inline-code">&lt;i&gt;</code>). They provide meaning for screen readers and search engines.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 3.1: Format a Blog Article</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create <code class="inline-code">article.html</code> and format the following content properly using HTML:</p>
+                <ol>
+                    <li>Title: "The History of the Internet" (use proper heading level)</li>
+                    <li>Introduction paragraph about how the internet began</li>
+                    <li>Section: "Key Milestones" with subsections for:
+                        <ul>
+                            <li>1969: ARPANET (make the year <code class="inline-code">&lt;strong&gt;</code>)</li>
+                            <li>1989: World Wide Web (make the year <code class="inline-code">&lt;strong&gt;</code>)</li>
+                            <li>1993: First Web Browser (make the year <code class="inline-code">&lt;strong&gt;</code>)</li>
+                        </ul>
+                    </li>
+                    <li>A horizontal rule separating sections</li>
+                    <li>Section: "The Future" with a paragraph containing <code class="inline-code">&lt;em&gt;</code> for emphasis</li>
+                    <li>A <code class="inline-code">&lt;small&gt;</code> footer with copyright text</li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 3 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Great work! Keep practicing!');">
+                    <div class="quiz-question">1. How many &lt;h1&gt; tags should a page have?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> As many as needed</label>
+                        <label><input type="radio" name="q1"> Exactly one</label>
+                        <label><input type="radio" name="q1"> None</label>
+                    </div>
+
+                    <div class="quiz-question">2. Which tag indicates strong importance?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> &lt;b&gt;</label>
+                        <label><input type="radio" name="q2"> &lt;strong&gt;</label>
+                        <label><input type="radio" name="q2"> &lt;i&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">3. What does &lt;hr&gt; represent semantically?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> A decorative line</label>
+                        <label><input type="radio" name="q3"> A thematic break or topic change</label>
+                        <label><input type="radio" name="q3"> A horizontal space</label>
+                    </div>
+
+                    <div class="quiz-question">4. When should you use &lt;br&gt;?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> Between paragraphs</label>
+                        <label><input type="radio" name="q4"> Within a paragraph for line breaks</label>
+                        <label><input type="radio" name="q4"> To create horizontal lines</label>
+                    </div>
+
+                    <div class="quiz-question">5. Which tag is best for marking search keywords?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> &lt;strong&gt;</label>
+                        <label><input type="radio" name="q5"> &lt;mark&gt;</label>
+                        <label><input type="radio" name="q5"> &lt;em&gt;</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ Use <code class="inline-code">&lt;h1&gt;</code> through <code class="inline-code">&lt;h6&gt;</code> for proper document hierarchy</li>
+                <li>✅ Only one <code class="inline-code">&lt;h1&gt;</code> per page</li>
+                <li>✅ Use <code class="inline-code">&lt;p&gt;</code> for paragraphs, <code class="inline-code">&lt;br&gt;</code> for line breaks within text</li>
+                <li>✅ Prefer <code class="inline-code">&lt;strong&gt;</code> and <code class="inline-code">&lt;em&gt;</code> over <code class="inline-code">&lt;b&gt;</code> and <code class="inline-code">&lt;i&gt;</code></li>
+                <li>✅ <code class="inline-code">&lt;hr&gt;</code> represents a thematic break</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module02.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module04.html" class="btn btn-success">Next: Module 4 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

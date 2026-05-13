@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Mail } from "lucide-react";
 import { demoProfiles } from "@/lib/site";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { ShareActions } from "@/components/profile/share-actions";
 
 type PublicProfilePageProps = {
   params: Promise<{ username: string }>;
@@ -11,6 +12,7 @@ type ProfileDetails = {
   name: string;
   username: string;
   avatarUrl: string;
+  verificationStatus: "none" | "pending" | "verified";
   role: string;
   location: string;
   bio: string;
@@ -29,7 +31,7 @@ async function loadPublicProfile(username: string): Promise<ProfileDetails | nul
   if (supabase) {
     const { data: profile } = await supabase
       .from("profiles")
-      .select("id,username,full_name,avatar_url,role,location,bio")
+      .select("id,username,full_name,avatar_url,role,location,bio,verification_status")
       .eq("username", username)
       .eq("visibility", "public")
       .maybeSingle();
@@ -56,6 +58,7 @@ async function loadPublicProfile(username: string): Promise<ProfileDetails | nul
         name: profile.full_name,
         username: profile.username,
         avatarUrl: profile.avatar_url || "",
+        verificationStatus: (profile.verification_status as "none" | "pending" | "verified") ?? "none",
         role: profile.role || "Professional",
         location: profile.location || "",
         bio: profile.bio || "",
@@ -70,7 +73,13 @@ async function loadPublicProfile(username: string): Promise<ProfileDetails | nul
     }
   }
 
-  return demoProfiles.find((item) => item.username === username) || null;
+  const demo = demoProfiles.find((item) => item.username === username);
+  if (!demo) return null;
+
+  return {
+    ...demo,
+    verificationStatus: "none",
+  };
 }
 
 export async function generateMetadata({ params }: PublicProfilePageProps) {
@@ -81,9 +90,32 @@ export async function generateMetadata({ params }: PublicProfilePageProps) {
     return { title: "Profile not found" };
   }
 
+  const subtitle = profile.bio || `${profile.role}${profile.location ? ` • ${profile.location}` : ""}`;
+  const ogImage = `https://ethioweb.net/api/og?kind=profile&title=${encodeURIComponent(profile.name)}&subtitle=${encodeURIComponent(subtitle)}`;
+
   return {
     title: `${profile.name} (@${profile.username})`,
     description: profile.bio,
+    alternates: {
+      canonical: `/u/${profile.username}`,
+      languages: {
+        en: `/u/${profile.username}`,
+        am: `/u/${profile.username}`,
+      },
+    },
+    openGraph: {
+      title: `${profile.name} (@${profile.username})`,
+      description: subtitle,
+      url: `https://ethioweb.net/u/${profile.username}`,
+      type: "profile",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: profile.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${profile.name} (@${profile.username})`,
+      description: subtitle,
+      images: [ogImage],
+    },
   };
 }
 
@@ -104,6 +136,18 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
     notFound();
   }
 
+  const profileUrl = `https://ethioweb.net/u/${profile.username}`;
+  const personLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    url: profileUrl,
+    jobTitle: profile.role,
+    address: profile.location,
+    description: profile.bio,
+    sameAs: profile.links.map((link) => link.href),
+  };
+
   return (
     <section className="container-wrap py-12">
       <article className="card p-7">
@@ -123,7 +167,16 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
 
           <div>
             <h1 className="heading-display text-4xl font-black">{profile.name}</h1>
-            <p className="mt-1 text-sm font-semibold text-[var(--brand)]">@{profile.username}</p>
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              <p className="text-sm font-semibold text-[var(--brand)]">@{profile.username}</p>
+              <span className="chip text-[10px]">
+                {profile.verificationStatus === "verified"
+                  ? "Verified"
+                  : profile.verificationStatus === "pending"
+                    ? "Verification Pending"
+                    : "Unverified"}
+              </span>
+            </div>
             <p className="mt-3 text-[var(--muted)]">{profile.role} • {profile.location}</p>
             <p className="mt-4 max-w-2xl leading-8 text-[var(--muted)]">{profile.bio}</p>
           </div>
@@ -137,6 +190,8 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         )}
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <ShareActions profileUrl={profileUrl} title={`${profile.name} on Ethioweb`} />
+
           <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4">
             <p className="text-sm font-semibold">Public Downloads</p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -166,6 +221,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
           </div>
         </div>
       </article>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />
     </section>
   );
 }

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 5: Images & Multimedia - Ethioweb.net HTML Course">
+    <title>Module 5: Images & Multimedia — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 5: Images & Multimedia</h1>
+        <p class="subtitle">Adding Images, Videos, and Audio to Your Pages</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html" class="active">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 42%">Module 5 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 The &lt;img&gt; Tag</h2>
+            <p>The <code class="inline-code">&lt;img&gt;</code> tag embeds images into your web page. Unlike most HTML tags, it is a <strong>self-closing</strong> tag (it has no closing tag).</p>
+
+            <h3>Basic Syntax</h3>
+            <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"photo.jpg"</span> <span class="attr">alt</span>=<span class="value">"A beautiful sunset over the mountains"</span><span class="tag">&gt;</span>
+            </div>
+
+            <h3>Essential Attributes</h3>
+            <table>
+                <thead>
+                    <tr><th>Attribute</th><th>Required?</th><th>Purpose</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code class="inline-code">src</code></td>
+                        <td>Yes</td>
+                        <td>The image file path or URL</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">alt</code></td>
+                        <td>Yes (for accessibility)</td>
+                        <td>Text description for screen readers and when image fails to load</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">width</code></td>
+                        <td>No</td>
+                        <td>Image width in pixels</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">height</code></td>
+                        <td>No</td>
+                        <td>Image height in pixels</td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">loading</code></td>
+                        <td>No</td>
+                        <td><code class="inline-code">lazy</code> delays loading until image is near viewport</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning">
+                <strong>⚠️ Accessibility Law:</strong> The <code class="inline-code">alt</code> attribute is not optional for accessible websites. In many countries, missing alt text violates accessibility laws (like ADA in the US). Always describe the image's purpose, not just its appearance.
+            </div>
+
+            <h3>Good vs. Bad Alt Text</h3>
+            <table>
+                <thead>
+                    <tr><th>Image</th><th>Bad Alt Text</th><th>Good Alt Text</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Company logo</td>
+                        <td>"Logo"</td>
+                        <td>"Ethioweb.net - Web Development Solutions"</td>
+                    </tr>
+                    <tr>
+                        <td>Chart showing sales growth</td>
+                        <td>"Graph"</td>
+                        <td>"Bar chart showing 50% sales growth from 2024 to 2025"</td>
+                    </tr>
+                    <tr>
+                        <td>Decorative border</td>
+                        <td>"Blue line"</td>
+                        <td>"" (empty alt for decorative images)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <strong>💡 Lazy Loading:</strong> Add <code class="inline-code">loading="lazy"</code> to images below the fold (not visible when page first loads). This makes your page load faster: <code class="inline-code">&lt;img src="photo.jpg" alt="..." loading="lazy"&gt;</code>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🖼️ Image Formats Explained</h2>
+            <p>Choosing the right image format affects page speed and quality.</p>
+
+            <table>
+                <thead>
+                    <tr><th>Format</th><th>Best For</th><th>Transparency?</th><th>Animation?</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>JPEG / JPG</strong></td>
+                        <td>Photographs, complex images</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PNG</strong></td>
+                        <td>Graphics, logos, screenshots</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SVG</strong></td>
+                        <td>Logos, icons, illustrations</td>
+                        <td>Yes</td>
+                        <td>Yes (via CSS/JS)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WebP</strong></td>
+                        <td>Modern replacement for JPEG/PNG</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GIF</strong></td>
+                        <td>Simple animations (avoid for photos)</td>
+                        <td>Yes (1-bit)</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <strong>💡 Modern Best Practice:</strong> Use WebP when possible (30% smaller than JPEG without quality loss). Provide JPEG/PNG fallback for older browsers using the <code class="inline-code">&lt;picture&gt;</code> element.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎨 Figure and Figcaption</h2>
+            <p>HTML5 introduced <code class="inline-code">&lt;figure&gt;</code> and <code class="inline-code">&lt;figcaption&gt;</code> for self-contained content with captions.</p>
+
+            <div class="code-block">
+<span class="tag">&lt;figure&gt;</span>
+    <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"ethiopian-coffee.jpg"</span>
+         <span class="attr">alt</span>=<span class="value">"Traditional Ethiopian coffee ceremony with jebena pot"</span>
+         <span class="attr">width</span>=<span class="value">"600"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;figcaption&gt;</span>
+        <span class="text">Traditional Ethiopian coffee ceremony, an essential part of Ethiopian culture.</span>
+    <span class="tag">&lt;/figcaption&gt;</span>
+<span class="tag">&lt;/figure&gt;</span>
+            </div>
+
+            <h3>When to Use &lt;figure&gt;</h3>
+            <ul>
+                <li>Images with captions</li>
+                <li>Charts and diagrams</li>
+                <li>Code snippets</li>
+                <li>Poems or quotations</li>
+                <li>Any content that could be moved to an appendix without losing meaning</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h2>🎬 Video and Audio</h2>
+            <p>HTML5 allows native video and audio playback without plugins like Flash.</p>
+
+            <h3>The &lt;video&gt; Tag</h3>
+            <div class="code-block">
+<span class="tag">&lt;video</span> <span class="attr">width</span>=<span class="value">"640"</span> <span class="attr">height</span>=<span class="value">"360"</span> <span class="attr">controls</span> <span class="attr">poster</span>=<span class="value">"thumbnail.jpg"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="value">"video.mp4"</span> <span class="attr">type</span>=<span class="value">"video/mp4"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="value">"video.webm"</span> <span class="attr">type</span>=<span class="value">"video/webm"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">Your browser does not support HTML5 video. </span>
+        <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"video.mp4"</span><span class="tag">&gt;</span><span class="text">Download the video</span><span class="tag">&lt;/a&gt;</span><span class="text"> instead.</span>
+    <span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/video&gt;</span>
+            </div>
+
+            <h3>Video Attributes</h3>
+            <table>
+                <thead>
+                    <tr><th>Attribute</th><th>Effect</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code class="inline-code">controls</code></td><td>Shows play, pause, volume buttons</td></tr>
+                    <tr><td><code class="inline-code">autoplay</code></td><td>Starts playing automatically (often blocked by browsers)</td></tr>
+                    <tr><td><code class="inline-code">loop</code></td><td>Repeats when finished</td></tr>
+                    <tr><td><code class="inline-code">muted</code></td><td>Starts with sound off</td></tr>
+                    <tr><td><code class="inline-code">poster</code></td><td>Image shown before video plays</td></tr>
+                </tbody>
+            </table>
+
+            <h3>The &lt;audio&gt; Tag</h3>
+            <div class="code-block">
+<span class="tag">&lt;audio</span> <span class="attr">controls</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="value">"music.mp3"</span> <span class="attr">type</span>=<span class="value">"audio/mpeg"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="value">"music.ogg"</span> <span class="attr">type</span>=<span class="value">"audio/ogg"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">Your browser does not support audio playback.</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/audio&gt;</span>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Accessibility:</strong> Always provide transcripts or captions for video content. Deaf and hard-of-hearing users cannot access audio information otherwise.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 5.1: Create a Photo Gallery</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create <code class="inline-code">gallery.html</code> with the following:</p>
+                <ol>
+                    <li>A page title "My Photo Gallery"</li>
+                    <li>At least 4 images using <code class="inline-code">&lt;figure&gt;</code> and <code class="inline-code">&lt;figcaption&gt;</code></li>
+                    <li>Each image must have descriptive <code class="inline-code">alt</code> text</li>
+                    <li>Use placeholder images from <a href="https://picsum.photos" target="_blank">picsum.photos</a>:
+                        <ul>
+                            <li><code class="inline-code">https://picsum.photos/400/300?random=1</code></li>
+                            <li><code class="inline-code">https://picsum.photos/400/300?random=2</code></li>
+                            <li>Change the number for different images</li>
+                        </ul>
+                    </li>
+                    <li>Add <code class="inline-code">loading="lazy"</code> to images below the first two</li>
+                    <li>Include a link back to your homepage</li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 5 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Great progress! Media master!');">
+                    <div class="quiz-question">1. Which attribute is required for accessibility in &lt;img&gt;?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> title</label>
+                        <label><input type="radio" name="q1"> alt</label>
+                        <label><input type="radio" name="q1"> caption</label>
+                    </div>
+
+                    <div class="quiz-question">2. What does loading="lazy" do?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> Makes the image load faster</label>
+                        <label><input type="radio" name="q2"> Delays loading until the image is near the viewport</label>
+                        <label><input type="radio" name="q2"> Reduces image quality</label>
+                    </div>
+
+                    <div class="quiz-question">3. Which format is best for photographs?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> PNG</label>
+                        <label><input type="radio" name="q3"> JPEG</label>
+                        <label><input type="radio" name="q3"> SVG</label>
+                    </div>
+
+                    <div class="quiz-question">4. What tag wraps an image with its caption?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> &lt;div&gt;</label>
+                        <label><input type="radio" name="q4"> &lt;figure&gt;</label>
+                        <label><input type="radio" name="q4"> &lt;section&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">5. Which attribute shows video controls?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> show</label>
+                        <label><input type="radio" name="q5"> controls</label>
+                        <label><input type="radio" name="q5"> buttons</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ <code class="inline-code">&lt;img&gt;</code> is self-closing: <code class="inline-code">src</code> and <code class="inline-code">alt</code> are essential</li>
+                <li>✅ Always write meaningful <code class="inline-code">alt</code> text for accessibility</li>
+                <li>✅ Use <code class="inline-code">&lt;figure&gt;</code> and <code class="inline-code">&lt;figcaption&gt;</code> for captioned images</li>
+                <li>✅ Choose JPEG for photos, PNG for graphics, SVG for icons, WebP when possible</li>
+                <li>✅ <code class="inline-code">&lt;video&gt;</code> and <code class="inline-code">&lt;audio&gt;</code> support multiple source formats</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module04.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module06.html" class="btn btn-success">Next: Module 6 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

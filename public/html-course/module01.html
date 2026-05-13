@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 1: Welcome to the Web - Ethioweb.net HTML Course">
+    <title>Module 1: Welcome to the Web — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 1: Welcome to the Web</h1>
+        <p class="subtitle">Understanding HTML and Creating Your First Web Page</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html" class="active">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 8%">Module 1 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 What is HTML?</h2>
+            <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard language used to create and structure content on the World Wide Web.</p>
+
+            <p>Think of HTML as the <strong>skeleton</strong> of a website. Just like a skeleton gives structure to a body, HTML gives structure to web content. It tells the browser what each piece of content is — whether it's a heading, a paragraph, an image, or a link.</p>
+
+            <h3>Key Terms Explained</h3>
+            <ul>
+                <li><strong>HyperText:</strong> Text that contains links to other texts or resources. Clicking a link "hyper jumps" you to another page.</li>
+                <li><strong>Markup:</strong> A way of annotating text using special codes (tags) that tell the browser how to display the content.</li>
+                <li><strong>Language:</strong> HTML has its own rules, syntax, and vocabulary (tags and attributes) that browsers understand.</li>
+            </ul>
+
+            <div class="tip">
+                <strong>💡 Remember:</strong> HTML is <strong>not</strong> a programming language like Python or JavaScript. It is a <strong>markup language</strong> — it describes structure, not logic or behavior.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🛠️ How Websites Work</h2>
+            <p>When you visit a website, here's what happens behind the scenes:</p>
+
+            <ol>
+                <li>You type a web address (URL) into your browser, like <code class="inline-code">https://ethioweb.net</code></li>
+                <li>Your browser sends a request to a <strong>web server</strong> (a powerful computer that stores website files)</li>
+                <li>The server sends back HTML, CSS, and JavaScript files</li>
+                <li>Your browser reads the HTML and displays the structured content</li>
+                <li>CSS makes it look beautiful, and JavaScript adds interactivity</li>
+            </ol>
+
+            <h3>The Web Technology Stack</h3>
+            <table>
+                <thead>
+                    <tr><th>Technology</th><th>Role</th><th>Analogy</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>HTML</strong></td><td>Structure & Content</td><td>Skeleton / Frame of a house</td></tr>
+                    <tr><td><strong>CSS</strong></td><td>Presentation & Style</td><td>Paint, decoration, furniture</td></tr>
+                    <tr><td><strong>JavaScript</strong></td><td>Behavior & Interactivity</td><td>Electricity, appliances, doors</td></tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <strong>💡 Focus:</strong> In this course, we focus entirely on <strong>HTML</strong>. You'll learn CSS and JavaScript in future courses!
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>💻 Setting Up Your Tools</h2>
+            <p>To write HTML, you only need two things: a <strong>text editor</strong> and a <strong>web browser</strong>.</p>
+
+            <h3>Recommended Text Editors</h3>
+            <ul>
+                <li><strong>VS Code</strong> (Visual Studio Code) — Free, powerful, and the most popular choice. <a href="https://code.visualstudio.com/" target="_blank">Download here</a></li>
+                <li><strong>Sublime Text</strong> — Fast and lightweight</li>
+                <li><strong>Notepad++</strong> — Great for Windows users</li>
+                <li><strong>Atom</strong> — GitHub's free editor (discontinued but still usable)</li>
+            </ul>
+
+            <h3>VS Code Extensions for HTML</h3>
+            <p>Once you install VS Code, add these helpful extensions:</p>
+            <ul>
+                <li><strong>Live Server</strong> — Opens your HTML in browser and auto-refreshes when you save</li>
+                <li><strong>Auto Rename Tag</strong> — Automatically renames closing tags when you edit opening tags</li>
+                <li><strong>HTML Snippets</strong> — Provides shortcuts for common HTML patterns</li>
+                <li><strong>Prettier</strong> — Formats your code automatically for readability</li>
+            </ul>
+
+            <h3>Using Browser Developer Tools</h3>
+            <p>Every modern browser has built-in tools to inspect HTML:</p>
+            <ol>
+                <li>Open any website</li>
+                <li>Right-click anywhere and select <strong>"Inspect"</strong> or press <kbd>F12</kbd></li>
+                <li>The <strong>Elements</strong> tab shows you the live HTML structure</li>
+                <li>You can even edit HTML temporarily to see changes!</li>
+            </ol>
+
+            <div class="exercise">
+                <div class="exercise-header">✏️ Exercise 1.1: Install Your Tools</div>
+                <ol>
+                    <li>Download and install <a href="https://code.visualstudio.com/" target="_blank">VS Code</a></li>
+                    <li>Install the "Live Server" extension in VS Code</li>
+                    <li>Open your browser and visit any website</li>
+                    <li>Press <kbd>F12</kbd> to open Developer Tools</li>
+                    <li>Click the <strong>Elements</strong> tab and explore the HTML structure</li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🚀 Your First HTML File</h2>
+            <p>Let's create your very first web page! Every HTML file ends with the <code class="inline-code">.html</code> extension.</p>
+
+            <h3>Step-by-Step Instructions</h3>
+            <ol>
+                <li>Open VS Code</li>
+                <li>Create a new folder on your computer called <code class="inline-code">html-course</code></li>
+                <li>Open that folder in VS Code (File → Open Folder)</li>
+                <li>Create a new file named <code class="inline-code">index.html</code></li>
+                <li>Type the following code exactly:</li>
+            </ol>
+
+            <div class="code-block">
+<span class="comment">&lt;!-- This is your first HTML file --&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+    <span class="tag">&lt;head&gt;</span>
+        <span class="tag">&lt;title&gt;</span><span class="text">My First Web Page</span><span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;/head&gt;</span>
+    <span class="tag">&lt;body&gt;</span>
+        <span class="tag">&lt;h1&gt;</span><span class="text">Hello, World!</span><span class="tag">&lt;/h1&gt;</span>
+        <span class="tag">&lt;p&gt;</span><span class="text">I am learning HTML with Ethioweb.net.</span><span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+            </div>
+
+            <h3>How to View Your Page</h3>
+            <ul>
+                <li><strong>Method 1:</strong> Right-click the file and select "Open with Browser"</li>
+                <li><strong>Method 2:</strong> In VS Code, right-click the editor and select "Open with Live Server"</li>
+                <li><strong>Method 3:</strong> Double-click the file in your file explorer</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> Always name your main homepage <code class="inline-code">index.html</code>. Web servers automatically look for this file when someone visits your website folder.
+            </div>
+
+            <h3>Understanding What You Wrote</h3>
+            <table>
+                <thead>
+                    <tr><th>Code</th><th>What It Means</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code class="inline-code">&lt;html&gt;</code></td><td>The root element that wraps all HTML content</td></tr>
+                    <tr><td><code class="inline-code">&lt;head&gt;</code></td><td>Contains hidden information about the page (title, metadata)</td></tr>
+                    <tr><td><code class="inline-code">&lt;title&gt;</code></td><td>The text that appears in the browser tab</td></tr>
+                    <tr><td><code class="inline-code">&lt;body&gt;</code></td><td>Contains all visible content on the page</td></tr>
+                    <tr><td><code class="inline-code">&lt;h1&gt;</code></td><td>A top-level heading (biggest and most important)</td></tr>
+                    <tr><td><code class="inline-code">&lt;p&gt;</code></td><td>A paragraph of text</td></tr>
+                </tbody>
+            </table>
+
+            <div class="exercise">
+                <div class="exercise-header">✏️ Exercise 1.2: Personalize Your Page</div>
+                <ol>
+                    <li>Change the <code class="inline-code">&lt;title&gt;</code> to include your name</li>
+                    <li>Change the <code class="inline-code">&lt;h1&gt;</code> to say "Hello, [Your Name]!"</li>
+                    <li>Add a second paragraph <code class="inline-code">&lt;p&gt;</code> that says what you hope to learn</li>
+                    <li>Save the file and refresh your browser to see changes</li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 1 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Great job! In a real course platform, your answers would be saved and graded.');">
+                    <div class="quiz-question">1. What does HTML stand for?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> HyperText Markup Language</label>
+                        <label><input type="radio" name="q1"> HighTech Modern Language</label>
+                        <label><input type="radio" name="q1"> Home Tool Management Link</label>
+                    </div>
+
+                    <div class="quiz-question">2. Which tag contains the visible content of a web page?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> &lt;head&gt;</label>
+                        <label><input type="radio" name="q2"> &lt;body&gt;</label>
+                        <label><input type="radio" name="q2"> &lt;html&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">3. What is the correct file extension for HTML files?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> .htm</label>
+                        <label><input type="radio" name="q3"> .html</label>
+                        <label><input type="radio" name="q3"> Both .htm and .html</label>
+                    </div>
+
+                    <div class="quiz-question">4. Which tool is recommended for writing HTML in this course?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> Microsoft Word</label>
+                        <label><input type="radio" name="q4"> VS Code</label>
+                        <label><input type="radio" name="q4"> Photoshop</label>
+                    </div>
+
+                    <div class="quiz-question">5. What does the &lt;title&gt; tag control?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> The main heading on the page</label>
+                        <label><input type="radio" name="q5"> The text in the browser tab</label>
+                        <label><input type="radio" name="q5"> The page background color</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ HTML is the structure language of the web</li>
+                <li>✅ You need a text editor (VS Code) and a browser</li>
+                <li>✅ Every HTML file needs <code class="inline-code">&lt;html&gt;</code>, <code class="inline-code">&lt;head&gt;</code>, and <code class="inline-code">&lt;body&gt;</code></li>
+                <li>✅ The <code class="inline-code">index.html</code> file is the default homepage</li>
+                <li>✅ Browser DevTools let you inspect any website's HTML</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module02.html" class="btn btn-success">Next: Module 2 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

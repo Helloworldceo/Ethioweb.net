@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Starter template for HTML projects - Ethioweb.net">
+    <meta name="author" content="Your Name">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Your Page Title">
+    <meta property="og:description" content="Description for social sharing">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursite.com/">
+    <meta property="og:image" content="https://yoursite.com/images/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your Page Title">
+    <meta name="twitter:description" content="Description for Twitter">
+    <meta name="twitter:image" content="https://yoursite.com/images/twitter-image.jpg">
+
+    <title>Your Page Title | Site Name</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="canonical" href="https://yoursite.com/">
+<base target="_blank">
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <!-- Logo or site title -->
+        <a href="index.html">
+            <img src="images/logo.png" alt="Your Site Name" width="150">
+        </a>
+
+        <!-- Main Navigation -->
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <h1>Welcome to Your Website</h1>
+            <p>This is your main heading. There should be only one h1 per page.</p>
+            <a href="#learn-more" class="btn">Learn More</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Use h2 for major sections. This creates a clear document outline.</p>
+
+            <article>
+                <h3>Our Mission</h3>
+                <p>Use h3 for subsections within an h2 section.</p>
+            </article>
+
+            <article>
+                <h3>Our Vision</h3>
+                <p>Each article should make sense on its own.</p>
+            </article>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2>Our Services</h2>
+
+            <ul>
+                <li>
+                    <strong>Web Design</strong> — Creating beautiful, responsive websites
+                </li>
+                <li>
+                    <strong>Development</strong> — Building robust web applications
+                </li>
+                <li>
+                    <strong>SEO</strong> — Optimizing for search engines
+                </li>
+            </ul>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <h2>Gallery</h2>
+
+            <figure>
+                <img src="images/photo1.jpg" alt="Descriptive text about the image" width="400" loading="lazy">
+                <figcaption>Caption describing the image content</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/photo2.jpg" alt="Another descriptive text" width="400" loading="lazy">
+                <figcaption>Another caption</figcaption>
+            </figure>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+
+            <form action="/submit-form" method="POST">
+                <fieldset>
+                    <legend>Personal Information</legend>
+
+                    <p>
+                        <label for="full-name">Full Name *</label>
+                        <input type="text" id="full-name" name="full_name" required minlength="2" placeholder="John Doe">
+                    </p>
+
+                    <p>
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </p>
+
+                    <p>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+251 91 234 5678">
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Message Details</legend>
+
+                    <p>
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Support</option>
+                            <option value="business">Business Partnership</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" rows="5" required minlength="10" placeholder="Write your message here..."></textarea>
+                    </p>
+
+                    <p>
+                        <label>
+                            <input type="checkbox" name="newsletter" value="yes">
+                            Subscribe to our newsletter
+                        </label>
+                    </p>
+                </fieldset>
+
+                <p>
+                    <button type="submit">Send Message</button>
+                    <button type="reset">Clear Form</button>
+                </p>
+            </form>
+
+            <address>
+                <h3>Visit Us</h3>
+                <p>
+                    Your Company Name<br>
+                    123 Main Street<br>
+                    Addis Ababa, Ethiopia<br>
+                    <a href="mailto:info@yourcompany.com">info@yourcompany.com</a><br>
+                    <a href="tel:+251912345678">+251 91 234 5678</a>
+                </p>
+            </address>
+        </section>
+    </main>
+
+    <!-- ==================== SIDEBAR (Optional) ==================== -->
+    <aside>
+        <h2>Related Information</h2>
+        <p>This content is tangentially related to the main content.</p>
+
+        <nav aria-label="Related links">
+            <ul>
+                <li><a href="#">Related Article 1</a></li>
+                <li><a href="#">Related Article 2</a></li>
+                <li><a href="#">Related Article 3</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>&copy; 2026 Your Company Name. All rights reserved.</p>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a> |
+            <a href="https://twitter.com/yourcompany" target="_blank" rel="noopener noreferrer">Twitter</a> |
+            <a href="https://facebook.com/yourcompany" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </p>
+    </footer>
+</body>
+</html>

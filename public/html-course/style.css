@@ -1,0 +1,524 @@
+/* Ethioweb.net HTML Course Stylesheet */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #64748b;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --code-bg: #1e293b;
+    --code-text: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* Header & Navigation */
+.course-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-header::before {
+    content: '<html>';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.05;
+    top: -1rem;
+    left: 2rem;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.course-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.course-header .subtitle {
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.course-nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Layout */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.main-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Cards */
+.card {
+    background: var(--card);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.card h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.card h3 {
+    color: var(--text);
+    margin: 1.5rem 0 0.75rem;
+    font-size: 1.3rem;
+}
+
+.card h4 {
+    color: var(--secondary);
+    margin: 1.25rem 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Code Blocks */
+.code-block {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-left: 4px solid var(--accent);
+}
+
+.code-block .tag { color: #f472b6; }
+.code-block .attr { color: #60a5fa; }
+.code-block .value { color: #a3e635; }
+.code-block .comment { color: #6b7280; font-style: italic; }
+.code-block .text { color: #e2e8f0; }
+
+.inline-code {
+    background: #f1f5f9;
+    color: #be123c;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Exercise Box */
+.exercise {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1px solid var(--success);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.exercise-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #065f46;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.exercise ol, .exercise ul {
+    margin-left: 1.5rem;
+    color: #065f46;
+}
+
+/* Tip Box */
+.tip {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-left: 4px solid var(--primary);
+    padding: 1rem 1.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 1rem 0;
+}
+
+.tip strong {
+    color: var(--primary);
+}
+
+/* Warning Box */
+.warning {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border-left: 4px solid var(--accent);
+    padding: 1rem 1.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 1rem 0;
+}
+
+.warning strong {
+    color: #92400e;
+}
+
+/* Quiz */
+.quiz {
+    background: #faf5ff;
+    border: 1px solid #c084fc;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.quiz-title {
+    color: #6b21a8;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.quiz-question {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.quiz-options label {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    background: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.quiz-options label:hover {
+    background: #f3e8ff;
+}
+
+/* Progress Bar */
+.progress-container {
+    background: var(--bg);
+    border-radius: 1rem;
+    padding: 0.25rem;
+    margin: 2rem 0;
+    border: 1px solid var(--border);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    height: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+    line-height: 1.5rem;
+    transition: width 0.5s ease;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background: var(--secondary);
+}
+
+.btn-success {
+    background: var(--success);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Syllabus Grid */
+.syllabus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.syllabus-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.syllabus-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.syllabus-card .module-num {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+}
+
+.syllabus-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.syllabus-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Certificate */
+.certificate-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 8px solid var(--primary);
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+.certificate-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid var(--accent);
+    border-radius: 0.5rem;
+    pointer-events: none;
+}
+
+.cert-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.cert-title {
+    font-size: 2rem;
+    color: var(--text);
+    margin: 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cert-recipient {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin: 1.5rem 0;
+    border-bottom: 2px solid var(--border);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.cert-details {
+    margin: 2rem 0;
+    color: var(--text-light);
+}
+
+.cert-seal {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 50%;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+    box-shadow: var(--shadow);
+}
+
+/* Footer */
+.course-footer {
+    background: var(--text);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.course-footer a {
+    color: var(--accent);
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+th {
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+tr:hover {
+    background: #f8fafc;
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .course-header h1 {
+        font-size: 1.75rem;
+    }
+    .nav-links {
+        gap: 0.25rem;
+    }
+    .nav-links a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    .main-content {
+        padding: 1.5rem 1rem;
+    }
+    .certificate-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+}
+
+/* Print styles for certificate */
+@media print {
+    .course-nav, .course-footer, .no-print {
+        display: none !important;
+    }
+    .certificate-container {
+        box-shadow: none;
+        border: 4px solid #000;
+        page-break-inside: avoid;
+    }
+}

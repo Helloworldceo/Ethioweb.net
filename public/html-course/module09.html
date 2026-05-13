@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 9: HTML Entities - Ethioweb.net HTML Course">
+    <title>Module 9: HTML Entities — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 9: HTML Entities</h1>
+        <p class="subtitle">Special Characters, Symbols, and Reserved Characters</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html">Module 8</a>
+                <a href="module09.html" class="active">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 75%">Module 9 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 What Are HTML Entities?</h2>
+            <p>HTML entities are special codes that represent characters that have special meaning in HTML or characters not available on a standard keyboard.</p>
+
+            <h3>Why We Need Entities</h3>
+            <p>Some characters are <strong>reserved</strong> in HTML because they have special functions:</p>
+            <ul>
+                <li><code class="inline-code">&lt;</code> starts a tag</li>
+                <li><code class="inline-code">&gt;</code> ends a tag</li>
+                <li><code class="inline-code">&amp;</code> starts an entity</li>
+                <li><code class="inline-code">"</code> delimits attribute values</li>
+            </ul>
+            <p>If you type these directly in your content, the browser will try to interpret them as HTML code instead of displaying them.</p>
+
+            <h3>The Problem</h3>
+            <div class="code-block">
+<span class="comment">&lt;!-- This will BREAK because the browser thinks &lt;p&gt; is a tag --&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">To create a paragraph, use &lt;p&gt; tags.</span><span class="tag">&lt;/p&gt;</span>
+
+<span class="comment">&lt;!-- This works correctly using entities --&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">To create a paragraph, use &amp;lt;p&amp;gt; tags.</span><span class="tag">&lt;/p&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🔤 Essential HTML Entities</h2>
+
+            <h3>Reserved Characters (Must Escape)</h3>
+            <table>
+                <thead>
+                    <tr><th>Character</th><th>Entity Name</th><th>Entity Number</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>&lt;</td><td><code class="inline-code">&amp;lt;</code></td><td><code class="inline-code">&amp;#60;</code></td><td>Less than / opening tag bracket</td></tr>
+                    <tr><td>&gt;</td><td><code class="inline-code">&amp;gt;</code></td><td><code class="inline-code">&amp;#62;</code></td><td>Greater than / closing tag bracket</td></tr>
+                    <tr><td>&amp;</td><td><code class="inline-code">&amp;amp;</code></td><td><code class="inline-code">&amp;#38;</code></td><td>Ampersand</td></tr>
+                    <tr><td>"</td><td><code class="inline-code">&amp;quot;</code></td><td><code class="inline-code">&amp;#34;</code></td><td>Double quotation mark</td></tr>
+                    <tr><td>'</td><td><code class="inline-code">&amp;apos;</code></td><td><code class="inline-code">&amp;#39;</code></td><td>Single quotation mark / apostrophe</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Common Symbols</h3>
+            <table>
+                <thead>
+                    <tr><th>Character</th><th>Entity Name</th><th>Entity Number</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>©</td><td><code class="inline-code">&amp;copy;</code></td><td><code class="inline-code">&amp;#169;</code></td><td>Copyright</td></tr>
+                    <tr><td>®</td><td><code class="inline-code">&amp;reg;</code></td><td><code class="inline-code">&amp;#174;</code></td><td>Registered trademark</td></tr>
+                    <tr><td>™</td><td><code class="inline-code">&amp;trade;</code></td><td><code class="inline-code">&amp;#8482;</code></td><td>Trademark</td></tr>
+                    <tr><td>€</td><td><code class="inline-code">&amp;euro;</code></td><td><code class="inline-code">&amp;#8364;</code></td><td>Euro sign</td></tr>
+                    <tr><td>£</td><td><code class="inline-code">&amp;pound;</code></td><td><code class="inline-code">&amp;#163;</code></td><td>Pound sign</td></tr>
+                    <tr><td>¥</td><td><code class="inline-code">&amp;yen;</code></td><td><code class="inline-code">&amp;#165;</code></td><td>Yen sign</td></tr>
+                    <tr><td>§</td><td><code class="inline-code">&amp;sect;</code></td><td><code class="inline-code">&amp;#167;</code></td><td>Section sign</td></tr>
+                    <tr><td>°</td><td><code class="inline-code">&amp;deg;</code></td><td><code class="inline-code">&amp;#176;</code></td><td>Degree</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Mathematical Symbols</h3>
+            <table>
+                <thead>
+                    <tr><th>Character</th><th>Entity Name</th><th>Entity Number</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>×</td><td><code class="inline-code">&amp;times;</code></td><td><code class="inline-code">&amp;#215;</code></td><td>Multiplication</td></tr>
+                    <tr><td>÷</td><td><code class="inline-code">&amp;divide;</code></td><td><code class="inline-code">&amp;#247;</code></td><td>Division</td></tr>
+                    <tr><td>±</td><td><code class="inline-code">&amp;plusmn;</code></td><td><code class="inline-code">&amp;#177;</code></td><td>Plus-minus</td></tr>
+                    <tr><td>≠</td><td><code class="inline-code">&amp;ne;</code></td><td><code class="inline-code">&amp;#8800;</code></td><td>Not equal</td></tr>
+                    <tr><td>≤</td><td><code class="inline-code">&amp;le;</code></td><td><code class="inline-code">&amp;#8804;</code></td><td>Less than or equal</td></tr>
+                    <tr><td>≥</td><td><code class="inline-code">&amp;ge;</code></td><td><code class="inline-code">&amp;#8805;</code></td><td>Greater than or equal</td></tr>
+                    <tr><td>½</td><td><code class="inline-code">&amp;frac12;</code></td><td><code class="inline-code">&amp;#189;</code></td><td>One half</td></tr>
+                    <tr><td>¼</td><td><code class="inline-code">&amp;frac14;</code></td><td><code class="inline-code">&amp;#188;</code></td><td>One quarter</td></tr>
+                    <tr><td>¾</td><td><code class="inline-code">&amp;frac34;</code></td><td><code class="inline-code">&amp;#190;</code></td><td>Three quarters</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Spacing and Dashes</h3>
+            <table>
+                <thead>
+                    <tr><th>Character</th><th>Entity Name</th><th>Entity Number</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td> </td><td><code class="inline-code">&amp;nbsp;</code></td><td><code class="inline-code">&amp;#160;</code></td><td>Non-breaking space</td></tr>
+                    <tr><td>—</td><td><code class="inline-code">&amp;mdash;</code></td><td><code class="inline-code">&amp;#8212;</code></td><td>Em dash (long dash)</td></tr>
+                    <tr><td>–</td><td><code class="inline-code">&amp;ndash;</code></td><td><code class="inline-code">&amp;#8211;</code></td><td>En dash (medium dash)</td></tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <strong>💡 Non-Breaking Space:</strong> <code class="inline-code">&amp;nbsp;</code> creates a space that prevents line breaks. Use it between "100 km" or "Mr. Smith" to keep them on the same line.
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>😀 Emojis and Unicode</h2>
+            <p>Modern browsers support Unicode characters directly, including emojis. You can use them in three ways:</p>
+
+            <div class="code-block">
+<span class="comment">&lt;!-- Method 1: Direct emoji (works in modern editors) --&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">Welcome to Ethiopia 🇪🇹</span><span class="tag">&lt;/p&gt;</span>
+
+<span class="comment">&lt;!-- Method 2: Unicode decimal --&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">Welcome to Ethiopia &amp;#127466;&amp;#127468;</span><span class="tag">&lt;/p&gt;</span>
+
+<span class="comment">&lt;!-- Method 3: Unicode hexadecimal --&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">Welcome to Ethiopia &amp;#x1F1EA;&amp;#x1F1F9;</span><span class="tag">&lt;/p&gt;</span>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> Always declare <code class="inline-code">&lt;meta charset="UTF-8"&gt;</code> in your document head. Without it, special characters and emojis may display as garbled text (mojibake).
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 9.1: Create a Copyright Footer</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create <code class="inline-code">entities.html</code> demonstrating your knowledge of entities:</p>
+                <ol>
+                    <li>A paragraph showing how to write HTML code examples using <code class="inline-code">&amp;lt;</code> and <code class="inline-code">&amp;gt;</code> (show at least 3 different tags as text)</li>
+                    <li>A math expression using <code class="inline-code">&amp;times;</code>, <code class="inline-code">&amp;divide;</code>, <code class="inline-code">&amp;frac12;</code>, and <code class="inline-code">&amp;deg;</code></li>
+                    <li>A copyright footer with <code class="inline-code">&amp;copy;</code> and the trademark symbol <code class="inline-code">&amp;trade;</code></li>
+                    <li>A sentence with a non-breaking space between a number and unit (e.g., "100&nbsp;km")</li>
+                    <li>An em dash used correctly in a sentence</li>
+                    <li>Your country's flag emoji</li>
+                </ol>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 9 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Entity expert!');">
+                    <div class="quiz-question">1. Which entity represents the less-than sign?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> &amp;less;</label>
+                        <label><input type="radio" name="q1"> &amp;lt;</label>
+                        <label><input type="radio" name="q1"> &amp;lessthan;</label>
+                    </div>
+
+                    <div class="quiz-question">2. Why must you escape &amp; in HTML?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> It breaks the page layout</label>
+                        <label><input type="radio" name="q2"> The browser thinks it starts an entity</label>
+                        <label><input type="radio" name="q2"> It causes a security vulnerability</label>
+                    </div>
+
+                    <div class="quiz-question">3. What does &amp;nbsp; create?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> A new paragraph</label>
+                        <label><input type="radio" name="q3"> A space that prevents line breaks</label>
+                        <label><input type="radio" name="q3"> A blank line</label>
+                    </div>
+
+                    <div class="quiz-question">4. Which entity is the copyright symbol?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> &amp;copy;</label>
+                        <label><input type="radio" name="q4"> &amp;copyright;</label>
+                        <label><input type="radio" name="q4"> &amp;(c);</label>
+                    </div>
+
+                    <div class="quiz-question">5. What meta tag is required for emojis to display correctly?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> &lt;meta charset="UTF-8"&gt;</label>
+                        <label><input type="radio" name="q5"> &lt;meta emoji="enabled"&gt;</label>
+                        <label><input type="radio" name="q5"> &lt;meta lang="emoji"&gt;</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ Entities represent special characters that have meaning in HTML</li>
+                <li>✅ Always escape <code class="inline-code">&lt;</code>, <code class="inline-code">&gt;</code>, <code class="inline-code">&amp;</code>, and quotes when displaying them as text</li>
+                <li>✅ <code class="inline-code">&amp;copy;</code>, <code class="inline-code">&amp;reg;</code>, <code class="inline-code">&amp;trade;</code> for intellectual property symbols</li>
+                <li>✅ <code class="inline-code">&amp;nbsp;</code> prevents unwanted line breaks</li>
+                <li>✅ UTF-8 encoding is required for emojis and international characters</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module08.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module10.html" class="btn btn-success">Next: Module 10 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

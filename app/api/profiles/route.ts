@@ -5,6 +5,7 @@ import {
   hasSupabaseEnv,
 } from "@/lib/supabase/server";
 import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
+import { writeAuditEvent } from "@/lib/audit";
 
 function formatUsername(input: string) {
   return input
@@ -108,6 +109,15 @@ export async function POST(request: NextRequest) {
     return applyResponseCookies(response, NextResponse.json({ error: error.message }, { status: 500 }));
   }
 
+  await writeAuditEvent({
+    action: "profile.update",
+    actorId: user.id,
+    resource: "profiles",
+    metadata: {
+      username: formatUsername(payload.username ?? ""),
+    },
+  });
+
   return applyResponseCookies(response, NextResponse.json({ ok: true }));
 }
 
@@ -172,6 +182,16 @@ export async function PATCH(request: NextRequest) {
   if (error) {
     return applyResponseCookies(response, NextResponse.json({ error: error.message }, { status: 500 }));
   }
+
+  await writeAuditEvent({
+    action: "profile.update",
+    actorId: user.id,
+    resource: "profiles",
+    metadata: {
+      username: formatUsername(payload.username),
+      visibility: payload.visibility,
+    },
+  });
 
   return applyResponseCookies(response, NextResponse.json({ ok: true }));
 }

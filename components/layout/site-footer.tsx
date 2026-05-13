@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/components/i18n/language-provider";
+import { NewsletterForm } from "@/components/sections/newsletter-form";
 
 export function SiteFooter() {
   const { t } = useLanguage();
@@ -54,6 +55,10 @@ export function SiteFooter() {
               <a href="https://helloworldceo.github.io/" target="_blank" rel="noreferrer">Portfolio</a>
             </li>
           </ul>
+
+          <p className="mt-4 font-semibold text-[var(--ink)]">{t("Newsletter", "ዜና መልዕክት")}</p>
+          <p className="mt-1 text-xs text-[var(--muted)]">{t("Weekly growth insights for professionals.", "ለባለሙያዎች ሳምንታዊ የእድገት ምክሮች።")}</p>
+          <NewsletterForm />
         </div>
       </div>
     </footer>

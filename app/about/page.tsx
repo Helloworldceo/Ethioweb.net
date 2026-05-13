@@ -30,6 +30,23 @@ export default function AboutPage() {
             with scalable tools for individuals, creators, startups, and teams.
           </p>
         </article>
+
+        <article className="card p-6">
+          <h2 className="heading-display text-2xl font-black">Founder</h2>
+          <p className="mt-3 leading-8 text-[var(--muted)]">
+            Ethioweb is led by Dawit Abdisa, focused on helping professionals present clear proof of
+            work online and turn visibility into real opportunities.
+          </p>
+        </article>
+
+        <article className="card p-6">
+          <h2 className="heading-display text-2xl font-black">Credibility Standards</h2>
+          <ul className="mt-3 space-y-2 text-[var(--muted)]">
+            <li>Profile-first privacy controls for each section</li>
+            <li>Evidence-based identity with files and links</li>
+            <li>Verification roadmap for trusted public profiles</li>
+          </ul>
+        </article>
       </section>
     </div>
   );

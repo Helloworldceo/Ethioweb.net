@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { writeAuditEvent } from "@/lib/audit";
 
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME ?? "helloworldceo";
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "helloworldceo@1gmail.com";
@@ -85,6 +86,13 @@ export async function POST(request: NextRequest) {
 
   if (error) return NextResponse.json({ error: permissionErrorMessage(error.message) }, { status: 500 });
 
+  await writeAuditEvent({
+    action: "blog.create",
+    actorId: user.id,
+    resource: "blog_posts",
+    metadata: { slug, title, is_published: Boolean(is_published) },
+  });
+
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
   return NextResponse.json({ post: data });
@@ -127,6 +135,13 @@ export async function PATCH(request: NextRequest) {
 
   if (error) return NextResponse.json({ error: permissionErrorMessage(error.message) }, { status: 500 });
 
+  await writeAuditEvent({
+    action: "blog.update",
+    actorId: user.id,
+    resource: "blog_posts",
+    metadata: { id, slug: data?.slug, title: data?.title, is_published: data?.is_published },
+  });
+
   if (data?.slug) {
     revalidatePath(`/blog/${data.slug}`);
   }
@@ -151,6 +166,13 @@ export async function DELETE(request: NextRequest) {
     .eq("author_id", user.id);
 
   if (error) return NextResponse.json({ error: permissionErrorMessage(error.message) }, { status: 500 });
+
+  await writeAuditEvent({
+    action: "blog.delete",
+    actorId: user.id,
+    resource: "blog_posts",
+    metadata: { id: body.id },
+  });
 
   revalidatePath("/blog");
   return NextResponse.json({ success: true });

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 8: Semantic HTML5 - Ethioweb.net HTML Course">
+    <title>Module 8: Semantic HTML5 — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>Module 8: Semantic HTML5</h1>
+        <p class="subtitle">Using Modern Semantic Elements for Better Structure</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module01.html">Module 1</a>
+                <a href="module02.html">Module 2</a>
+                <a href="module03.html">Module 3</a>
+                <a href="module04.html">Module 4</a>
+                <a href="module05.html">Module 5</a>
+                <a href="module06.html">Module 6</a>
+                <a href="module07.html">Module 7</a>
+                <a href="module08.html" class="active">Module 8</a>
+                <a href="module09.html">Module 9</a>
+                <a href="module10.html">Module 10</a>
+                <a href="module11.html">Module 11</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 67%">Module 8 of 12</div>
+        </div>
+
+        <article class="card">
+            <h2>📖 What is Semantic HTML?</h2>
+            <p><strong>Semantic HTML</strong> means using tags that describe the <strong>meaning</strong> of content, not just its appearance. Before HTML5, developers used <code class="inline-code">&lt;div&gt;</code> for everything and added classes like <code class="inline-code">class="header"</code> or <code class="inline-code">class="nav"</code>.</p>
+
+            <p>HTML5 introduced semantic elements that clearly describe their purpose:</p>
+
+            <div class="code-block">
+<span class="comment">&lt;!-- Old way (HTML4) --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"header"</span><span class="tag">&gt;</span><span class="text">...</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"navigation"</span><span class="tag">&gt;</span><span class="text">...</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"content"</span><span class="tag">&gt;</span><span class="text">...</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"footer"</span><span class="tag">&gt;</span><span class="text">...</span><span class="tag">&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- New way (HTML5) --&gt;</span>
+<span class="tag">&lt;header&gt;</span><span class="text">...</span><span class="tag">&lt;/header&gt;</span>
+<span class="tag">&lt;nav&gt;</span><span class="text">...</span><span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;main&gt;</span><span class="text">...</span><span class="tag">&lt;/main&gt;</span>
+<span class="tag">&lt;footer&gt;</span><span class="text">...</span><span class="tag">&lt;/footer&gt;</span>
+            </div>
+
+            <h3>Why Semantics Matter</h3>
+            <ul>
+                <li><strong>Accessibility:</strong> Screen readers can navigate by landmarks ("Jump to main content")</li>
+                <li><strong>SEO:</strong> Search engines understand page structure better</li>
+                <li><strong>Developer Experience:</strong> Code is easier to read and maintain</li>
+                <li><strong>Browser Features:</strong> Some browsers offer reading modes that rely on semantic structure</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h2>🏗️ Semantic Structure Elements</h2>
+
+            <h3>&lt;header&gt;</h3>
+            <p>Introductory content for its nearest ancestor section. Can contain logos, headings, authorship info.</p>
+            <div class="code-block">
+<span class="tag">&lt;header&gt;</span>
+    <span class="tag">&lt;h1&gt;</span><span class="text">Ethioweb Blog</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">Published on May 13, 2026 by John Doe</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/header&gt;</span>
+            </div>
+
+            <h3>&lt;nav&gt;</h3>
+            <p>Major navigation blocks. Not every group of links needs <code class="inline-code">&lt;nav&gt;</code> — only primary navigation.</p>
+            <div class="code-block">
+<span class="tag">&lt;nav&gt;</span>
+    <span class="tag">&lt;ul&gt;</span>
+        <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"/"</span><span class="tag">&gt;</span><span class="text">Home</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"/about"</span><span class="tag">&gt;</span><span class="text">About</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"/contact"</span><span class="tag">&gt;</span><span class="text">Contact</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;/nav&gt;</span>
+            </div>
+
+            <h3>&lt;main&gt;</h3>
+            <p>The dominant content of the page. There must be only <strong>one</strong> <code class="inline-code">&lt;main&gt;</code> per page, and it cannot be inside <code class="inline-code">&lt;article&gt;</code>, <code class="inline-code">&lt;aside&gt;</code>, <code class="inline-code">&lt;footer&gt;</code>, <code class="inline-code">&lt;header&gt;</code>, or <code class="inline-code">&lt;nav&gt;</code>.</p>
+            <div class="code-block">
+<span class="tag">&lt;main&gt;</span>
+    <span class="tag">&lt;h1&gt;</span><span class="text">Welcome to Ethioweb</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">This is the main content of the page...</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/main&gt;</span>
+            </div>
+
+            <h3>&lt;article&gt;</h3>
+            <p>Self-contained, independently distributable content. A blog post, news article, forum post, or product card.</p>
+            <div class="code-block">
+<span class="tag">&lt;article&gt;</span>
+    <span class="tag">&lt;header&gt;</span>
+        <span class="tag">&lt;h2&gt;</span><span class="text">Learning HTML in 2026</span><span class="tag">&lt;/h2&gt;</span>
+        <span class="tag">&lt;p&gt;</span><span class="text">By Jane Smith</span><span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/header&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">HTML continues to evolve...</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/article&gt;</span>
+            </div>
+
+            <h3>&lt;section&gt;</h3>
+            <p>Thematic grouping of content, typically with a heading. Use when content naturally belongs together.</p>
+            <div class="code-block">
+<span class="tag">&lt;section&gt;</span>
+    <span class="tag">&lt;h2&gt;</span><span class="text">Our Services</span><span class="tag">&lt;/h2&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">We offer web design, development, and hosting...</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/section&gt;</span>
+            </div>
+
+            <div class="tip">
+                <strong>💡 article vs. section:</strong> Use <code class="inline-code">&lt;article&gt;</code> when content makes sense on its own (like a blog post). Use <code class="inline-code">&lt;section&gt;</code> for thematic groupings within a larger context.
+            </div>
+
+            <h3>&lt;aside&gt;</h3>
+            <p>Content tangentially related to the main content: sidebars, call-out boxes, advertising, related links.</p>
+            <div class="code-block">
+<span class="tag">&lt;aside&gt;</span>
+    <span class="tag">&lt;h3&gt;</span><span class="text">Related Courses</span><span class="tag">&lt;/h3&gt;</span>
+    <span class="tag">&lt;ul&gt;</span>
+        <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span><span class="text">CSS Fundamentals</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span><span class="text">JavaScript Basics</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;/aside&gt;</span>
+            </div>
+
+            <h3>&lt;footer&gt;</h3>
+            <p>Footer for its nearest sectioning content. Contains authorship, copyright, related documents.</p>
+            <div class="code-block">
+<span class="tag">&lt;footer&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">© 2026 Ethioweb.net. All rights reserved.</span><span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;p&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"privacy.html"</span><span class="tag">&gt;</span><span class="text">Privacy Policy</span><span class="tag">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="tag">&lt;/footer&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📋 Complete Semantic Page Structure</h2>
+            <div class="code-block">
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="value">"en"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span><span class="text">...</span><span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;header&gt;</span>
+        <span class="tag">&lt;h1&gt;</span><span class="text">My Website</span><span class="tag">&lt;/h1&gt;</span>
+        <span class="tag">&lt;nav&gt;</span><span class="text">...</span><span class="tag">&lt;/nav&gt;</span>
+    <span class="tag">&lt;/header&gt;</span>
+
+    <span class="tag">&lt;main&gt;</span>
+        <span class="tag">&lt;article&gt;</span>
+            <span class="tag">&lt;header&gt;</span>
+                <span class="tag">&lt;h2&gt;</span><span class="text">Article Title</span><span class="tag">&lt;/h2&gt;</span>
+            <span class="tag">&lt;/header&gt;</span>
+            <span class="tag">&lt;section&gt;</span>
+                <span class="tag">&lt;h3&gt;</span><span class="text">Introduction</span><span class="tag">&lt;/h3&gt;</span>
+                <span class="tag">&lt;p&gt;</span><span class="text">...</span><span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/section&gt;</span>
+            <span class="tag">&lt;section&gt;</span>
+                <span class="tag">&lt;h3&gt;</span><span class="text">Main Points</span><span class="tag">&lt;/h3&gt;</span>
+                <span class="tag">&lt;p&gt;</span><span class="text">...</span><span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/section&gt;</span>
+            <span class="tag">&lt;footer&gt;</span>
+                <span class="tag">&lt;p&gt;</span><span class="text">Written by Author</span><span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/footer&gt;</span>
+        <span class="tag">&lt;/article&gt;</span>
+    <span class="tag">&lt;/main&gt;</span>
+
+    <span class="tag">&lt;aside&gt;</span>
+        <span class="tag">&lt;h3&gt;</span><span class="text">Related Links</span><span class="tag">&lt;/h3&gt;</span>
+        <span class="tag">&lt;ul&gt;</span><span class="text">...</span><span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/aside&gt;</span>
+
+    <span class="tag">&lt;footer&gt;</span>
+        <span class="tag">&lt;p&gt;</span><span class="text">© 2026 Company Name</span><span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/footer&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>✏️ Exercise 8.1: Convert to Semantic HTML</h2>
+            <div class="exercise">
+                <div class="exercise-header">Your Task</div>
+                <p>Create <code class="inline-code">semantic.html</code> and build a blog post page using ONLY semantic HTML5 elements:</p>
+                <ol>
+                    <li><code class="inline-code">&lt;header&gt;</code> with site logo (text) and <code class="inline-code">&lt;nav&gt;</code></li>
+                    <li><code class="inline-code">&lt;main&gt;</code> containing:
+                        <ul>
+                            <li>An <code class="inline-code">&lt;article&gt;</code> with:
+                                <ul>
+                                    <li><code class="inline-code">&lt;header&gt;</code> with post title and author</li>
+                                    <li>Two <code class="inline-code">&lt;section&gt;</code> elements with subheadings</li>
+                                    <li><code class="inline-code">&lt;figure&gt;</code> with an image and caption</li>
+                                    <li><code class="inline-code">&lt;footer&gt;</code> with publish date and tags</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>An <code class="inline-code">&lt;aside&gt;</code> with "About the Author"</li>
+                    <li>A page <code class="inline-code">&lt;footer&gt;</code> with copyright</li>
+                </ol>
+                <p><strong>Rule:</strong> Do not use <code class="inline-code">&lt;div&gt;</code> or <code class="inline-code">&lt;span&gt;</code> for structure — only semantic elements!</p>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>📝 Module 8 Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-title">Test Your Knowledge</div>
+                <form onsubmit="event.preventDefault(); alert('Semantics superstar!');">
+                    <div class="quiz-question">1. Which element wraps the dominant content of the page?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1"> &lt;section&gt;</label>
+                        <label><input type="radio" name="q1"> &lt;main&gt;</label>
+                        <label><input type="radio" name="q1"> &lt;article&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">2. How many &lt;main&gt; elements should a page have?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2"> As many as needed</label>
+                        <label><input type="radio" name="q2"> Exactly one</label>
+                        <label><input type="radio" name="q2"> None</label>
+                    </div>
+
+                    <div class="quiz-question">3. Which is best for a blog post that could stand alone?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3"> &lt;section&gt;</label>
+                        <label><input type="radio" name="q3"> &lt;article&gt;</label>
+                        <label><input type="radio" name="q3"> &lt;div&gt;</label>
+                    </div>
+
+                    <div class="quiz-question">4. What belongs in &lt;aside&gt;?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4"> The main article content</label>
+                        <label><input type="radio" name="q4"> Tangentially related content like sidebars</label>
+                        <label><input type="radio" name="q4"> The page footer</label>
+                    </div>
+
+                    <div class="quiz-question">5. Why is semantic HTML important for accessibility?</div>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5"> It makes text colorful</label>
+                        <label><input type="radio" name="q5"> Screen readers can navigate by landmarks</label>
+                        <label><input type="radio" name="q5"> It loads faster</label>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><button type="submit" class="btn">Submit Quiz</button></p>
+                </form>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>🎯 Module Summary</h2>
+            <ul>
+                <li>✅ Semantic HTML describes content meaning, not just appearance</li>
+                <li>✅ <code class="inline-code">&lt;header&gt;</code>, <code class="inline-code">&lt;nav&gt;</code>, <code class="inline-code">&lt;main&gt;</code>, <code class="inline-code">&lt;article&gt;</code>, <code class="inline-code">&lt;section&gt;</code>, <code class="inline-code">&lt;aside&gt;</code>, <code class="inline-code">&lt;footer&gt;</code> replace generic divs</li>
+                <li>✅ Only one <code class="inline-code">&lt;main&gt;</code> per page</li>
+                <li>✅ <code class="inline-code">&lt;article&gt;</code> for standalone content, <code class="inline-code">&lt;section&gt;</code> for thematic groups</li>
+                <li>✅ Semantic HTML improves SEO, accessibility, and code clarity</li>
+            </ul>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="module07.html" class="btn btn-outline">← Previous Module</a>
+                <a href="module09.html" class="btn btn-success">Next: Module 9 →</a>
+            </p>
+        </article>
+    </main>
+
+    <footer class="course-footer">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+</body>
+</html>

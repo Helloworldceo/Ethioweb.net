@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Capstone Project Grading Rubric - Ethioweb.net HTML Course">
+    <title>Grading Rubric — Ethioweb.net</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .rubric-table th {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .rubric-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        .rubric-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        .criteria {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .points {
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        .score-input {
+            width: 60px;
+            padding: 0.5rem;
+            text-align: center;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        .score-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .total-score {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 2rem 0;
+        }
+        .pass-fail {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        .pass {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .grading-notes {
+            background: #fef3c7;
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .student-info label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-light);
+        }
+        .student-info input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <header class="course-header">
+        <h1>📊 Capstone Project Grading Rubric</h1>
+        <p class="subtitle">HTML Foundations Professional — Ethioweb.net</p>
+    </header>
+
+    <nav class="course-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">◀ Ethioweb.net</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="module12.html">Module 12</a>
+                <a href="certificate.html">Certificate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="card">
+            <h2>👤 Student Information</h2>
+            <div class="student-info">
+                <div>
+                    <label for="student-name">Student Name</label>
+                    <input type="text" id="student-name" placeholder="Enter student name">
+                </div>
+                <div>
+                    <label for="student-email">Email</label>
+                    <input type="email" id="student-email" placeholder="student@example.com">
+                </div>
+                <div>
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" placeholder="e.g., Abyssinian Brew">
+                </div>
+                <div>
+                    <label for="submission-date">Submission Date</label>
+                    <input type="date" id="submission-date">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📋 Grading Criteria</h2>
+            <p>Score each criterion from <strong>0 to the maximum points</strong> shown. Total possible: <strong>100 points</strong>. Minimum passing score: <strong>80 points (80%)</strong>.</p>
+
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Criterion</th>
+                        <th style="width: 45%;">Requirements</th>
+                        <th style="width: 15%;">Max Points</th>
+                        <th style="width: 10%;">Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Document Structure -->
+                    <tr>
+                        <td class="criteria">1. Document Structure</td>
+                        <td>
+                            <ul>
+                                <li>Correct DOCTYPE declaration on all pages</li>
+                                <li>Proper html, head, body structure</li>
+                                <li>UTF-8 charset and viewport meta tags</li>
+                                <li>Valid HTML5 (passes W3C validator)</li>
+                            </ul>
+                        </td>
+                        <td class="points">10</td>
+                        <td><input type="number" class="score-input" min="0" max="10" value="0" data-max="10"></td>
+                    </tr>
+
+                    <!-- Semantic HTML -->
+                    <tr>
+                        <td class="criteria">2. Semantic HTML5</td>
+                        <td>
+                            <ul>
+                                <li>Uses header, nav, main, article, section, aside, footer appropriately</li>
+                                <li>One h1 per page with proper heading hierarchy</li>
+                                <li>No skipped heading levels (h1→h2→h3, not h1→h3)</li>
+                                <li>Minimal use of generic div/span for structure</li>
+                            </ul>
+                        </td>
+                        <td class="points">15</td>
+                        <td><input type="number" class="score-input" min="0" max="15" value="0" data-max="15"></td>
+                    </tr>
+
+                    <!-- Navigation -->
+                    <tr>
+                        <td class="criteria">3. Navigation & Links</td>
+                        <td>
+                            <ul>
+                                <li>Consistent navigation across all 5 pages</li>
+                                <li>All internal links work correctly</li>
+                                <li>External links use target="_blank" + rel="noopener noreferrer"</li>
+                                <li>At least one internal anchor link (#section)</li>
+                                <li>Email link using mailto:</li>
+                            </ul>
+                        </td>
+                        <td class="points">10</td>
+                        <td><input type="number" class="score-input" min="0" max="10" value="0" data-max="10"></td>
+                    </tr>
+
+                    <!-- Content Elements -->
+                    <tr>
+                        <td class="criteria">4. Content Elements</td>
+                        <td>
+                            <ul>
+                                <li>At least one accessible table (caption, thead, tbody, scope)</li>
+                                <li>At least one form with 5+ fields and validation</li>
+                                <li>Both ordered and unordered lists used</li>
+                                <li>At least 4 images with figure/figcaption</li>
+                                <li>Text emphasis tags used (strong, em, mark)</li>
+                            </ul>
+                        </td>
+                        <td class="points">15</td>
+                        <td><input type="number" class="score-input" min="0" max="15" value="0" data-max="15"></td>
+                    </tr>
+
+                    <!-- Accessibility -->
+                    <tr>
+                        <td class="criteria">5. Accessibility</td>
+                        <td>
+                            <ul>
+                                <li>All images have descriptive alt text</li>
+                                <li>All form inputs have associated labels</li>
+                                <li>Language attribute set on html element</li>
+                                <li>Tables use scope attributes</li>
+                                <li>Semantic structure supports screen readers</li>
+                            </ul>
+                        </td>
+                        <td class="points">15</td>
+                        <td><input type="number" class="score-input" min="0" max="15" value="0" data-max="15"></td>
+                    </tr>
+
+                    <!-- SEO & Metadata -->
+                    <tr>
+                        <td class="criteria">6. SEO & Metadata</td>
+                        <td>
+                            <ul>
+                                <li>Unique, optimized title on every page (&lt;60 chars)</li>
+                                <li>Meta description on every page (150-160 chars)</li>
+                                <li>Open Graph tags on homepage</li>
+                                <li>Favicon linked</li>
+                                <li>Canonical link present</li>
+                            </ul>
+                        </td>
+                        <td class="points">10</td>
+                        <td><input type="number" class="score-input" min="0" max="10" value="0" data-max="10"></td>
+                    </tr>
+
+                    <!-- Code Quality -->
+                    <tr>
+                        <td class="criteria">7. Code Quality</td>
+                        <td>
+                            <ul>
+                                <li>Consistent indentation (2 or 4 spaces)</li>
+                                <li>Logical file organization (folders for css, images, etc.)</li>
+                                <li>Helpful HTML comments for major sections</li>
+                                <li>No inline styles</li>
+                                <li>Clean, readable code</li>
+                            </ul>
+                        </td>
+                        <td class="points">10</td>
+                        <td><input type="number" class="score-input" min="0" max="10" value="0" data-max="10"></td>
+                    </tr>
+
+                    <!-- Completeness -->
+                    <tr>
+                        <td class="criteria">8. Project Completeness</td>
+                        <td>
+                            <ul>
+                                <li>All 5 required pages present (Home, About, Menu/Services, Gallery, Contact)</li>
+                                <li>Each page has substantial, meaningful content</li>
+                                <li>Project feels complete and professional</li>
+                                <li>Creative effort and attention to detail</li>
+                            </ul>
+                        </td>
+                        <td class="points">15</td>
+                        <td><input type="number" class="score-input" min="0" max="15" value="0" data-max="15"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="total-score" id="totalScore">
+                Total Score: 0 / 100
+            </div>
+
+            <div class="pass-fail" id="passFail">
+                Enter scores to see result
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📝 Instructor Notes</h2>
+            <div class="grading-notes">
+                <strong>💡 Grading Tips:</strong>
+                <ul>
+                    <li>Use the <a href="https://validator.w3.org/" target="_blank">W3C Validator</a> to check for HTML errors</li>
+                    <li>Test all links by clicking through every page</li>
+                    <li>Check accessibility with browser DevTools (Lighthouse audit)</li>
+                    <li>View page source to check indentation and comments</li>
+                    <li>Verify images load and have alt text by inspecting them</li>
+                </ul>
+            </div>
+
+            <h3>Common Deductions</h3>
+            <table>
+                <thead>
+                    <tr><th>Issue</th><th>Typical Deduction</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Missing DOCTYPE or charset</td><td>-2 points</td></tr>
+                    <tr><td>Images without alt text</td><td>-1 point per image</td></tr>
+                    <tr><td>Form inputs without labels</td><td>-1 point per input</td></tr>
+                    <tr><td>Broken links</td><td>-1 point per broken link</td></tr>
+                    <tr><td>Skipped heading levels</td><td>-2 points</td></tr>
+                    <tr><td>No semantic HTML (div soup)</td><td>-5 points</td></tr>
+                    <tr><td>W3C validation errors</td><td>-1 point per error</td></tr>
+                    <tr><td>Inconsistent indentation</td><td>-2 points</td></tr>
+                    <tr><td>Missing pages</td><td>-10 points per missing page</td></tr>
+                    <tr><td>Inline styles used</td><td>-2 points</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>✅ Certificate Eligibility</h2>
+            <table>
+                <thead>
+                    <tr><th>Requirement</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Capstone Project Score ≥ 80%</td>
+                        <td id="req-project">Pending</td>
+                    </tr>
+                    <tr>
+                        <td>All 12 Module Quizzes Completed</td>
+                        <td id="req-quizzes">Check manually</td>
+                    </tr>
+                    <tr>
+                        <td>All Module Exercises Submitted</td>
+                        <td id="req-exercises">Check manually</td>
+                    </tr>
+                    <tr>
+                        <td>W3C Validation: 0 Errors</td>
+                        <td id="req-validation">Check manually</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="cert-eligibility" style="margin-top: 1.5rem; text-align: center;">
+                <p>Enter scores above to determine certificate eligibility.</p>
+            </div>
+        </div>
+
+        <div class="card no-print">
+            <h2>🖨️ Print / Save Grading Sheet</h2>
+            <p>Print this page to keep a record of the grading:</p>
+            <p style="text-align: center; margin-top: 1rem;">
+                <button onclick="window.print()" class="btn btn-success">Print Grading Sheet</button>
+            </p>
+        </div>
+    </main>
+
+    <footer class="course-footer no-print">
+        <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
+        <p><a href="index.html">← Back to Course Home</a></p>
+    </footer>
+
+    <script>
+        // Auto-calculate total score
+        const inputs = document.querySelectorAll('.score-input');
+        const totalDisplay = document.getElementById('totalScore');
+        const passFailDisplay = document.getElementById('passFail');
+        const reqProject = document.getElementById('req-project');
+        const certEligibility = document.getElementById('cert-eligibility');
+
+        function calculateTotal() {
+            let total = 0;
+            let maxTotal = 0;
+            inputs.forEach(input => {
+                const val = parseInt(input.value) || 0;
+                const max = parseInt(input.dataset.max);
+                total += Math.min(val, max);
+                maxTotal += max;
+            });
+
+            const percentage = Math.round((total / maxTotal) * 100);
+            totalDisplay.textContent = `Total Score: ${total} / ${maxTotal} (${percentage}%)`;
+
+            if (percentage >= 80) {
+                passFailDisplay.textContent = `✅ PASS — Student qualifies for certificate!`;
+                passFailDisplay.className = 'pass-fail pass';
+                reqProject.textContent = '✅ Met';
+                reqProject.style.color = '#065f46';
+            } else if (percentage > 0) {
+                passFailDisplay.textContent = `❌ FAIL — Needs ${80 - percentage}% more to pass`;
+                passFailDisplay.className = 'pass-fail fail';
+                reqProject.textContent = '❌ Not Met';
+                reqProject.style.color = '#991b1b';
+            } else {
+                passFailDisplay.textContent = 'Enter scores to see result';
+                passFailDisplay.className = 'pass-fail';
+                passFailDisplay.style.background = '#f1f5f9';
+                passFailDisplay.style.color = '#64748b';
+            }
+
+            // Update certificate eligibility
+            if (percentage >= 80) {
+                certEligibility.innerHTML = `
+                    <div class="pass-fail pass">
+                        🎓 STUDENT IS ELIGIBLE FOR CERTIFICATE<br>
+                        <a href="certificate.html" class="btn" style="margin-top: 1rem;">View Certificate Template →</a>
+                    </div>
+                `;
+            } else if (percentage > 0) {
+                certEligibility.innerHTML = `
+                    <div class="pass-fail fail">
+                        ❌ STUDENT DOES NOT YET QUALIFY<br>
+                        Provide feedback and allow resubmission.
+                    </div>
+                `;
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateTotal);
+        });
+
+        // Set today's date as default
+        document.getElementById('submission-date').valueAsDate = new Date();
+    </script>
+</body>
+</html>
