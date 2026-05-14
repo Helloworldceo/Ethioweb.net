@@ -72,6 +72,27 @@ export default async function HtmlLessonPage({ params }: HtmlLessonPageProps) {
             <p className="text-xs font-semibold uppercase tracking-wide text-[var(--brand)]">Practice task</p>
             <p className="mt-2 text-sm leading-7 text-[var(--muted)]">{lesson.exercise}</p>
           </div>
+
+          <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-3">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 px-1">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--brand)]">Full original lesson content</p>
+              <a
+                href={`/html-course/${lesson.sourceFile}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs font-semibold text-[var(--brand)]"
+              >
+                Open standalone version
+              </a>
+            </div>
+
+            <iframe
+              title={`${lesson.title} full lesson`}
+              src={`/html-course/${lesson.sourceFile}`}
+              className="h-[78vh] w-full rounded-xl border border-[var(--line)] bg-white"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 

@@ -99,6 +99,22 @@ export default function HtmlCoursePage() {
           <h2 className="heading-display mt-3 text-3xl font-black">Bonus materials</h2>
         </div>
 
+        <article className="card mb-4 p-5">
+          <p className="text-xs font-semibold text-[var(--brand)]">Course home archive</p>
+          <h3 className="heading-display mt-2 text-lg font-bold">Original static course homepage</h3>
+          <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
+            Access the original full static home page and its course navigation exactly as authored.
+          </p>
+          <a
+            href="/html-course/index.html"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-block text-sm font-semibold text-[var(--brand)]"
+          >
+            Open original static course home
+          </a>
+        </article>
+
         <div className="grid gap-4 md:grid-cols-3">
           {resources.map((lesson) => (
             <Link key={lesson.slug} href={`/education/html/${lesson.slug}`} className="card block p-5">

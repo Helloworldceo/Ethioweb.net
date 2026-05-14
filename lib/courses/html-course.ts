@@ -7,6 +7,7 @@ export type HtmlCourseLesson = {
   label: string;
   duration: string;
   summary: string;
+  sourceFile: string;
   objectives: string[];
   exercise: string;
 };
@@ -19,6 +20,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Welcome to the Web",
     duration: "45 min",
     summary: "Learn what HTML is, how browsers render pages, and set up your coding environment.",
+    sourceFile: "module01.html",
     objectives: [
       "Explain what HTML does in the web stack",
       "Install and use a code editor and browser dev tools",
@@ -33,6 +35,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Document Anatomy",
     duration: "40 min",
     summary: "Master the HTML5 document skeleton including doctype, head metadata, and body content.",
+    sourceFile: "module02.html",
     objectives: [
       "Use a valid HTML5 page skeleton",
       "Add charset and viewport meta tags correctly",
@@ -47,6 +50,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Text and Headings",
     duration: "50 min",
     summary: "Structure content with heading hierarchy, paragraphs, and meaningful text emphasis.",
+    sourceFile: "module03.html",
     objectives: [
       "Apply heading levels without skipping hierarchy",
       "Use paragraph, line break, and thematic break tags appropriately",
@@ -61,6 +65,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Links and Navigation",
     duration: "55 min",
     summary: "Connect pages with internal and external links and build clean multi-page navigation.",
+    sourceFile: "module04.html",
     objectives: [
       "Use anchor tags with absolute and relative paths",
       "Build a reusable navigation block",
@@ -75,6 +80,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Images and Multimedia",
     duration: "60 min",
     summary: "Work with images, captions, video, and audio while keeping content accessible.",
+    sourceFile: "module05.html",
     objectives: [
       "Use img with meaningful alt text",
       "Use figure and figcaption for media context",
@@ -89,6 +95,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Lists and Tables",
     duration: "55 min",
     summary: "Present structured information using list types and accessible data tables.",
+    sourceFile: "module06.html",
     objectives: [
       "Use ordered, unordered, and definition lists",
       "Create table headers and body groups",
@@ -103,6 +110,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Forms and Inputs",
     duration: "70 min",
     summary: "Collect user input using forms, labels, validation attributes, and grouped controls.",
+    sourceFile: "module07.html",
     objectives: [
       "Build forms with action and method",
       "Use labels, select, textarea, checkbox, and radio controls",
@@ -117,6 +125,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Semantic HTML5",
     duration: "60 min",
     summary: "Use semantic layout elements so content is understandable to users and machines.",
+    sourceFile: "module08.html",
     objectives: [
       "Use header, nav, main, section, article, aside, and footer",
       "Avoid generic div-only layouts for page structure",
@@ -131,6 +140,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "HTML Entities",
     duration: "35 min",
     summary: "Display reserved symbols, special characters, and unicode safely in documents.",
+    sourceFile: "module09.html",
     objectives: [
       "Use common entities like lt, gt, amp, copy, and nbsp",
       "Prevent parser conflicts when showing HTML examples",
@@ -145,6 +155,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Metadata and SEO",
     duration: "60 min",
     summary: "Optimize page discoverability and social sharing with metadata and Open Graph tags.",
+    sourceFile: "module10.html",
     objectives: [
       "Write effective title and description tags",
       "Add robots and canonical tags",
@@ -159,6 +170,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Best Practices",
     duration: "50 min",
     summary: "Improve quality with validation, formatting standards, and clean project structure.",
+    sourceFile: "module11.html",
     objectives: [
       "Validate pages with W3C tooling",
       "Use comments and naming conventions effectively",
@@ -173,6 +185,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Capstone Project",
     duration: "90 min",
     summary: "Combine all course skills into a complete multi-page business website.",
+    sourceFile: "module12.html",
     objectives: [
       "Plan and build a 5-page semantic website",
       "Apply accessibility, metadata, and validation requirements",
@@ -187,6 +200,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "HTML Cheat Sheet",
     duration: "Reference",
     summary: "Quick lookup for tags, attributes, and common HTML entities while coding.",
+    sourceFile: "cheatsheet.html",
     objectives: [
       "Find syntax fast while practicing",
       "Review frequently used elements",
@@ -201,6 +215,7 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Capstone Grading Rubric",
     duration: "Reference",
     summary: "Detailed evaluation criteria used to score final course projects consistently.",
+    sourceFile: "grading-rubric.html",
     objectives: [
       "Understand pass and fail thresholds",
       "Self-check project quality before submission",
@@ -215,12 +230,28 @@ export const htmlCourseLessons: HtmlCourseLesson[] = [
     title: "Course Certificate",
     duration: "Reference",
     summary: "Completion certificate details and verification flow for successful learners.",
+    sourceFile: "certificate.html",
     objectives: [
       "Review certificate requirements",
       "Understand verification details",
       "Prepare final submission evidence",
     ],
     exercise: "Finalize your capstone and verify all requirements for certificate eligibility.",
+  },
+  {
+    slug: "starter-template",
+    kind: "resource",
+    label: "Resource",
+    title: "Starter Template",
+    duration: "Reference",
+    summary: "Production-ready starter HTML template with structure, metadata, and semantic sections.",
+    sourceFile: "starter-template.html",
+    objectives: [
+      "Start new pages with validated boilerplate",
+      "Reuse semantic structure across projects",
+      "Apply metadata defaults quickly",
+    ],
+    exercise: "Use the template to create a new page and adapt it for your own project.",
   },
 ];
 
