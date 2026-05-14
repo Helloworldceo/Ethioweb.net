@@ -12,25 +12,25 @@ const lessons = [
     title: "1. HTML Foundations",
     description: "Understand elements, tags, attributes, headings, paragraphs, links, and images.",
     status: "Ready",
-    href: "/education/html",
+    href: "/education/html/module-01",
   },
   {
     title: "2. Page Structure",
     description: "Build clean pages with semantic sections, navigation, main content, and footers.",
     status: "Next",
-    href: "/education/html",
+    href: "/education/html/module-02",
   },
   {
     title: "3. Forms and Inputs",
     description: "Create contact forms, labels, inputs, buttons, and accessible field groups.",
     status: "Draft",
-    href: "/education/html",
+    href: "/education/html/module-07",
   },
   {
     title: "4. Project Practice",
     description: "Turn the course into a small profile page project students can publish.",
     status: "Draft",
-    href: "/education/html",
+    href: "/education/html/module-12",
   },
 ];
 
@@ -131,7 +131,7 @@ export default function EducationPage() {
                 downloadable notes, and videos here.
               </p>
             </div>
-            <Link href="/education/html" className="btn-secondary text-sm">
+            <Link href="/education/html/module-01" className="btn-secondary text-sm">
               Start lesson 1
             </Link>
           </div>

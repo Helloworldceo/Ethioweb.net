@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts, demoProfiles } from "@/lib/site";
+import { htmlCourseLessons } from "@/lib/courses/html-course";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://ethioweb.net";
@@ -41,5 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...blogPages, ...profilePages];
+  const coursePages = htmlCourseLessons.map((lesson) => ({
+    url: `${base}/education/html/${lesson.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.65,
+  }));
+
+  return [...staticPages, ...blogPages, ...profilePages, ...coursePages];
 }
