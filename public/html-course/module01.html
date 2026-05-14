@@ -6,7 +6,6 @@
     <meta name="description" content="Module 1: Welcome to the Web - Ethioweb.net HTML Course">
     <title>Module 1: Welcome to the Web — Ethioweb.net</title>
     <link rel="stylesheet" href="style.css">
-<base target="_blank">
 </head>
 <body>
     <header class="course-header">
@@ -197,7 +196,7 @@
             <h2>📝 Module 1 Quiz</h2>
             <div class="quiz">
                 <div class="quiz-title">Test Your Knowledge</div>
-                <form onsubmit="event.preventDefault(); alert('Great job! In a real course platform, your answers would be saved and graded.');">
+                <form class="module-quiz-form">
                     <div class="quiz-question">1. What does HTML stand for?</div>
                     <div class="quiz-options">
                         <label><input type="radio" name="q1"> HyperText Markup Language</label>
@@ -257,5 +256,6 @@
         <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
         <p><a href="index.html">← Back to Course Home</a></p>
     </footer>
+    <script src="course-progress.js"></script>
 </body>
 </html>

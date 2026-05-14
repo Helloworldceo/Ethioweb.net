@@ -14,7 +14,6 @@
     <title>HTML Fundamentals Course — Ethioweb.net</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-<base target="_blank">
 </head>
 <body>
     <header class="course-header">
@@ -49,6 +48,12 @@
         <section class="card">
             <h2>🎯 Course Overview</h2>
             <p>Welcome to the <strong>HTML Fundamentals Course</strong> by <strong>Ethioweb.net</strong>! This comprehensive course will take you from absolute beginner to confident HTML developer. By the end, you'll build a complete multi-page website and earn your official certificate.</p>
+
+            <div id="course-status" class="course-status" aria-live="polite">
+                <h3>📈 Your Current Progress</h3>
+                <p><strong>Unlocked:</strong> <span id="status-unlocked">Module 1</span></p>
+                <p><strong>Quizzes Passed:</strong> <span id="status-passed">0/11</span></p>
+            </div>
 
             <div class="progress-container">
                 <div class="progress-bar" style="width: 0%">0% Complete</div>
@@ -189,6 +194,9 @@
             <p style="text-align: center; margin-top: 1.5rem;">
                 <a href="module01.html" class="btn btn-success" style="font-size: 1.2rem; padding: 1rem 2rem;">Start Module 1 →</a>
             </p>
+            <p style="text-align: center; margin-top: 1rem;">
+                <button id="reset-progress-btn" class="btn btn-secondary" type="button">Reset Course Progress</button>
+            </p>
         </section>
     </main>
 
@@ -196,5 +204,6 @@
         <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
         <p>Free for educational use. Share and learn together.</p>
     </footer>
+    <script src="course-progress.js"></script>
 </body>
 </html>

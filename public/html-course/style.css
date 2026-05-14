@@ -265,6 +265,69 @@ body {
     background: #f3e8ff;
 }
 
+.quiz-options label.correct-option {
+    background: #dcfce7;
+    border: 1px solid #22c55e;
+}
+
+.quiz-options label.wrong-option {
+    background: #fee2e2;
+    border: 1px solid #ef4444;
+}
+
+.quiz-result {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #d8b4fe;
+}
+
+.quiz-summary {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.quiz-summary.pass {
+    color: #065f46;
+}
+
+.quiz-summary.fail {
+    color: #991b1b;
+}
+
+.quiz-errors {
+    margin-left: 1.2rem;
+    margin-bottom: 0;
+}
+
+.quiz-errors li {
+    color: #7f1d1d;
+}
+
+.locked-link {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: auto;
+}
+
+.course-status {
+    margin: 1.25rem 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--primary);
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+.course-status h3 {
+    margin: 0 0 0.5rem;
+    color: #1d4ed8;
+}
+
+.course-status p {
+    margin: 0.25rem 0;
+    color: #1e3a8a;
+}
+
 /* Progress Bar */
 .progress-container {
     background: var(--bg);

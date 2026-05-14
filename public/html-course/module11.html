@@ -6,7 +6,6 @@
     <meta name="description" content="Module 11: Best Practices - Ethioweb.net HTML Course">
     <title>Module 11: Best Practices — Ethioweb.net</title>
     <link rel="stylesheet" href="style.css">
-<base target="_blank">
 </head>
 <body>
     <header class="course-header">
@@ -244,7 +243,7 @@ my-website/
             <h2>📝 Module 11 Quiz</h2>
             <div class="quiz">
                 <div class="quiz-title">Test Your Knowledge</div>
-                <form onsubmit="event.preventDefault(); alert('Best practices boss!');">
+                <form class="module-quiz-form">
                     <div class="quiz-question">1. Which organization maintains the HTML validator?</div>
                     <div class="quiz-options">
                         <label><input type="radio" name="q1"> Google</label>
@@ -306,5 +305,6 @@ my-website/
         <p>© 2026 <a href="https://ethioweb.net">Ethioweb.net</a> — HTML Fundamentals Course</p>
         <p><a href="index.html">← Back to Course Home</a></p>
     </footer>
+    <script src="course-progress.js"></script>
 </body>
 </html>
