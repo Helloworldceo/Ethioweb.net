@@ -24,6 +24,8 @@ Create `.env.local` from `.env.example` and set:
 NEXT_PUBLIC_SITE_URL=https://ethioweb.net
 NEXT_PUBLIC_SUPABASE_URL=...
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+NEXT_PUBLIC_GOOGLE_AUTH_ENABLED=true
+NEXT_PUBLIC_FACEBOOK_AUTH_ENABLED=true
 ```
 
 ## 3. GitHub

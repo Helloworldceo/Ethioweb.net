@@ -12,20 +12,10 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-const STORAGE_KEY = "ethioweb-language";
-
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window === "undefined") {
-      return "en";
-    }
-
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    return saved === "en" || saved === "am" ? saved : "en";
-  });
+  const [language, setLanguage] = useState<Language>("en");
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, language);
     document.cookie = `ethioweb_lang=${language}; path=/; max-age=31536000; samesite=lax`;
   }, [language]);
 

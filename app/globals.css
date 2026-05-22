@@ -1,41 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f8f5ef;
-  --paper: #fffaf1;
+  --bg: #f6f1e8;
+  --paper: #fffaf2;
   --panel: #ffffff;
-  --ink: #111313;
-  --muted: #516061;
+  --ink: #14213d;
+  --muted: #4f5d75;
   --brand: #005f5f;
   --brand-2: #df6c22;
-  --line: #d8d5cf;
-  --radius: 18px;
-  --bg-spot-1: #fff5d9;
-  --bg-spot-2: #f3fff7;
-  --mesh-line: rgba(0, 0, 0, 0.02);
+  --line: #ddd2c2;
+  --radius: 8px;
+  --bg-spot-1: rgba(223, 108, 34, 0.1);
+  --bg-spot-2: rgba(0, 95, 95, 0.12);
+  --mesh-line: rgba(20, 33, 61, 0.04);
   --btn-primary-shadow: rgba(0, 95, 95, 0.22);
 }
 
 :root[data-theme="blue-dark"] {
-  --bg: #09152b;
+  --bg: #0e1c34;
   --paper: #102343;
-  --panel: #162f57;
+  --panel: #173156;
   --ink: #edf4ff;
-  --muted: #abc0e4;
+  --muted: #b4c5e4;
   --brand: #66c3ff;
   --brand-2: #f3b25f;
-  --line: #2a436c;
-  --bg-spot-1: #143364;
-  --bg-spot-2: #0f4a5e;
-  --mesh-line: rgba(255, 255, 255, 0.08);
-  --btn-primary-shadow: rgba(40, 123, 255, 0.35);
+  --line: #29456f;
+  --bg-spot-1: rgba(102, 195, 255, 0.16);
+  --bg-spot-2: rgba(243, 178, 95, 0.14);
+  --mesh-line: rgba(255, 255, 255, 0.06);
+  --btn-primary-shadow: rgba(40, 123, 255, 0.3);
 }
 
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--ink);
-  --font-sans: var(--font-manrope);
-  --font-mono: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-inter);
 }
 
 * {
@@ -48,7 +48,7 @@ body {
     radial-gradient(circle at 100% 10%, var(--bg-spot-2) 0%, transparent 32%),
     var(--bg);
   color: var(--ink);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-inter), var(--font-ethiopic), sans-serif;
 }
 
 a {
@@ -76,55 +76,62 @@ a {
 }
 
 .card {
-  background: color-mix(in srgb, var(--panel) 92%, #f2efe8 8%);
+  background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(20, 33, 61, 0.08);
 }
 
 .chip {
-  border: 1px solid color-mix(in srgb, var(--brand) 25%, #cbd5d5 75%);
-  background: color-mix(in srgb, var(--brand) 7%, white 93%);
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, white 82%);
+  background: color-mix(in srgb, var(--brand) 10%, white 90%);
   color: var(--brand);
-  border-radius: 999px;
+  border-radius: var(--radius);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  padding: 0.35rem 0.8rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--brand) 0%, #004444 100%);
-  color: #eafaf9;
-  font-weight: 700;
-  padding: 0.75rem 1.3rem;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--brand) 0%, #004848 100%);
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
   border: 1px solid transparent;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 30px var(--btn-primary-shadow);
+  background: linear-gradient(135deg, #006d6d 0%, #0b5252 100%);
+  box-shadow: 0 10px 24px var(--btn-primary-shadow);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: var(--radius);
   background: transparent;
   color: var(--ink);
-  font-weight: 700;
-  padding: 0.75rem 1.3rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
   border: 1px solid var(--line);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: color-mix(in srgb, var(--brand) 20%, white 80%);
+  box-shadow: 0 8px 18px rgba(20, 33, 61, 0.08);
 }
 
 .heading-display {
-  font-family: var(--font-space-grotesk), sans-serif;
-  letter-spacing: -0.03em;
+  font-family: var(--font-inter), var(--font-ethiopic), sans-serif;
+  letter-spacing: -0.02em;
 }
 
 @media (max-width: 768px) {
@@ -139,14 +146,22 @@ a {
     padding: 0.65rem 1rem;
     font-size: 0.88rem;
   }
-
-  .card {
-    border-radius: 14px;
-  }
 }
 
 .animate-rise {
   animation: rise 650ms ease both;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 7s ease-in-out 0.9s infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out 0.4s infinite;
 }
 
 @keyframes rise {
@@ -157,5 +172,15 @@ a {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
   }
 }

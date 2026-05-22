@@ -2,29 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { writeAuditEvent } from "@/lib/audit";
-
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME ?? "helloworldceo";
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "helloworldceo@1gmail.com";
-
-async function requireAdmin(supabase: Awaited<ReturnType<typeof getSupabaseServerClient>>) {
-  if (!supabase) return null;
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) return null;
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("username")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  const isUsernameAdmin = Boolean(ADMIN_USERNAME && profile?.username === ADMIN_USERNAME);
-  const isEmailAdmin = Boolean(ADMIN_EMAIL && user.email === ADMIN_EMAIL);
-
-  if (!isUsernameAdmin && !isEmailAdmin) return null;
-  return user;
-}
+import { getViewerContext } from "@/lib/auth/viewer-context";
 
 function permissionErrorMessage(raw: string) {
   if (raw.toLowerCase().includes("row-level security")) {
@@ -37,14 +15,17 @@ export async function GET() {
   const supabase = await getSupabaseServerClient();
   if (!supabase) return NextResponse.json({ error: "Supabase not configured" }, { status: 500 });
 
-  const user = await requireAdmin(supabase);
+  const { user, isAdmin } = await getViewerContext(supabase);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { data, error } = await supabase
+  const query = supabase
     .from("blog_posts")
     .select("*")
-    .eq("author_id", user.id)
     .order("created_at", { ascending: false });
+
+  const { data, error } = isAdmin
+    ? await query
+    : await query.eq("author_id", user.id);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ posts: data ?? [] });
@@ -54,7 +35,7 @@ export async function POST(request: NextRequest) {
   const supabase = await getSupabaseServerClient();
   if (!supabase) return NextResponse.json({ error: "Supabase not configured" }, { status: 500 });
 
-  const user = await requireAdmin(supabase);
+  const { user } = await getViewerContext(supabase);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = (await request.json()) as {
@@ -102,7 +83,7 @@ export async function PATCH(request: NextRequest) {
   const supabase = await getSupabaseServerClient();
   if (!supabase) return NextResponse.json({ error: "Supabase not configured" }, { status: 500 });
 
-  const user = await requireAdmin(supabase);
+  const { user, isAdmin } = await getViewerContext(supabase);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = (await request.json()) as {
@@ -117,7 +98,7 @@ export async function PATCH(request: NextRequest) {
   const { id, title, slug, excerpt, content, is_published } = body;
   if (!id) return NextResponse.json({ error: "id is required" }, { status: 400 });
 
-  const { data, error } = await supabase
+  const query = supabase
     .from("blog_posts")
     .update({
       title,
@@ -128,12 +109,14 @@ export async function PATCH(request: NextRequest) {
       published_at: is_published ? new Date().toISOString() : null,
       updated_at: new Date().toISOString(),
     })
-    .eq("id", id)
-    .eq("author_id", user.id)
+    .eq("id", id);
+
+  const { data, error } = await (isAdmin ? query : query.eq("author_id", user.id))
     .select()
-    .single();
+    .maybeSingle();
 
   if (error) return NextResponse.json({ error: permissionErrorMessage(error.message) }, { status: 500 });
+  if (!data) return NextResponse.json({ error: "Post not found or not editable" }, { status: 404 });
 
   await writeAuditEvent({
     action: "blog.update",
@@ -153,17 +136,20 @@ export async function DELETE(request: NextRequest) {
   const supabase = await getSupabaseServerClient();
   if (!supabase) return NextResponse.json({ error: "Supabase not configured" }, { status: 500 });
 
-  const user = await requireAdmin(supabase);
+  const { user, isAdmin } = await getViewerContext(supabase);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = (await request.json()) as { id?: string };
   if (!body.id) return NextResponse.json({ error: "id is required" }, { status: 400 });
 
-  const { error } = await supabase
+  const query = supabase
     .from("blog_posts")
     .delete()
-    .eq("id", body.id)
-    .eq("author_id", user.id);
+    .eq("id", body.id);
+
+  const { error } = isAdmin
+    ? await query
+    : await query.eq("author_id", user.id);
 
   if (error) return NextResponse.json({ error: permissionErrorMessage(error.message) }, { status: 500 });
 

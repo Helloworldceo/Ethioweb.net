@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Inter, Noto_Sans_Ethiopic } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ProfileDock } from "@/components/layout/profile-dock";
@@ -8,14 +8,14 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { LanguageProvider } from "@/components/i18n/language-provider";
 import { ClientErrorTracker } from "@/components/monitoring/client-error-tracker";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
+const notoSansEthiopic = Noto_Sans_Ethiopic({
+  variable: "--font-ethiopic",
+  subsets: ["ethiopic"],
 });
 
 export const metadata: Metadata = {
@@ -94,7 +94,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="blue-dark"
-      className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${inter.variable} ${notoSansEthiopic.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--bg)] text-[var(--ink)]">
         <a

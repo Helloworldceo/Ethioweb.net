@@ -45,11 +45,11 @@ const kinds = [
 type DashboardClientProps = {
   initialProfile: ProfileRow | null;
   initialAssets: AssetRow[];
-  isAdmin: boolean;
   initialBlogPosts: BlogPostRow[];
+  isAdmin: boolean;
 };
 
-export function DashboardClient({ initialProfile, initialAssets, isAdmin, initialBlogPosts }: DashboardClientProps) {
+export function DashboardClient({ initialProfile, initialAssets, initialBlogPosts, isAdmin }: DashboardClientProps) {
   const { t } = useLanguage();
   const [profile, setProfile] = useState<ProfileRow | null>(initialProfile);
   const [assets, setAssets] = useState<AssetRow[]>(initialAssets);
@@ -75,7 +75,7 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
   const [uploadFile, setUploadFile] = useState<File | null>(null);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
-  // Blog management (admin only)
+  // Blog management (author-owned with admin override)
   const [blogPosts, setBlogPosts] = useState<BlogPostRow[]>(initialBlogPosts);
   const [blogEditing, setBlogEditing] = useState(false);
   const [blogSaving, setBlogSaving] = useState(false);
@@ -480,13 +480,18 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
         <article id="profile-basics" className="card p-6 md:col-span-2">
           <h2 className="heading-display text-2xl font-bold">{t("Profile Basics", "የፕሮፋይል መረጃ")}</h2>
           <form className="mt-4 grid gap-3 md:grid-cols-2" onSubmit={saveProfile}>
-            <input
-              className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
-              value={form.fullName}
-              onChange={(event) => setForm((prev) => ({ ...prev, fullName: event.target.value }))}
-              placeholder="Full name"
-              required
-            />
+            <div>
+              <input
+                className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
+                value={form.fullName}
+                onChange={(event) => setForm((prev) => ({ ...prev, fullName: event.target.value }))}
+                placeholder="Full name"
+                required
+              />
+              <p className="mt-2 text-xs leading-6 text-[var(--muted)]">
+                This name appears on your profile and any course certificates.
+              </p>
+            </div>
             <input
               className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
               value={form.username}
@@ -629,135 +634,133 @@ export function DashboardClient({ initialProfile, initialAssets, isAdmin, initia
           </div>
         </article>
 
-        {isAdmin && (
-          <article id="blog-manager" className="card p-6 md:col-span-2">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <PenLine className="h-4 w-4 text-[var(--brand)]" />
-                <h2 className="heading-display text-2xl font-bold">Blog Posts</h2>
-                <span className="chip text-xs">Admin</span>
-              </div>
-              {!blogEditing && (
-                <button type="button" className="btn-primary text-sm" onClick={startNewPost}>
-                  + New Post
-                </button>
-              )}
+        <article id="blog-manager" className="card p-6 md:col-span-2">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <PenLine className="h-4 w-4 text-[var(--brand)]" />
+              <h2 className="heading-display text-2xl font-bold">{isAdmin ? "All Blog Posts" : "My Blog Posts"}</h2>
+              <span className="chip text-xs">{isAdmin ? "Admin can edit all" : "Author only edits"}</span>
             </div>
+            {!blogEditing && (
+              <button type="button" className="btn-primary text-sm" onClick={startNewPost}>
+                + New Post
+              </button>
+            )}
+          </div>
 
-            {blogEditing && (
-              <form className="mb-6 grid gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4" onSubmit={saveBlogPost}>
-                <h3 className="font-bold">{blogForm.id ? "Edit Post" : "New Post"}</h3>
-                <div className="grid gap-3 md:grid-cols-2">
-                  <input
-                    className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
-                    value={blogForm.title}
-                    onChange={(e) => {
-                      const title = e.target.value;
-                      setBlogForm((prev) => ({
-                        ...prev,
-                        title,
-                        slug: prev.id ? prev.slug : generateSlug(title),
-                      }));
-                    }}
-                    placeholder="Post title"
-                    required
-                  />
-                  <input
-                    className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
-                    value={blogForm.slug}
-                    onChange={(e) =>
-                      setBlogForm((prev) => ({
-                        ...prev,
-                        slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""),
-                      }))
-                    }
-                    placeholder="url-slug"
-                    required
-                  />
-                </div>
-                <textarea
-                  className="h-20 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
-                  value={blogForm.excerpt}
-                  onChange={(e) => setBlogForm((prev) => ({ ...prev, excerpt: e.target.value }))}
-                  placeholder="Short excerpt / summary shown on the blog list"
+          {blogEditing && (
+            <form className="mb-6 grid gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4" onSubmit={saveBlogPost}>
+              <h3 className="font-bold">{blogForm.id ? "Edit Post" : "New Post"}</h3>
+              <div className="grid gap-3 md:grid-cols-2">
+                <input
+                  className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
+                  value={blogForm.title}
+                  onChange={(e) => {
+                    const title = e.target.value;
+                    setBlogForm((prev) => ({
+                      ...prev,
+                      title,
+                      slug: prev.id ? prev.slug : generateSlug(title),
+                    }));
+                  }}
+                  placeholder="Post title"
                   required
                 />
-                <textarea
-                  className="h-56 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 font-mono text-sm"
-                  value={blogForm.content}
-                  onChange={(e) => setBlogForm((prev) => ({ ...prev, content: e.target.value }))}
-                  placeholder="Full article content..."
+                <input
+                  className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
+                  value={blogForm.slug}
+                  onChange={(e) =>
+                    setBlogForm((prev) => ({
+                      ...prev,
+                      slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""),
+                    }))
+                  }
+                  placeholder="url-slug"
+                  required
                 />
-                <label className="flex cursor-pointer items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={blogForm.is_published}
-                    onChange={(e) => setBlogForm((prev) => ({ ...prev, is_published: e.target.checked }))}
-                  />
-                  Publish immediately (visible to all visitors)
-                </label>
-                <div className="flex gap-2">
-                  <button className="btn-primary text-sm" type="submit" disabled={blogSaving}>
-                    {blogSaving ? "Saving..." : blogForm.id ? "Update Post" : "Create Post"}
-                  </button>
-                  <button
-                    className="btn-secondary text-sm"
-                    type="button"
-                    onClick={() => setBlogEditing(false)}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            )}
+              </div>
+              <textarea
+                className="h-20 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
+                value={blogForm.excerpt}
+                onChange={(e) => setBlogForm((prev) => ({ ...prev, excerpt: e.target.value }))}
+                placeholder="Short excerpt / summary shown on the blog list"
+                required
+              />
+              <textarea
+                className="h-56 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 font-mono text-sm"
+                value={blogForm.content}
+                onChange={(e) => setBlogForm((prev) => ({ ...prev, content: e.target.value }))}
+                placeholder="Full article content..."
+              />
+              <label className="flex cursor-pointer items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={blogForm.is_published}
+                  onChange={(e) => setBlogForm((prev) => ({ ...prev, is_published: e.target.checked }))}
+                />
+                Publish immediately (visible to all visitors)
+              </label>
+              <div className="flex gap-2">
+                <button className="btn-primary text-sm" type="submit" disabled={blogSaving}>
+                  {blogSaving ? "Saving..." : blogForm.id ? "Update Post" : "Create Post"}
+                </button>
+                <button
+                  className="btn-secondary text-sm"
+                  type="button"
+                  onClick={() => setBlogEditing(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          )}
 
-            <ul className="space-y-2">
-              {blogPosts.length === 0 && !blogEditing && (
-                <li className="rounded-xl border border-dashed border-[var(--line)] p-6 text-center text-sm text-[var(--muted)]">
-                  No blog posts yet. Click &ldquo;+ New Post&rdquo; to write your first article.
-                </li>
-              )}
-              {blogPosts.map((post) => (
-                <li key={post.id} className="rounded-xl border border-[var(--line)] p-4">
-                  <div className="flex flex-wrap items-start justify-between gap-2">
-                    <div>
-                      <p className="font-bold text-[var(--ink)]">{post.title}</p>
-                      <p className="mt-0.5 text-xs text-[var(--muted)]">
-                        /{post.slug} &nbsp;·&nbsp;{" "}
-                        {post.published_at?.slice(0, 10) ?? post.created_at.slice(0, 10)}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
-                          post.is_published
-                            ? "bg-emerald-100 text-emerald-700"
-                            : "bg-amber-100 text-amber-700"
-                        }`}
-                      >
-                        {post.is_published ? "Published" : "Draft"}
-                      </span>
-                      <button
-                        type="button"
-                        className="text-xs font-semibold text-[var(--brand)]"
-                        onClick={() => startEditPost(post)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        type="button"
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-red-500"
-                        onClick={() => deleteBlogPost(post.id)}
-                      >
-                        <Trash2 className="h-3 w-3" /> Delete
-                      </button>
-                    </div>
+          <ul className="space-y-2">
+            {blogPosts.length === 0 && !blogEditing && (
+              <li className="rounded-xl border border-dashed border-[var(--line)] p-6 text-center text-sm text-[var(--muted)]">
+                No blog posts yet. Click &ldquo;+ New Post&rdquo; to write your first article.
+              </li>
+            )}
+            {blogPosts.map((post) => (
+              <li key={post.id} className="rounded-xl border border-[var(--line)] p-4">
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <p className="font-bold text-[var(--ink)]">{post.title}</p>
+                    <p className="mt-0.5 text-xs text-[var(--muted)]">
+                      /{post.slug} &nbsp;·&nbsp;{" "}
+                      {post.published_at?.slice(0, 10) ?? post.created_at.slice(0, 10)}
+                    </p>
                   </div>
-                </li>
-              ))}
-            </ul>
-          </article>
-        )}
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
+                        post.is_published
+                          ? "bg-emerald-100 text-emerald-700"
+                          : "bg-amber-100 text-amber-700"
+                      }`}
+                    >
+                      {post.is_published ? "Published" : "Draft"}
+                    </span>
+                    <button
+                      type="button"
+                      className="text-xs font-semibold text-[var(--brand)]"
+                      onClick={() => startEditPost(post)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-red-500"
+                      onClick={() => deleteBlogPost(post.id)}
+                    >
+                      <Trash2 className="h-3 w-3" /> Delete
+                    </button>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </article>
 
         <article id="settings" className="card p-6 md:col-span-2">
           <h2 className="heading-display text-2xl font-bold">{t("Settings & Privacy", "ቅንብሮች እና ግላዊነት")}</h2>

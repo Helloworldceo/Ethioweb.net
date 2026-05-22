@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useMemo, useState } from "react";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import { getOAuthProviderSetupMessage, isOAuthProviderEnabled } from "@/lib/supabase/oauth-providers";
 import { useLanguage } from "@/components/i18n/language-provider";
 
 type LoginFormProps = {
@@ -30,7 +31,7 @@ export function LoginForm({ initialError }: LoginFormProps) {
     setError(null);
 
     if (!supabase) {
-      setError("Supabase is not configured yet.");
+      setError(t("Supabase is not configured yet.", "Supabase እስካሁን አልተዋቀረም።"));
       return;
     }
 
@@ -49,7 +50,12 @@ export function LoginForm({ initialError }: LoginFormProps) {
 
   async function handleOAuth(provider: "google" | "facebook") {
     if (!supabase) {
-      setError("Supabase is not configured yet.");
+      setError(t("Supabase is not configured yet.", "Supabase እስካሁን አልተዋቀረም።"));
+      return;
+    }
+
+    if (!isOAuthProviderEnabled(provider)) {
+      setError(getOAuthProviderSetupMessage(provider));
       return;
     }
 
@@ -86,7 +92,7 @@ export function LoginForm({ initialError }: LoginFormProps) {
           <input
             className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             type="email"
-            placeholder="Email"
+            placeholder={t("Email", "ኢሜይል")}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             required
@@ -94,7 +100,7 @@ export function LoginForm({ initialError }: LoginFormProps) {
           <input
             className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             type="password"
-            placeholder="Password"
+            placeholder={t("Password", "የምስጢር ቃል")}
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
@@ -105,13 +111,36 @@ export function LoginForm({ initialError }: LoginFormProps) {
         </form>
 
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <button className="btn-secondary" onClick={() => handleOAuth("google")} type="button">
-            Continue with Google
+          <button
+            className="btn-secondary disabled:cursor-not-allowed disabled:opacity-60"
+            onClick={() => handleOAuth("google")}
+            type="button"
+            disabled={!isOAuthProviderEnabled("google")}
+            title={!isOAuthProviderEnabled("google") ? getOAuthProviderSetupMessage("google") : undefined}
+          >
+            {isOAuthProviderEnabled("google")
+              ? t("Continue with Google", "በGoogle ቀጥል")
+              : t("Google setup pending", "Google ማዋቀር በሂደት ላይ ነው")}
           </button>
-          <button className="btn-secondary" onClick={() => handleOAuth("facebook")} type="button">
-            Continue with Facebook
+          <button
+            className="btn-secondary disabled:cursor-not-allowed disabled:opacity-60"
+            onClick={() => handleOAuth("facebook")}
+            type="button"
+            disabled={!isOAuthProviderEnabled("facebook")}
+            title={!isOAuthProviderEnabled("facebook") ? getOAuthProviderSetupMessage("facebook") : undefined}
+          >
+            {isOAuthProviderEnabled("facebook")
+              ? t("Continue with Facebook", "በFacebook ቀጥል")
+              : t("Facebook setup pending", "Facebook ማዋቀር በሂደት ላይ ነው")}
           </button>
         </div>
+
+        <p className="mt-3 text-xs leading-6 text-[var(--muted)]">
+          {t(
+            "Social sign-in only works after the provider is enabled in Supabase for this environment.",
+            "የማህበራዊ መግቢያ የሚሠራው አቅራቢው በዚህ አካባቢ በSupabase ከተነቃ በኋላ ብቻ ነው።",
+          )}
+        </p>
 
         <p className="mt-4 text-sm text-[var(--muted)]">
           {t("No account?", "መለያ የለዎትም?")} <Link className="font-semibold text-[var(--brand)]" href="/auth/signup">{t("Create one", "መለያ ይፍጠሩ")}</Link>

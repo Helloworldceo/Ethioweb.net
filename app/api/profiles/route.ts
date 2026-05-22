@@ -7,6 +7,8 @@ import {
 import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
 import { writeAuditEvent } from "@/lib/audit";
 
+type EnsureProfileClient = Parameters<typeof ensureUserProfile>[0];
+
 function formatUsername(input: string) {
   return input
     .toLowerCase()
@@ -35,7 +37,7 @@ export async function GET(request: NextRequest) {
     return applyResponseCookies(response, NextResponse.json({ error: "Unauthorized" }, { status: 401 }));
   }
 
-  const { error: ensureError } = await ensureUserProfile(supabase, user);
+  const { error: ensureError } = await ensureUserProfile(supabase as unknown as EnsureProfileClient, user);
 
   if (ensureError) {
     return applyResponseCookies(response, NextResponse.json({ error: ensureError.message }, { status: 500 }));
@@ -95,30 +97,32 @@ export async function POST(request: NextRequest) {
     payload.username ||
     (user.user_metadata?.username as string | undefined) ||
     fullName.replace(/\s+/g, "");
-  const username = formatUsername(usernameBase) || `user${user.id.slice(0, 6)}`;
-
-  const { error } = await supabase.from("profiles").upsert({
-    id: user.id,
-    full_name: fullName,
-    username,
-    avatar_url: payload.avatarUrl,
-    updated_at: new Date().toISOString(),
+  const { error } = await ensureUserProfile(supabase as unknown as EnsureProfileClient, user, {
+    fullName,
+    username: usernameBase,
+    avatarUrl: payload.avatarUrl,
   });
 
   if (error) {
     return applyResponseCookies(response, NextResponse.json({ error: error.message }, { status: 500 }));
   }
 
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("username")
+    .eq("id", user.id)
+    .maybeSingle();
+
   await writeAuditEvent({
     action: "profile.update",
     actorId: user.id,
     resource: "profiles",
     metadata: {
-      username: formatUsername(payload.username ?? ""),
+      username: profile?.username ?? formatUsername(payload.username ?? ""),
     },
   });
 
-  return applyResponseCookies(response, NextResponse.json({ ok: true }));
+  return applyResponseCookies(response, NextResponse.json({ ok: true, username: profile?.username ?? null }));
 }
 
 export async function PATCH(request: NextRequest) {
@@ -142,7 +146,7 @@ export async function PATCH(request: NextRequest) {
     return applyResponseCookies(response, NextResponse.json({ error: "Unauthorized" }, { status: 401 }));
   }
 
-  const { error: ensureError } = await ensureUserProfile(supabase, user);
+  const { error: ensureError } = await ensureUserProfile(supabase as unknown as EnsureProfileClient, user);
 
   if (ensureError) {
     return applyResponseCookies(response, NextResponse.json({ error: ensureError.message }, { status: 500 }));
@@ -180,6 +184,9 @@ export async function PATCH(request: NextRequest) {
     .eq("id", user.id);
 
   if (error) {
+    if (error.message.toLowerCase().includes("duplicate key value") || error.message.toLowerCase().includes("unique")) {
+      return applyResponseCookies(response, NextResponse.json({ error: "Username already taken." }, { status: 409 }));
+    }
     return applyResponseCookies(response, NextResponse.json({ error: error.message }, { status: 500 }));
   }
 

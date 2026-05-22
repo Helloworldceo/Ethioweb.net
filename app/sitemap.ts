@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts, demoProfiles } from "@/lib/site";
+import { courseModules } from "@/lib/courses/ai-course";
 import { htmlCourseLessons } from "@/lib/courses/html-course";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog",
     "/education",
     "/education/html",
+    "/education/ai",
     "/html-course/index.html",
     "/contact",
     "/discover",
@@ -49,5 +51,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }));
 
-  return [...staticPages, ...blogPages, ...profilePages, ...coursePages];
+  const aiPages = courseModules.flatMap((module) => {
+    const modulePage = {
+      url: `${base}/education/ai/module/${module.id}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.65,
+    };
+
+    const lessonPages = module.lessons.map((lesson) => ({
+      url: `${base}/education/ai/lesson/${module.id}/${lesson.id}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    }));
+
+    return [modulePage, ...lessonPages];
+  });
+
+  return [...staticPages, ...blogPages, ...profilePages, ...coursePages, ...aiPages];
 }

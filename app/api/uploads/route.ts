@@ -7,6 +7,8 @@ import {
 import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
 import { writeAuditEvent } from "@/lib/audit";
 
+type EnsureProfileClient = Parameters<typeof ensureUserProfile>[0];
+
 const ALLOWED_TYPES = ["application/pdf", "image/png", "image/jpeg"];
 const IMAGE_TYPES = ["image/png", "image/jpeg"];
 
@@ -31,7 +33,7 @@ export async function POST(request: NextRequest) {
     return applyResponseCookies(response, NextResponse.json({ error: "Unauthorized" }, { status: 401 }));
   }
 
-  const { error: profileError } = await ensureUserProfile(supabase, user);
+  const { error: profileError } = await ensureUserProfile(supabase as unknown as EnsureProfileClient, user);
 
   if (profileError) {
     return applyResponseCookies(

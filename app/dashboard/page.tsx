@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 import { DashboardClient } from "@/components/dashboard/dashboard-client";
+import { getViewerContext } from "@/lib/auth/viewer-context";
 import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME ?? "helloworldceo";
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "helloworldceo@1gmail.com";
+type EnsureProfileClient = Parameters<typeof ensureUserProfile>[0];
 
 export const metadata = {
   title: "Dashboard",
@@ -27,35 +27,34 @@ export default async function DashboardPage() {
     );
   }
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { user, isAdmin } = await getViewerContext(supabase);
 
   if (!user) {
     redirect("/auth/login");
   }
 
-  await ensureUserProfile(supabase, user);
+  await ensureUserProfile(supabase as unknown as EnsureProfileClient, user);
 
   const [{ data: profile }, { data: assets }] = await Promise.all([
     supabase.from("profiles").select("*").eq("id", user.id).maybeSingle(),
     supabase.from("profile_assets").select("*").eq("profile_id", user.id).order("created_at", { ascending: false }),
   ]);
 
-  const isAdmin = Boolean(
-    (ADMIN_USERNAME && profile?.username === ADMIN_USERNAME)
-    || (ADMIN_EMAIL && user.email === ADMIN_EMAIL),
+  const blogQuery = supabase
+    .from("blog_posts")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  const blogPosts = (isAdmin
+    ? await blogQuery
+    : await blogQuery.eq("author_id", user.id)).data ?? [];
+
+  return (
+    <DashboardClient
+      initialProfile={profile}
+      initialAssets={assets ?? []}
+      initialBlogPosts={blogPosts}
+      isAdmin={isAdmin}
+    />
   );
-
-  const blogPosts = isAdmin
-    ? (
-        await supabase
-          .from("blog_posts")
-          .select("*")
-          .eq("author_id", user.id)
-          .order("created_at", { ascending: false })
-      ).data ?? []
-    : [];
-
-  return <DashboardClient initialProfile={profile} initialAssets={assets ?? []} isAdmin={isAdmin} initialBlogPosts={blogPosts} />;
 }

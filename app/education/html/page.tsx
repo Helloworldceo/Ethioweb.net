@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BookOpenCheck, ClipboardCheck, FileBadge2, GraduationCap } from "lucide-react";
+import { LearningAccessCta } from "@/components/education/learning-access-cta";
 import { PageHero } from "@/components/sections/page-hero";
 import { htmlCourseLessons } from "@/lib/courses/html-course";
 
@@ -37,9 +38,13 @@ export default function HtmlCoursePage() {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/education/html/module-01" className="btn-primary">
-              Start module 01
-            </Link>
+            <LearningAccessCta
+              authenticatedHref="/education/html/module-01"
+              authenticatedLabel="Start module 01"
+              guestHref="/auth/login"
+              guestLabel="Log in to study"
+              className="btn-primary"
+            />
             <Link href="#resources" className="btn-secondary">
               View resources
             </Link>

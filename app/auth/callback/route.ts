@@ -4,6 +4,9 @@ import {
   getSupabaseRouteHandlerClient,
   hasSupabaseEnv,
 } from "@/lib/supabase/server";
+import { ensureUserProfile } from "@/lib/supabase/ensure-profile";
+
+type EnsureProfileClient = Parameters<typeof ensureUserProfile>[0];
 
 export async function GET(request: NextRequest) {
   if (!hasSupabaseEnv()) {
@@ -48,18 +51,10 @@ export async function GET(request: NextRequest) {
       null;
     const requestedUsername =
       (user.user_metadata?.username as string | undefined) || fullName.replace(/\s+/g, "");
-    const username = requestedUsername
-      .toLowerCase()
-      .replace(/[^a-z0-9_]/g, "")
-      .slice(0, 18) || `user${user.id.slice(0, 6)}`;
-
-    await supabase.from("profiles").upsert({
-      id: user.id,
-      full_name: fullName,
-      username,
-      avatar_url: avatarUrl,
-      visibility: "public",
-      updated_at: new Date().toISOString(),
+    await ensureUserProfile(supabase as unknown as EnsureProfileClient, user, {
+      fullName,
+      username: requestedUsername,
+      avatarUrl,
     });
   }
 

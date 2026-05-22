@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useMemo, useState } from "react";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import { getOAuthProviderSetupMessage, isOAuthProviderEnabled } from "@/lib/supabase/oauth-providers";
 import { useLanguage } from "@/components/i18n/language-provider";
 
 export function SignupForm() {
@@ -30,7 +31,7 @@ export function SignupForm() {
     setMessage(null);
 
     if (!supabase) {
-      setError("Supabase is not configured yet.");
+      setError(t("Supabase is not configured yet.", "Supabase እስካሁን አልተዋቀረም።"));
       return;
     }
 
@@ -73,12 +74,22 @@ export function SignupForm() {
       return;
     }
 
-    setMessage("Check your email to confirm your account, then continue to your dashboard.");
+    setMessage(
+      t(
+        "Check your email to confirm your account, then continue to your dashboard.",
+        "መለያዎን ለማረጋገጥ ኢሜይልዎን ያረጋግጡ፣ ከዚያ ወደ ዳሽቦርድዎ ይቀጥሉ።",
+      ),
+    );
   }
 
   async function handleOAuth(provider: "google" | "facebook") {
     if (!supabase) {
-      setError("Supabase is not configured yet.");
+      setError(t("Supabase is not configured yet.", "Supabase እስካሁን አልተዋቀረም።"));
+      return;
+    }
+
+    if (!isOAuthProviderEnabled(provider)) {
+      setError(getOAuthProviderSetupMessage(provider));
       return;
     }
 
@@ -111,14 +122,14 @@ export function SignupForm() {
         <form className="mt-6 space-y-3" onSubmit={handleSignup}>
           <input
             className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
-            placeholder="Full name"
+            placeholder={t("Full name", "ሙሉ ስም")}
             value={fullName}
             onChange={(event) => setFullName(event.target.value)}
             required
           />
           <input
             className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
-            placeholder="Username"
+            placeholder={t("Username", "የተጠቃሚ ስም")}
             value={username}
             onChange={(event) => setUsername(event.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ""))}
             required
@@ -126,7 +137,7 @@ export function SignupForm() {
           <input
             className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             type="email"
-            placeholder="Email"
+            placeholder={t("Email", "ኢሜይል")}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             required
@@ -134,7 +145,7 @@ export function SignupForm() {
           <input
             className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-[var(--ink)] placeholder:text-[var(--muted)]"
             type="password"
-            placeholder="Password"
+            placeholder={t("Password", "የምስጢር ቃል")}
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
@@ -145,13 +156,36 @@ export function SignupForm() {
         </form>
 
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <button className="btn-secondary" onClick={() => handleOAuth("google")} type="button">
-            Google Sign Up
+          <button
+            className="btn-secondary disabled:cursor-not-allowed disabled:opacity-60"
+            onClick={() => handleOAuth("google")}
+            type="button"
+            disabled={!isOAuthProviderEnabled("google")}
+            title={!isOAuthProviderEnabled("google") ? getOAuthProviderSetupMessage("google") : undefined}
+          >
+            {isOAuthProviderEnabled("google")
+              ? t("Google Sign Up", "በGoogle ይመዝገቡ")
+              : t("Google setup pending", "Google ማዋቀር በሂደት ላይ ነው")}
           </button>
-          <button className="btn-secondary" onClick={() => handleOAuth("facebook")} type="button">
-            Facebook Sign Up
+          <button
+            className="btn-secondary disabled:cursor-not-allowed disabled:opacity-60"
+            onClick={() => handleOAuth("facebook")}
+            type="button"
+            disabled={!isOAuthProviderEnabled("facebook")}
+            title={!isOAuthProviderEnabled("facebook") ? getOAuthProviderSetupMessage("facebook") : undefined}
+          >
+            {isOAuthProviderEnabled("facebook")
+              ? t("Facebook Sign Up", "በFacebook ይመዝገቡ")
+              : t("Facebook setup pending", "Facebook ማዋቀር በሂደት ላይ ነው")}
           </button>
         </div>
+
+        <p className="mt-3 text-xs leading-6 text-[var(--muted)]">
+          {t(
+            "Social sign-in only works after the provider is enabled in Supabase for this environment.",
+            "የማህበራዊ መግቢያ የሚሠራው አቅራቢው በዚህ አካባቢ በSupabase ከተነቃ በኋላ ብቻ ነው።",
+          )}
+        </p>
 
         <p className="mt-4 text-sm text-[var(--muted)]">
           {t("Already have an account?", "አስቀድሞ መለያ አለዎት?")} <Link className="font-semibold text-[var(--brand)]" href="/auth/login">{t("Login", "ይግቡ")}</Link>
