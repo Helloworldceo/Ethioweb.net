@@ -315,38 +315,40 @@ export default function Home() {
       </section>
 
       <section className="container-wrap py-4">
-        <article className="relative overflow-hidden rounded-[28px] border border-[#d7c8b2] bg-[linear-gradient(135deg,#f6ead7_0%,#eef4ff_52%,#fffdf8_100%)] p-6 shadow-[0_20px_44px_rgba(20,33,61,0.08)] md:p-8">
+        <article className="relative overflow-hidden rounded-[22px] border border-[#d7c8b2] bg-[linear-gradient(135deg,#f6ead7_0%,#eef4ff_52%,#fffdf8_100%)] p-3.5 shadow-[0_20px_44px_rgba(20,33,61,0.08)] sm:p-5 md:rounded-[28px] md:p-8">
           <div className="absolute inset-y-0 right-0 w-40 bg-[radial-gradient(circle_at_center,rgba(255,179,0,0.16),transparent_68%)] blur-2xl" />
 
-          <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+          <div className="relative grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:gap-8">
             <div>
-              <p className="inline-flex w-fit rounded-full border border-[#d7c8b2] bg-white/90 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8a4b12] shadow-[0_10px_24px_rgba(20,33,61,0.05)] md:text-xs">
+              <p className="inline-flex w-fit rounded-full border border-[#d7c8b2] bg-white/90 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8a4b12] shadow-[0_10px_24px_rgba(20,33,61,0.05)] md:text-[11px]">
                 Professional Website & App Developer
               </p>
-              <h2 className="heading-display mt-4 max-w-3xl text-4xl font-semibold text-[#14213d] md:text-5xl">
+              <h2 className="heading-display mt-4 max-w-3xl text-[1.78rem] font-semibold leading-[0.98] text-[#14213d] sm:text-[2.15rem] md:text-[2.9rem]">
                 We create modern websites and applications for serious businesses.
               </h2>
-              <p className="mt-4 max-w-3xl text-base leading-8 text-[#40516f]">
+              <p className="mt-3 max-w-3xl text-[0.84rem] leading-6 text-[#40516f] sm:text-[0.95rem] sm:leading-7 md:text-base md:leading-8">
                 We create modern websites and applications for all kinds of businesses. We also help business owners build professional business profiles and grow their online presence.
               </p>
 
-              <div className="mt-8 rounded-[24px] border border-[#d7c8b2] bg-white/72 p-5 shadow-[0_14px_30px_rgba(20,33,61,0.06)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6f6a62]">Industries we serve</p>
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="mt-5 rounded-[18px] border border-[#d7c8b2] bg-white/72 p-2.5 shadow-[0_14px_30px_rgba(20,33,61,0.06)] sm:p-5 md:rounded-[24px]">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#6f6a62] sm:text-[11px]">Industries we serve</p>
+                <div className="mt-2 grid grid-cols-2 gap-1.5 sm:gap-4">
                   {businessTypes.map((item) => {
                     const Icon = item.icon;
 
                     return (
                       <article
                         key={item.title}
-                        className="rounded-[24px] border border-[#d9d3ca] bg-[#fffdfa] px-5 py-6 shadow-[0_10px_24px_rgba(20,33,61,0.05)] transition-transform duration-200 hover:-translate-y-0.5"
+                        className="rounded-[14px] border border-[#d9d3ca] bg-[#fffdfa] px-2.5 py-2.5 shadow-[0_10px_24px_rgba(20,33,61,0.05)] transition-transform duration-200 hover:-translate-y-0.5 sm:rounded-[24px] sm:px-5 sm:py-6"
                       >
-                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#d9d3ca] bg-white text-[#44413d]">
-                          <Icon className="h-5 w-5" strokeWidth={2.1} />
+                        <div className="flex items-center gap-2.5 sm:gap-3">
+                          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[9px] border border-[#d9d3ca] bg-white text-[#44413d] sm:h-11 sm:w-11 sm:rounded-2xl">
+                            <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5" strokeWidth={2} />
+                          </div>
+                          <h3 className="max-w-[11ch] text-[0.72rem] font-medium leading-[1.02] tracking-[-0.02em] text-[#20242c] sm:text-[1rem] md:text-[1.18rem]">
+                            {item.title}
+                          </h3>
                         </div>
-                        <h3 className="mt-5 max-w-[13ch] text-[1.2rem] font-medium leading-[1.18] tracking-[-0.03em] text-[#20242c] md:text-[1.35rem]">
-                          {item.title}
-                        </h3>
                       </article>
                     );
                   })}
@@ -354,25 +356,27 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid gap-5">
-              <div className="rounded-[24px] border border-[#d7c8b2] bg-white p-5 shadow-[0_14px_30px_rgba(20,33,61,0.08)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6f6a62]">What we build</p>
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-3.5 sm:gap-5">
+              <div className="rounded-[18px] border border-[#d7c8b2] bg-white p-2.5 shadow-[0_14px_30px_rgba(20,33,61,0.08)] sm:p-5 md:rounded-[24px]">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#6f6a62] sm:text-[11px]">What we build</p>
+                <div className="mt-2 grid grid-cols-2 gap-1.5 sm:gap-4">
                   {offerItems.map((item) => {
                     const Icon = item.icon;
 
                     return (
                       <article
                         key={item.title}
-                        className="rounded-[24px] border border-[#d9d3ca] bg-[#fffdfa] px-5 py-6 shadow-[0_10px_24px_rgba(20,33,61,0.05)] transition-transform duration-200 hover:-translate-y-0.5"
+                        className="rounded-[14px] border border-[#d9d3ca] bg-[#fffdfa] px-2.5 py-2.5 shadow-[0_10px_24px_rgba(20,33,61,0.05)] transition-transform duration-200 hover:-translate-y-0.5 sm:rounded-[24px] sm:px-5 sm:py-6"
                       >
-                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#d9d3ca] bg-white text-[#44413d]">
-                          <Icon className="h-5 w-5" strokeWidth={2.1} />
+                        <div className="flex items-center gap-2.5 sm:gap-3">
+                          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[9px] border border-[#d9d3ca] bg-white text-[#44413d] sm:h-11 sm:w-11 sm:rounded-2xl">
+                            <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5" strokeWidth={2} />
+                          </div>
+                          <h3 className="text-[0.8rem] font-medium leading-[1.02] tracking-[-0.03em] text-[#20242c] sm:text-[1.18rem] md:text-[1.35rem]">
+                            {item.title}
+                          </h3>
                         </div>
-                        <h3 className="mt-5 text-[1.65rem] font-medium leading-[1.08] tracking-[-0.04em] text-[#20242c]">
-                          {item.title}
-                        </h3>
-                        <p className="mt-3 max-w-[18ch] text-base leading-8 text-[#4f545d]">
+                        <p className="mt-1 max-w-[22ch] text-[0.68rem] leading-[1.35] text-[#4f545d] sm:mt-2.5 sm:text-[0.9rem] sm:leading-6 md:text-base md:leading-8">
                           {item.description}
                         </p>
                       </article>
@@ -381,7 +385,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-[24px] border border-[#102343]/10 bg-[#102343] p-5 text-white shadow-[0_20px_40px_rgba(9,24,47,0.18)]">
+              <div className="rounded-[18px] border border-[#102343]/10 bg-[#102343] p-3 text-white shadow-[0_20px_40px_rgba(9,24,47,0.18)] sm:p-5 md:rounded-[24px]">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#ffd57a]">Business inquiries</p>
                 <p className="mt-3 text-base leading-8 text-[#d9e6ff]">
                   DM for business inquiries and projects.
