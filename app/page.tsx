@@ -4,10 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  CheckCircle2,
+  BriefcaseBusiness,
+  Building2,
+  Coins,
   FolderOpen,
   Globe,
+  GraduationCap,
+  LayoutGrid,
+  Landmark,
+  Palette,
+  Rocket,
+  Scissors,
   ShieldCheck,
+  ShoppingBag,
+  Smartphone,
+  Sparkles,
+  Stethoscope,
+  Scale,
+  UtensilsCrossed,
 } from "lucide-react";
 import amosPhoto from "@/Amos.jpg";
 import dawitPhoto from "@/David Photo.jpg";
@@ -32,23 +46,79 @@ const heroSignals = [
 ];
 
 const businessTypes = [
-  "Banks",
-  "Schools",
-  "Hospitals",
-  "Hotels",
-  "Lawyers & Law Firms",
-  "Microfinance Institutions",
-  "Retail Shops",
-  "Online Stores",
-  "Restaurants",
-  "Hair Salons",
+  {
+    title: "Banks & Finance",
+    icon: Landmark,
+  },
+  {
+    title: "Schools & Universities",
+    icon: GraduationCap,
+  },
+  {
+    title: "Hospitals & Clinics",
+    icon: Stethoscope,
+  },
+  {
+    title: "Hotels & Resorts",
+    icon: Building2,
+  },
+  {
+    title: "Lawyers & Law Firms",
+    icon: Scale,
+  },
+  {
+    title: "Microfinance",
+    icon: Coins,
+  },
+  {
+    title: "Retail & E-Commerce",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Restaurants & Cafes",
+    icon: UtensilsCrossed,
+  },
+  {
+    title: "Salons & Beauty",
+    icon: Scissors,
+  },
+  {
+    title: "Startups & Companies",
+    icon: Rocket,
+  },
 ];
 
 const offerItems = [
-  "Custom Websites",
-  "Mobile Applications",
-  "Business Branding",
-  "Modern UI/UX Design",
+  {
+    title: "Custom Websites",
+    description: "Tailored to your brand, audience, and goals.",
+    icon: Globe,
+  },
+  {
+    title: "Mobile Apps",
+    description: "Native and cross-platform mobile experiences.",
+    icon: Smartphone,
+  },
+  {
+    title: "Business Branding",
+    description: "Identity, logos, and brand systems that stand out.",
+    icon: Palette,
+  },
+  {
+    title: "Modern UI/UX",
+    description: "Interfaces people actually enjoy using.",
+    icon: LayoutGrid,
+  },
+  {
+    title: "Portfolio & CVs",
+    description: "Professional profiles and personal branding.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Digital Presence",
+    description: "Full digital strategy and business platforms.",
+    icon: Sparkles,
+  },
 ];
 
 const amosSocialLinks = [
@@ -260,28 +330,54 @@ export default function Home() {
                 We create modern websites and applications for all kinds of businesses. We also help business owners build professional business profiles and grow their online presence.
               </p>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                {businessTypes.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-[#d7c8b2] bg-white px-4 py-3 text-sm font-semibold text-[#14213d] shadow-[0_10px_22px_rgba(20,33,61,0.06)]"
-                  >
-                    {item}
-                  </div>
-                ))}
+              <div className="mt-8 rounded-[24px] border border-[#d7c8b2] bg-white/72 p-5 shadow-[0_14px_30px_rgba(20,33,61,0.06)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6f6a62]">Industries we serve</p>
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {businessTypes.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <article
+                        key={item.title}
+                        className="rounded-[24px] border border-[#d9d3ca] bg-[#fffdfa] px-5 py-6 shadow-[0_10px_24px_rgba(20,33,61,0.05)] transition-transform duration-200 hover:-translate-y-0.5"
+                      >
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#d9d3ca] bg-white text-[#44413d]">
+                          <Icon className="h-5 w-5" strokeWidth={2.1} />
+                        </div>
+                        <h3 className="mt-5 max-w-[13ch] text-[1.2rem] font-medium leading-[1.18] tracking-[-0.03em] text-[#20242c] md:text-[1.35rem]">
+                          {item.title}
+                        </h3>
+                      </article>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
             <div className="grid gap-5">
               <div className="rounded-[24px] border border-[#d7c8b2] bg-white p-5 shadow-[0_14px_30px_rgba(20,33,61,0.08)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a6c62]">What we offer</p>
-                <div className="mt-4 grid gap-3">
-                  {offerItems.map((item) => (
-                    <div key={item} className="flex items-center gap-3 text-sm font-semibold text-[#14213d]">
-                      <CheckCircle2 className="h-5 w-5 text-[var(--brand)]" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6f6a62]">What we build</p>
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {offerItems.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <article
+                        key={item.title}
+                        className="rounded-[24px] border border-[#d9d3ca] bg-[#fffdfa] px-5 py-6 shadow-[0_10px_24px_rgba(20,33,61,0.05)] transition-transform duration-200 hover:-translate-y-0.5"
+                      >
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#d9d3ca] bg-white text-[#44413d]">
+                          <Icon className="h-5 w-5" strokeWidth={2.1} />
+                        </div>
+                        <h3 className="mt-5 text-[1.65rem] font-medium leading-[1.08] tracking-[-0.04em] text-[#20242c]">
+                          {item.title}
+                        </h3>
+                        <p className="mt-3 max-w-[18ch] text-base leading-8 text-[#4f545d]">
+                          {item.description}
+                        </p>
+                      </article>
+                    );
+                  })}
                 </div>
               </div>
 
