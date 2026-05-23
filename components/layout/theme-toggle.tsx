@@ -10,13 +10,7 @@ const THEME_STORAGE_KEY = "ethioweb-theme";
 
 export function ThemeToggle() {
   const { t } = useLanguage();
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === "undefined") {
-      return "blue-dark";
-    }
-
-    return window.localStorage.getItem(THEME_STORAGE_KEY) === "original" ? "original" : "blue-dark";
-  });
+  const [theme, setTheme] = useState<Theme>("blue-dark");
 
   const applyTheme = (nextTheme: Theme) => {
     const root = document.documentElement;
@@ -27,6 +21,11 @@ export function ThemeToggle() {
     }
     window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
   };
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY) === "original" ? "original" : "blue-dark";
+    setTheme(storedTheme);
+  }, []);
 
   useEffect(() => {
     applyTheme(theme);

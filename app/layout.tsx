@@ -94,6 +94,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="blue-dark"
+      suppressHydrationWarning
       className={`${inter.variable} ${notoSansEthiopic.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--bg)] text-[var(--ink)]">

@@ -73,7 +73,7 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col gap-4 border-t border-[#29456f] pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-[#bdd0ef]">© 2026 Ethioweb. Built in Ethiopia.</p>
+          <p className="text-[#bdd0ef]">© 2026 Ethioweb. Allright reserved.</p>
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <a
